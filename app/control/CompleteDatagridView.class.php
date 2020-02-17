@@ -9,7 +9,7 @@
      */
     class CompleteDataGridView extends TPage
     {
-        private $form, $datagrid, $pageNavigation, $loaded;
+        protected $form, $datagrid, $pageNavigation, $loaded;
         
         /**
          * Class constructor
@@ -21,15 +21,15 @@
             
             // creates the form
             $this->form = new BootstrapFormBuilder('form_search_data');
-            $this->form->setFormTitle(_t('Manual DataGrid'));
+            $this->form->setFormTitle('Tabela de Registros');
             
-            $city = new TEntry('city');
-            $this->form->addFields( [new TLabel('Município:')], [$city] );
+            $name = new TEntry('name');
+            $this->form->addFields( [new TLabel('Município:')], [$name] );
             
             $this->form->addAction('Find', new TAction([$this, 'onSearch']), 'fa:search blue');
-            $this->form->addActionLink('New',  new TAction(['CompleteFormView', 'onClear']), 'fa:plus-circle green');
+            $this->form->addActionLink('New',  new TAction(['PopulationFormView', 'onClear']), 'fa:plus-circle green');
             // keep the form filled with the search data
-            $city->setValue( TSession::getValue( 'City_name' ) );
+            $name->setValue( TSession::getValue( 'tb_data' ) );
             
             // creates a DataGrid
             $this->datagrid = new BootstrapDatagridWrapper(new TDataGrid);
@@ -37,20 +37,20 @@
             
             // creates the datagrid columns
             //Municipio - Ano - Populacao
-            $col_city    = new TDataGridColumn('tb_set->name', 'Município', 'right', '10%');
-            $col_year  = new TDataGridColumn('year', 'Ano', 'left', '60%');
-            $col_population = new TDataGridColumn('population', 'População', 'center', '30%');
+            $col_city    = new TDataGridColumn('name', 'Município', 'right', '10%');
+            $col_year  = new TDataGridColumn('tb_data_year', 'Ano', 'left', '60%');
+            $col_population = new TDataGridColumn('tb_data_population', 'População', 'center', '30%');
             
             // assign the ordering actions
-            $col_id->setAction(new TAction([$this, 'onReload']), ['order' => 'id']);
-            $col_name->setAction(new TAction([$this, 'onReload']), ['order' => 'name']);
+            $col_city->setAction(new TAction([$this, 'onReload']), ['order' => 'tb_set->name']);
+            $col_year->setAction(new TAction([$this, 'onReload']), ['order' => 'tb_data_year']);
             // add the columns to the DataGrid
             $this->datagrid->addColumn($col_city);
             $this->datagrid->addColumn($col_year);
             $this->datagrid->addColumn($col_population);
             
-            $action1 = new TDataGridAction(['CompleteFormView', 'onEdit'],   ['key' => '{id}'] );
-            $action2 = new TDataGridAction([$this, 'onDelete'],   ['key' => '{id}'] );
+            $action1 = new TDataGridAction(['PopulationFormView', 'onEdit'],   ['key' => '{tb_set_name}'] );
+            $action2 = new TDataGridAction([$this, 'onDelete'],   ['key' => '{tb_set_name}'] );
             
             $this->datagrid->addAction($action1, 'Edit',   'far:edit blue');
             $this->datagrid->addAction($action2, 'Delete', 'far:trash-alt red');
@@ -65,7 +65,7 @@
             // creates the page structure using a table
             $vbox = new TVBox;
             $vbox->style = 'width: 100%';
-            $vbox->add(new TXMLBreadCrumb('menu.xml', __CLASS__));
+            $vbox->add(new TXMLBreadCrumb('menu.xml', 'CompleteDatagridView'));
             $vbox->add($this->form); // add a row to the form
             $vbox->add(TPanelGroup::pack('', $this->datagrid, $this->pageNavigation)); // add a row for page navigation
             
@@ -83,14 +83,14 @@
             $data = $this->form->getData();
             
             // check if the user has filled the form
-            if (isset($data->city_name))
+            if (isset($data->tb_set_name))
             {
                 // creates a filter using what the user has typed
-                $filter = new TFilter('name', 'like', "%{$data->name}%");
+                $filter = new TFilter('name', 'like', "%{$data->tb_set_name}%");
                 
                 // stores the filter in the session
                 TSession::setValue('City_filter', $filter);
-                TSession::setValue('City_name',   $data->city_name);
+                TSession::setValue('tb_data',   $data->tb_set_name);
                 
                 // fill the form with data again
                 $this->form->setData($data);
@@ -111,10 +111,10 @@
             try
             {
                 // open a transaction with database 'samples'
-                TTransaction::open('samples');
+                TTransaction::open('siam');
                 
-                // creates a repository for City
-                $repository = new TRepository('City');
+                // creates a repository for tb_set
+                $repository = new TRepository('TB_set');
                 $limit = 10;
                 
                 // creates a criteria
@@ -123,7 +123,7 @@
                 // default order
                 if (empty($param['order']))
                 {
-                    $param['order'] = 'id';
+                    $param['order'] = 'tb_set_name';
                     $param['direction'] = 'asc';
                 }
                 
@@ -190,8 +190,8 @@
             try
             {
                 $key=$param['key']; // get the parameter $key
-                TTransaction::open('samples'); // open a transaction with database
-                $object = new City($key, FALSE); // instantiates the Active Record
+                TTransaction::open('siam'); // open a transaction with database
+                $object = new TB_data($key, FALSE); // instantiates the Active Record
                 $object->delete(); // deletes the object from the database
                 TTransaction::close(); // close the transaction
                 

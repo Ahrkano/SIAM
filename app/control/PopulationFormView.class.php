@@ -21,7 +21,7 @@ class PopulationFormView extends TPage
         // creates the form
         $this->form = new BootstrapFormBuilder('form_data');
         $this->form->setClientValidation(true);
-        $this->form->setFormTitle(_t('Registro'));
+        $this->form->setFormTitle('Registro de Dados');
         
         // create the form fields
         $id             = new TEntry('tb_data_id');

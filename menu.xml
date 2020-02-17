@@ -107,7 +107,7 @@
       </menuitem>
       <menuitem label="Form">
         <action>PopulationFormView</action>
-        <icon>fab fa:wpforms fa-fw</icon>
+        <icon>fas:align-justify fa-fw #000000</icon>
       </menuitem>
       <menuitem label="Datagrid">
         <action>CompleteDatagridView</action>
