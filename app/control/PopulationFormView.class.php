@@ -34,7 +34,7 @@ class PopulationFormView extends TPage
         // add the form fields
         $this->form->addFields( [new TLabel('ID')],    [$id] );
         $this->form->addFields( [new TLabel('População', 'red')],  [$population] );
-        $this->form->addFields( [new TLabel('Nascidos vivos', 'red')],  [$prev_born] );
+        $this->form->addFields( [new TLabel('Nascidos vivos ano anterior', 'red')],  [$prev_born] );
         $this->form->addFields( [new TLabel('Ano', 'red')], [$year] );
         $this->form->addFields( [new TLabel('Município', 'red')], [$tb_data_tb_city_id] );
         

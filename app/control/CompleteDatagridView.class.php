@@ -86,10 +86,10 @@
         $data = $this->form->getData();
         
         // check if the user has filled the form
-        if (isset($data->name))
+        if (isset($data->tb_city_name))
         {
             // creates a filter using what the user has typed
-            $filter = new TFilter('name', 'like', "%{$data->name}%");
+            $filter = new TFilter('tb_city_name', 'like', "%{$data->tb_city_name}%");
             
             // stores the filter in the session
             TSession::setValue('City_filter', $filter);
