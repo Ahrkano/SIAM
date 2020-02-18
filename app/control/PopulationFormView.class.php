@@ -28,7 +28,7 @@ class PopulationFormView extends TPage
         $population     = new TEntry('tb_data_pop');
         $prev_born      = new TEntry('tb_data_born');
         $year           = new TEntry('tb_data_year');
-        $tb_data_tb_set_id = new TDBCombo('tb_data_tb_set_id', 'siam', 'tb_set', 'tb_set_id', 'tb_set_name');
+        $tb_data_tb_city_id = new TDBCombo('tb_data_tb_city_id', 'siam', 'tb_city', 'tb_city_id', 'tb_city_name');
         $id->setEditable(FALSE);
         
         // add the form fields
@@ -36,10 +36,10 @@ class PopulationFormView extends TPage
         $this->form->addFields( [new TLabel('População', 'red')],  [$population] );
         $this->form->addFields( [new TLabel('Nascidos vivos', 'red')],  [$prev_born] );
         $this->form->addFields( [new TLabel('Ano', 'red')], [$year] );
-        $this->form->addFields( [new TLabel('Município', 'red')], [$tb_data_tb_set_id] );
+        $this->form->addFields( [new TLabel('Município', 'red')], [$tb_data_tb_city_id] );
         
         $population->addValidation('População', new TRequiredValidator);
-        $tb_data_tb_set_id->addValidation('Município', new TRequiredValidator);
+        $tb_data_tb_city_id->addValidation('Município', new TRequiredValidator);
         
         // define the form action
         $this->form->addAction('Save', new TAction([$this, 'onSave']), 'fa:save green');

@@ -15,7 +15,7 @@ class TB_data extends TRecord
     public function __construct($tb_data_id = NULL)
     {
         parent::__construct($tb_data_id);
-        parent::addAttribute('tb_data_tb_set_id');
+        parent::addAttribute('tb_data_tb_city_id');
         parent::addAttribute('tb_data_year');
         parent::addAttribute('tb_data_pop');
         parent::addAttribute('tb_data_born');
@@ -24,9 +24,9 @@ class TB_data extends TRecord
     /**
      * Returns the set
      */
-    public function get_tb_set()
+    public function get_tb_city()
     {
-        return State::find($this->tb_data_tb_set_id);
+        return TB_city::find($this->tb_data_tb_city_id);
     }
     
 }

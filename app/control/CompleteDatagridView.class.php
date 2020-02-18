@@ -8,215 +8,218 @@
 
      */
     class CompleteDataGridView extends TPage
+{
+    private $form, $datagrid, $pageNavigation, $loaded;
+    
+    /**
+     * Class constructor
+     * Creates the page, the form and the listing
+     */
+    public function __construct()
     {
-        protected $form, $datagrid, $pageNavigation, $loaded;
+        parent::__construct();
         
-        /**
-         * Class constructor
-         * Creates the page, the form and the listing
-         */
-        public function __construct()
+        // creates the form
+        $this->form = new BootstrapFormBuilder('form_search_City');
+        $this->form->setFormTitle('Visualização');
+        
+        $name = new TEntry('name');
+        $this->form->addFields( [new TLabel('Name:')], [$name] );
+        
+        $this->form->addAction('Find', new TAction([$this, 'onSearch']), 'fa:search blue');
+        $this->form->addActionLink('New',  new TAction(['PopulationFormView', 'onClear']), 'fa:plus-circle green');
+
+        // keep the form filled with the search data
+        $name->setValue( TSession::getValue( 'City_name' ) );
+        
+        // creates a DataGrid
+        $this->datagrid = new BootstrapDatagridWrapper(new TDataGrid);
+        $this->datagrid->width = '100%';
+        
+        // creates the datagrid columns
+        $col_id    = new TDataGridColumn('tb_data_id', 'Id', 'right', '10%');
+        $col_year  = new TDataGridColumn('tb_data_year', 'Ano', 'center', '30%');
+        $col_city = new TDataGridColumn('tb_city->tb_city_name', 'Cidade', 'center', '30%');
+        $col_pop = new TDataGridColumn('tb_data_pop', 'População', 'center', '60%');
+        
+        // assign the ordering actions
+        $col_id->setAction(new TAction([$this, 'onReload']), ['order' => 'tb_data_id']);
+        $col_year->setAction(new TAction([$this, 'onReload']), ['order' => 'tb_data_year']);
+
+        // add the columns to the DataGrid
+        $this->datagrid->addColumn($col_id);
+        $this->datagrid->addColumn($col_city);
+        $this->datagrid->addColumn($col_year);
+        $this->datagrid->addColumn($col_pop);
+        
+        $action1 = new TDataGridAction(['PopulationFormView', 'onEdit'],   ['key' => '{tb_data_id}'] );
+        $action2 = new TDataGridAction([$this, 'onDelete'],   ['key' => '{tb_data_id}'] );
+        
+        $this->datagrid->addAction($action1, 'Edit',   'far:edit blue');
+        $this->datagrid->addAction($action2, 'Delete', 'far:trash-alt red');
+        
+        // create the datagrid model
+        $this->datagrid->createModel();
+        
+        // creates the page navigation
+        $this->pageNavigation = new TPageNavigation;
+        $this->pageNavigation->setAction(new TAction([$this, 'onReload']));
+        
+        // creates the page structure using a table
+        $vbox = new TVBox;
+        $vbox->style = 'width: 100%';
+        $vbox->add(new TXMLBreadCrumb('menu.xml', 'CompleteDatagridView'));
+        $vbox->add($this->form); // add a row to the form
+        $vbox->add(TPanelGroup::pack('', $this->datagrid, $this->pageNavigation)); // add a row for page navigation
+        
+        // add the table inside the page
+        parent::add($vbox);
+    }
+    
+    /**
+     * method onSearch()
+     * Register the filter in the session when the user performs a search
+     */
+    function onSearch()
+    {
+        // get the search form data
+        $data = $this->form->getData();
+        
+        // check if the user has filled the form
+        if (isset($data->name))
         {
-            parent::__construct();
+            // creates a filter using what the user has typed
+            $filter = new TFilter('name', 'like', "%{$data->name}%");
             
-            // creates the form
-            $this->form = new BootstrapFormBuilder('form_search_data');
-            $this->form->setFormTitle('Tabela de Registros');
+            // stores the filter in the session
+            TSession::setValue('City_filter', $filter);
+            TSession::setValue('City_name',   $data->name);
             
-            $name = new TEntry('name');
-            $this->form->addFields( [new TLabel('Município:')], [$name] );
-            
-            $this->form->addAction('Find', new TAction([$this, 'onSearch']), 'fa:search blue');
-            $this->form->addActionLink('New',  new TAction(['PopulationFormView', 'onClear']), 'fa:plus-circle green');
-            // keep the form filled with the search data
-            $name->setValue( TSession::getValue( 'tb_data' ) );
-            
-            // creates a DataGrid
-            $this->datagrid = new BootstrapDatagridWrapper(new TDataGrid);
-            $this->datagrid->width = '100%';
-            
-            // creates the datagrid columns
-            //Municipio - Ano - Populacao
-            $col_city    = new TDataGridColumn('name', 'Município', 'right', '10%');
-            $col_year  = new TDataGridColumn('tb_data_year', 'Ano', 'left', '60%');
-            $col_population = new TDataGridColumn('tb_data_population', 'População', 'center', '30%');
-            
-            // assign the ordering actions
-            $col_city->setAction(new TAction([$this, 'onReload']), ['order' => 'tb_set->name']);
-            $col_year->setAction(new TAction([$this, 'onReload']), ['order' => 'tb_data_year']);
-            // add the columns to the DataGrid
-            $this->datagrid->addColumn($col_city);
-            $this->datagrid->addColumn($col_year);
-            $this->datagrid->addColumn($col_population);
-            
-            $action1 = new TDataGridAction(['PopulationFormView', 'onEdit'],   ['key' => '{tb_set_name}'] );
-            $action2 = new TDataGridAction([$this, 'onDelete'],   ['key' => '{tb_set_name}'] );
-            
-            $this->datagrid->addAction($action1, 'Edit',   'far:edit blue');
-            $this->datagrid->addAction($action2, 'Delete', 'far:trash-alt red');
-            
-            // create the datagrid model
-            $this->datagrid->createModel();
-            
-            // creates the page navigation
-            $this->pageNavigation = new TPageNavigation;
-            $this->pageNavigation->setAction(new TAction([$this, 'onReload']));
-            
-            // creates the page structure using a table
-            $vbox = new TVBox;
-            $vbox->style = 'width: 100%';
-            $vbox->add(new TXMLBreadCrumb('menu.xml', 'CompleteDatagridView'));
-            $vbox->add($this->form); // add a row to the form
-            $vbox->add(TPanelGroup::pack('', $this->datagrid, $this->pageNavigation)); // add a row for page navigation
-            
-            // add the table inside the page
-            parent::add($vbox);
+            // fill the form with data again
+            $this->form->setData($data);
         }
         
-        /**
-         * method onSearch()
-         * Register the filter in the session when the user performs a search
-         */
-        function onSearch()
+        $param = array();
+        $param['offset']    =0;
+        $param['first_page']=1;
+        $this->onReload($param);
+    }
+    
+    /**
+     * method onReload()
+     * Load the datagrid with the database objects
+     */
+    function onReload($param = NULL)
+    {
+        try
         {
-            // get the search form data
-            $data = $this->form->getData();
+            // open a transaction with database 'siam'
+            TTransaction::open('siam');
             
-            // check if the user has filled the form
-            if (isset($data->tb_set_name))
+            // creates a repository for TB_data
+            $repository = new TRepository('TB_data');
+            $limit = 10;
+            
+            // creates a criteria
+            $criteria = new TCriteria;
+            
+            // default order
+            if (empty($param['order']))
             {
-                // creates a filter using what the user has typed
-                $filter = new TFilter('name', 'like', "%{$data->tb_set_name}%");
-                
-                // stores the filter in the session
-                TSession::setValue('City_filter', $filter);
-                TSession::setValue('tb_data',   $data->tb_set_name);
-                
-                // fill the form with data again
-                $this->form->setData($data);
+                $param['order'] = 'tb_data_id';
+                $param['direction'] = 'asc';
             }
             
-            $param = array();
-            $param['offset']    =0;
-            $param['first_page']=1;
-            $this->onReload($param);
-        }
-        
-        /**
-         * method onReload()
-         * Load the datagrid with the database objects
-         */
-        function onReload($param = NULL)
-        {
-            try
+            $criteria->setProperties($param); // order, offset
+            $criteria->setProperty('limit', $limit);
+            
+            if (TSession::getValue('City_filter'))
             {
-                // open a transaction with database 'samples'
-                TTransaction::open('siam');
-                
-                // creates a repository for tb_set
-                $repository = new TRepository('TB_set');
-                $limit = 10;
-                
-                // creates a criteria
-                $criteria = new TCriteria;
-                
-                // default order
-                if (empty($param['order']))
+                // add the filter stored in the session to the criteria
+                $criteria->add(TSession::getValue('City_filter'));
+            }
+            
+            // load the objects according to criteria
+            $objects = $repository->load($criteria);
+            
+            $this->datagrid->clear();
+            if ($objects)
+            {
+                // iterate the collection of active records
+                foreach ($objects as $object)
                 {
-                    $param['order'] = 'tb_set_name';
-                    $param['direction'] = 'asc';
+                    // add the object inside the datagrid
+                    $this->datagrid->addItem($object);
                 }
-                
-                $criteria->setProperties($param); // order, offset
-                $criteria->setProperty('limit', $limit);
-                
-                if (TSession::getValue('City_filter'))
-                {
-                    // add the filter stored in the session to the criteria
-                    $criteria->add(TSession::getValue('City_filter'));
-                }
-                
-                // load the objects according to criteria
-                $objects = $repository->load($criteria);
-                
-                $this->datagrid->clear();
-                if ($objects)
-                {
-                    // iterate the collection of active records
-                    foreach ($objects as $object)
-                    {
-                        // add the object inside the datagrid
-                        $this->datagrid->addItem($object);
-                    }
-                }
-                
-                // reset the criteria for record count
-                $criteria->resetProperties();
-                $count = $repository->count($criteria);
-                
-                $this->pageNavigation->setCount($count); // count of records
-                $this->pageNavigation->setProperties($param); // order, page
-                $this->pageNavigation->setLimit($limit); // limit
-                
-                // close the transaction
-                TTransaction::close();
-                $this->loaded = true;
             }
-            catch (Exception $e) // in case of exception
-            {
-                new TMessage('error', $e->getMessage()); // shows the exception error message
-                TTransaction::rollback(); // undo all pending operations
-            }
-        }
-        
-        /**
-         * Ask before deletion
-         */
-        public static function onDelete($param)
-        {
-            // define the delete action
-            $action = new TAction(array(__CLASS__, 'Delete'));
-            $action->setParameters($param); // pass the key parameter ahead
             
-            // shows a dialog to the user
-            new TQuestion(AdiantiCoreTranslator::translate('Do you really want to delete ?'), $action);
+            // reset the criteria for record count
+            $criteria->resetProperties();
+            $count = $repository->count($criteria);
+            
+            $this->pageNavigation->setCount($count); // count of records
+            $this->pageNavigation->setProperties($param); // order, page
+            $this->pageNavigation->setLimit($limit); // limit
+            
+            // close the transaction
+            TTransaction::close();
+            $this->loaded = true;
         }
-        
-        /**
-         * Delete a record
-         */
-        public static function Delete($param)
+        catch (Exception $e) // in case of exception
         {
-            try
-            {
-                $key=$param['key']; // get the parameter $key
-                TTransaction::open('siam'); // open a transaction with database
-                $object = new TB_data($key, FALSE); // instantiates the Active Record
-                $object->delete(); // deletes the object from the database
-                TTransaction::close(); // close the transaction
-                
-                $pos_action = new TAction([__CLASS__, 'onReload']);
-                new TMessage('info', AdiantiCoreTranslator::translate('Record deleted'), $pos_action); // success message
-            }
-            catch (Exception $e) // in case of exception
-            {
-                new TMessage('error', $e->getMessage()); // shows the exception error message
-                TTransaction::rollback(); // undo all pending operations
-            }
-        }
-        
-        /**
-         * method show()
-         * Shows the page
-         */
-        function show()
-        {
-            // check if the datagrid is already loaded
-            if (!$this->loaded)
-            {
-                $this->onReload( func_get_arg(0) );
-            }
-            parent::show();
+            new TMessage('error', $e->getMessage()); // shows the exception error message
+            TTransaction::rollback(); // undo all pending operations
         }
     }
+    
+    /**
+     * Ask before deletion
+     */
+    public static function onDelete($param)
+    {
+        // define the delete action
+        $action = new TAction(array(__CLASS__, 'Delete'));
+        $action->setParameters($param); // pass the key parameter ahead
+        
+        // shows a dialog to the user
+        new TQuestion(AdiantiCoreTranslator::translate('Do you really want to delete ?'), $action);
+    }
+    
+    /**
+     * Delete a record
+     */
+    public static function Delete($param)
+    {
+        try
+        {
+            $key=$param['key']; // get the parameter $key
+            TTransaction::open('siam'); // open a transaction with database
+            $object = new City($key, FALSE); // instantiates the Active Record
+            $object->delete(); // deletes the object from the database
+            TTransaction::close(); // close the transaction
+            
+            $pos_action = new TAction([__CLASS__, 'onReload']);
+            new TMessage('info', AdiantiCoreTranslator::translate('Record deleted'), $pos_action); // success message
+        }
+        catch (Exception $e) // in case of exception
+        {
+            new TMessage('error', $e->getMessage()); // shows the exception error message
+            TTransaction::rollback(); // undo all pending operations
+        }
+    }
+    
+    /**
+     * method show()
+     * Shows the page
+     */
+    function show()
+    {
+        // check if the datagrid is already loaded
+        if (!$this->loaded)
+        {
+            $this->onReload( func_get_arg(0) );
+        }
+        parent::show();
+    }
+}
 

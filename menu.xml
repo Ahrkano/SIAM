@@ -99,17 +99,18 @@
       </menuitem>
     </menu>
   </menuitem>
-  <menuitem label="Teste">
+  <menuitem label="Dados">
+    <icon>fas:allergies fa-fw</icon>
     <menu>
       <menuitem label="Common page 1">
         <action>CommonPage</action>
         <icon>fas:screwdriver fa-fw</icon>
       </menuitem>
-      <menuitem label="Form">
+      <menuitem label="Registro">
         <action>PopulationFormView</action>
         <icon>fas:align-justify fa-fw #000000</icon>
       </menuitem>
-      <menuitem label="Datagrid">
+      <menuitem label="Visualização">
         <action>CompleteDatagridView</action>
         <icon>fas:tv fa-fw</icon>
       </menuitem>
