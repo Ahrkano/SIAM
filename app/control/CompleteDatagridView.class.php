@@ -24,7 +24,7 @@
         $this->form->setFormTitle('Visualização');
         
         $name = new TEntry('name');
-        $this->form->addFields( [new TLabel('Name:')], [$name] );
+        $this->form->addFields( [new TLabel('Busca:')], [$name] );
         
         $this->form->addAction('Find', new TAction([$this, 'onSearch']), 'fa:search blue');
         $this->form->addActionLink('New',  new TAction(['PopulationFormView', 'onClear']), 'fa:plus-circle green');
@@ -84,12 +84,14 @@
     {
         // get the search form data
         $data = $this->form->getData();
+
+        TSession::setValue('City_filter', NULL);
         
         // check if the user has filled the form
-        if (isset($data->tb_city_name))
+        if (isset($data->name))
         {
             // creates a filter using what the user has typed
-            $filter = new TFilter('tb_city_name', 'like', "%{$data->tb_city_name}%");
+            $filter = new TFilter('name', 'like', "%{$data->name}%");
             
             // stores the filter in the session
             TSession::setValue('City_filter', $filter);
