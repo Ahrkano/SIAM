@@ -106,11 +106,11 @@ class PopulationFormView extends TPage
     {
         try
         {
-            if (isset($param['id']))
+            if (isset($param['tb_data_id']))
             {
-                $key = $param['id'];  // get the parameter
-                TTransaction::open('siam');   // open a transaction with database 'samples'
-                $object = new TB_data($key);        // instantiates object City
+                $key = $param['tb_data_id'];  // get the parameter
+                TTransaction::open('siam');   // open a transaction with database 'siam'
+                $object = new TB_data($key);        // instantiates object TB_data
                 $this->form->setData($object);   // fill the form with the active record data
                 TTransaction::close();           // close the transaction
             }

@@ -194,7 +194,7 @@
         {
             $key=$param['key']; // get the parameter $key
             TTransaction::open('siam'); // open a transaction with database
-            $object = new City($key, FALSE); // instantiates the Active Record
+            $object = new TB_data($key, FALSE); // instantiates the Active Record
             $object->delete(); // deletes the object from the database
             TTransaction::close(); // close the transaction
             
