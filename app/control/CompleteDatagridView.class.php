@@ -23,8 +23,8 @@
         $this->form = new BootstrapFormBuilder('form_search_City');
         $this->form->setFormTitle('Visualização');
         
-        $name = new TEntry('name');
-        $this->form->addFields( [new TLabel('Busca:')], [$name] );
+        $name = new TEntry('tb_city_name');
+        $this->form->addFields( [new TLabel('Busca:')], [$name] );  
         
         $this->form->addAction('Find', new TAction([$this, 'onSearch']), 'fa:search blue');
         $this->form->addActionLink('New',  new TAction(['PopulationFormView', 'onClear']), 'fa:plus-circle green');
@@ -68,7 +68,7 @@
         // creates the page structure using a table
         $vbox = new TVBox;
         $vbox->style = 'width: 100%';
-        $vbox->add(new TXMLBreadCrumb('menu.xml', 'CompleteDatagridView'));
+        $vbox->add(new TXMLBreadCrumb('menu.xml', __CLASS__ ));
         $vbox->add($this->form); // add a row to the form
         $vbox->add(TPanelGroup::pack('', $this->datagrid, $this->pageNavigation)); // add a row for page navigation
         
@@ -85,16 +85,16 @@
         // get the search form data
         $data = $this->form->getData();
 
-        TSession::setValue('City_filter', NULL);
+        TSession::setValue('myfilter', NULL);
         
         // check if the user has filled the form
         if (isset($data->name))
         {
             // creates a filter using what the user has typed
-            $filter = new TFilter('name', 'like', "%{$data->name}%");
+            $filter = new TFilter('tb_city_name', 'like', "%{$data->name}%");
             
             // stores the filter in the session
-            TSession::setValue('City_filter', $filter);
+            TSession::setValue('myfilter', $filter);
             TSession::setValue('City_name',   $data->name);
             
             // fill the form with data again
@@ -116,6 +116,7 @@
         try
         {
             // open a transaction with database 'siam'
+
             TTransaction::open('siam');
             
             // creates a repository for TB_data
@@ -135,10 +136,10 @@
             $criteria->setProperties($param); // order, offset
             $criteria->setProperty('limit', $limit);
             
-            if (TSession::getValue('City_filter'))
+            if (TSession::getValue('myfilter'))
             {
                 // add the filter stored in the session to the criteria
-                $criteria->add(TSession::getValue('City_filter'));
+                $criteria->add(TSession::getValue('myfilter'));
             }
             
             // load the objects according to criteria

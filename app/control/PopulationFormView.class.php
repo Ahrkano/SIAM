@@ -24,10 +24,10 @@ class PopulationFormView extends TPage
         $this->form->setFormTitle('Registro de Dados');
         
         // create the form fields
-        $id             = new TEntry('tb_data_id');
-        $population     = new TEntry('tb_data_pop');
-        $prev_born      = new TEntry('tb_data_born');
-        $year           = new TEntry('tb_data_year');
+        $id                 = new TEntry('tb_data_id');
+        $population         = new TEntry('tb_data_pop');
+        $prev_born          = new TEntry('tb_data_born');
+        $year               = new TEntry('tb_data_year');
         $tb_data_tb_city_id = new TDBCombo('tb_data_tb_city_id', 'siam', 'tb_city', 'tb_city_id', 'tb_city_name');
         $id->setEditable(FALSE);
         
@@ -42,9 +42,9 @@ class PopulationFormView extends TPage
         $tb_data_tb_city_id->addValidation('Município', new TRequiredValidator);
         
         // define the form action
-        $this->form->addAction('Save', new TAction([$this, 'onSave']), 'fa:save green');
-        $this->form->addActionLink('Clear',  new TAction([$this, 'onClear']), 'fa:eraser red');
-        $this->form->addActionLink('Listing',  new TAction(['CompleteDataGridView', 'onReload']), 'fa:table blue');
+        $this->form->addAction('Salvar', new TAction([$this, 'onSave']), 'fa:save green');
+        $this->form->addActionLink('Limpar',  new TAction([$this, 'onClear']), 'fa:eraser red');
+        $this->form->addActionLink('Listar',  new TAction(['CompleteDataGridView', 'onReload']), 'fa:table blue');
         
         // wrap the page content using vertical box
         $vbox = new TVBox;

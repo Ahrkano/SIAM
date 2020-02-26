@@ -5,9 +5,9 @@
  */
 class TB_data extends TRecord
 {
-    const TABLENAME = 'tb_data';
-    const PRIMARYKEY= 'tb_data_id';
-    const IDPOLICY =  'max'; // {max, serial}
+    const TABLENAME     = 'tb_data';
+    const PRIMARYKEY    = 'tb_data_id';
+    const IDPOLICY      =  'max'; // {max, serial}
 
     /**
      * Constructor method
@@ -22,7 +22,7 @@ class TB_data extends TRecord
     }
     
     /**
-     * Returns the set
+     * Returns the city
      */
     public function get_tb_city()
     {

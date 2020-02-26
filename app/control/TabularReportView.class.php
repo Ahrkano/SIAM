@@ -3,11 +3,9 @@
      * Tabular report View
      *
      * @version    1.0
-     * @package    samples
+     * @package    siam
      * @subpackage tutor
-     * @author     Pablo Dall'Oglio
-     * @copyright  Copyright (c) 2006 Adianti Solutions Ltd. (http://www.adianti.com.br)
-     * @license    http://www.adianti.com.br/framework-license
+     * @author     Alexandre Pontes
      */
     class TabularReportView extends TPage
     {
@@ -23,22 +21,23 @@
             
             // creates the form
             $this->form = new BootstrapFormBuilder('form_Customer_report');
-            $this->form->setFormTitle( _t('Tabular report over view') );
+            $this->form->setFormTitle('Resultados');
             
             // create the form fields
-            $city_id      = new TDBUniqueSearch('city_id', 'samples', 'City', 'id', 'name');
-            $category_id  = new TDBCombo('category_id', 'samples', 'Category', 'id', 'name');
+            
+            $city_name  = new TDBCombo('tb_data_tb_city_id', 'siam', 'tb_city', 'tb_city_id', 'tb_city_name');
+            $year         = new TEntry('year');
             $output_type  = new TRadioGroup('output_type');
             
-            $this->form->addFields( [new TLabel('City')],     [$city_id] );
-            $this->form->addFields( [new TLabel('Category')], [$category_id] );
-            $this->form->addFields( [new TLabel('Output')],   [$output_type] );
+            $this->form->addFields( [new TLabel('Município')], [$city_name] );
+            $this->form->addFields( [new TLabel('Ano')],     [$year] );
+            $this->form->addFields( [new TLabel('Saída')],   [$output_type] );
             
             // define field properties
-            $city_id->setSize( '80%' );
-            $category_id->setSize( '80%' );
+            $year->setSize( '80%' );
+            $city_name->setSize( '80%' );
             $output_type->setUseButton();
-            $city_id->setMinLength(1);
+            $year->setMinLength(1);
             $options = ['html' =>'HTML', 'pdf' =>'PDF', 'rtf' =>'RTF', 'xls' =>'XLS'];
             $output_type->addItems($options);
             $output_type->setValue('pdf');
@@ -63,22 +62,18 @@
             try
             {
                 // open a transaction with database 'samples'
-                TTransaction::open('samples');
+                TTransaction::open('siam');
                 
                 // get the form data into
                 $data = $this->form->getData();
                 
-                $repository = new TRepository('ViewSales');
+                $repository = new TRepository('TB_data');
                 $criteria   = new TCriteria;
-                
-                if ($data->city_id)
+                $name       = new TEntry('name');
+
+                if ($data->name)
                 {
-                    $criteria->add(new TFilter('city_id', '=', $data->city_id));
-                }
-                
-                if ($data->category_id)
-                {
-                    $criteria->add(new TFilter('category_id', '=', $data->category_id));
+                    $criteria->add(new TFilter('city_name', '=', $data->name));
                 }
                
                 $customers = $repository->load($criteria);
@@ -119,11 +114,9 @@
                             
                             $table->addRow();
                             $table->addCell('Code',      'center', 'title');
-                            $table->addCell('Name',      'left',   'title');
-                            $table->addCell('Email',     'left',   'title');
-                            $table->addCell('Birthdate', 'center', 'title');
-                            $table->addCell('Total',     'center', 'title');
-                            $table->addCell('Last purchase', 'center', 'title');
+                            $table->addCell('Município',      'left',   'title');
+                            $table->addCell('População',     'left',   'title');
+                            $table->addCell('Nasc.vivos', 'center', 'title');
                         });
                         
                         $table->setFooterCallback( function($table) {
@@ -139,12 +132,10 @@
                         {
                             $style = $colour ? 'datap' : 'datai';
                             $table->addRow();
-                            $table->addCell($customer->id,             'center', $style);
-                            $table->addCell($customer->name,           'left',   $style);
-                            $table->addCell($customer->email,          'left',   $style);
-                            $table->addCell($customer->birthdate,      'center', $style);
-                            $table->addCell( number_format($customer->total,2),      'center', $style);
-                            $table->addCell($customer->last_date,      'center', $style);
+                            $table->addCell($customer->tb_data_id,             'center', $style);
+                            $table->addCell($customer->tb_city->tb_city_name,           'left',   $style);
+                            $table->addCell($customer->tb_data_pop,          'left',   $style);
+                            $table->addCell($customer->tb_data_born,      'center', $style);
                             
                             $colour = !$colour;
                         }

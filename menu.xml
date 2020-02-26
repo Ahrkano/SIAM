@@ -107,11 +107,11 @@
         <icon>fas:file-signature fa-fw #000000</icon>
       </menuitem>
       <menuitem label="Visualização">
-        <action>CompleteDatagridView</action>
+        <action>CompleteDataGridView</action>
         <icon>fas:tv fa-fw</icon>
       </menuitem>
       <menuitem label="Relatório">
-        <action>CommonPage</action>
+        <action>TabularReportView</action>
         <icon>fas:file-export fa-fw</icon>
       </menuitem>
     </menu>
