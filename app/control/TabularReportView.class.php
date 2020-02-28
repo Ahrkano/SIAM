@@ -21,15 +21,15 @@
             
             // creates the form
             $this->form = new BootstrapFormBuilder('form_Customer_report');
-            $this->form->setFormTitle('Resultados');
+            $this->form->setFormTitle('Resultados Ambulatoriais');
             
             // create the form fields
             
-            $city_name  = new TDBCombo('tb_data_tb_city_id', 'siam', 'tb_city', 'tb_city_id', 'tb_city_name');
+            $city_name    = new TDBCombo('tb_data_tb_city_id', 'siam', 'tb_city', 'tb_city_id', 'tb_city_name');
             $year         = new TEntry('year');
             $output_type  = new TRadioGroup('output_type');
             
-            $this->form->addFields( [new TLabel('Município')], [$city_name] );
+            $this->form->addFields( [new TLabel('Região')], [$city_name] );
             $this->form->addFields( [new TLabel('Ano')],     [$year] );
             $this->form->addFields( [new TLabel('Saída')],   [$output_type] );
             
@@ -43,7 +43,7 @@
             $output_type->setValue('pdf');
             $output_type->setLayout('horizontal');
             
-            $this->form->addAction( 'Generate', new TAction(array($this, 'onGenerate')), 'fa:download blue');
+            $this->form->addAction( 'Gerar dados', new TAction(array($this, 'onGenerate')), 'fa:download blue');
             
             // wrap the page content using vertical box
             $vbox = new TVBox;
@@ -69,19 +69,18 @@
                 
                 $repository = new TRepository('TB_data');
                 $criteria   = new TCriteria;
-                $name       = new TEntry('name');
 
-                if ($data->name)
+                if ($data->year)
                 {
-                    $criteria->add(new TFilter('city_name', '=', $data->name));
+                    $criteria->add(new TFilter('tb_data_year', 'like', $data->year));
                 }
                
-                $customers = $repository->load($criteria);
+                $data_objs = $repository->load($criteria);
                 $format  = $data->output_type;
                 
-                if ($customers)
+                if ($data_objs)
                 {
-                    $widths = array(40, 200, 120, 80, 80, 80);
+                    $widths = array(60, 200, 120, 80, 80, 80);
                     
                     switch ($format)
                     {
@@ -110,11 +109,11 @@
                         
                         $table->setHeaderCallback( function($table) {
                             $table->addRow();
-                            $table->addCell('Sales by customer', 'center', 'header', 6);
+                            $table->addCell('Resultados Ambulatoriais', 'center', 'header', 6);
                             
                             $table->addRow();
-                            $table->addCell('Code',      'center', 'title');
-                            $table->addCell('Município',      'left',   'title');
+                            $table->addCell('Cod.',      'center', 'title');
+                            $table->addCell('Região',      'left',   'title');
                             $table->addCell('População',     'left',   'title');
                             $table->addCell('Nasc.vivos', 'center', 'title');
                         });
@@ -128,14 +127,24 @@
                         $colour= FALSE;
                         
                         // data rows
-                        foreach ($customers as $customer)
+                        foreach ($data_objs as $data_obj)
                         {
                             $style = $colour ? 'datap' : 'datai';
                             $table->addRow();
-                            $table->addCell($customer->tb_data_id,             'center', $style);
-                            $table->addCell($customer->tb_city->tb_city_name,           'left',   $style);
-                            $table->addCell($customer->tb_data_pop,          'left',   $style);
-                            $table->addCell($customer->tb_data_born,      'center', $style);
+                            $table->addCell($data_obj->tb_data_tb_city_id,             'center', $style);
+                            $table->addCell($data_obj->tb_city->tb_city_name,           'left',   $style);
+                            $table->addCell($data_obj->tb_data_pop,          'left',   $style);
+                            $table->addCell($data_obj->tb_data_born,      'center', $style);
+
+                            $table->setHeaderCallback( function($table) 
+                            {
+                                $table->addRow();
+                                $table->addCell('coluna 1',      'center', 'title');
+                                $table->addCell('coluna 2',      'center', 'title');
+                            });
+
+                            $table->addRow();
+                            $table->addCell($data_obj->tb_data_pop * 0.5,             'center', $style);
                             
                             $colour = !$colour;
                         }

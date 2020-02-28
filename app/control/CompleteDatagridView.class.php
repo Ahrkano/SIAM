@@ -26,8 +26,8 @@
         $name = new TEntry('tb_city_name');
         $this->form->addFields( [new TLabel('Busca:')], [$name] );  
         
-        $this->form->addAction('Find', new TAction([$this, 'onSearch']), 'fa:search blue');
-        $this->form->addActionLink('New',  new TAction(['PopulationFormView', 'onClear']), 'fa:plus-circle green');
+        $this->form->addAction('Buscar', new TAction([$this, 'onSearch']), 'fa:search blue');
+        $this->form->addActionLink('Novo',  new TAction(['PopulationFormView', 'onClear']), 'fa:plus-circle green');
 
         // keep the form filled with the search data
         $name->setValue( TSession::getValue( 'City_name' ) );
@@ -39,7 +39,7 @@
         // creates the datagrid columns
         $col_id    = new TDataGridColumn('tb_data_id', 'Id', 'right', '10%');
         $col_year  = new TDataGridColumn('tb_data_year', 'Ano', 'center', '30%');
-        $col_city = new TDataGridColumn('tb_city->tb_city_name', 'Cidade', 'center', '30%');
+        $col_city = new TDataGridColumn('tb_city->tb_city_name', 'Região', 'center', '30%');
         $col_pop = new TDataGridColumn('tb_data_pop', 'População', 'center', '60%');
         
         // assign the ordering actions
@@ -55,8 +55,8 @@
         $action1 = new TDataGridAction(['PopulationFormView', 'onEdit'],   ['key' => '{tb_data_id}'] );
         $action2 = new TDataGridAction([$this, 'onDelete'],   ['key' => '{tb_data_id}'] );
         
-        $this->datagrid->addAction($action1, 'Edit',   'far:edit blue');
-        $this->datagrid->addAction($action2, 'Delete', 'far:trash-alt red');
+        $this->datagrid->addAction($action1, 'Editar',   'far:edit blue');
+        $this->datagrid->addAction($action2, 'Deletar', 'far:trash-alt red');
         
         // create the datagrid model
         $this->datagrid->createModel();
@@ -84,8 +84,6 @@
     {
         // get the search form data
         $data = $this->form->getData();
-
-        TSession::setValue('myfilter', NULL);
         
         // check if the user has filled the form
         if (isset($data->name))
@@ -94,7 +92,7 @@
             $filter = new TFilter('tb_city_name', 'like', "%{$data->name}%");
             
             // stores the filter in the session
-            TSession::setValue('myfilter', $filter);
+            TSession::setValue('City_filter', $filter);
             TSession::setValue('City_name',   $data->name);
             
             // fill the form with data again
