@@ -80,7 +80,7 @@
                 
                 if ($data_objs)
                 {
-                    $widths = array(60, 200, 120, 80, 80, 80);
+                     $widths = array(80,40, 190, 120, 190);
                     
                     switch ($format)
                     {
@@ -106,47 +106,60 @@
                         $table->addStyle('datap',  'Helvetica', '10', '',  '#000000', '#E3E3E3', 'LR');
                         $table->addStyle('datai',  'Helvetica', '10', '',  '#000000', '#ffffff', 'LR');
                         $table->addStyle('footer', 'Helvetica', '10', '',  '#2B2B2B', '#B4CAFF');
+
+                        $table->addStyle('div',    'Helvetica', '12', 'B', '#ffffff', '#4B5D8E');
+                        $table->addStyle('value',  'Helvetica', '10', 'B', '#ffffff', '#617FC3');
                         
                         $table->setHeaderCallback( function($table) {
                             $table->addRow();
-                            $table->addCell('Resultados Ambulatoriais', 'center', 'header', 6);
+                            $table->addCell('Resultados Ambulatoriais', 'center', 'header', 5);
                             
                             $table->addRow();
-                            $table->addCell('Cod.',      'center', 'title');
-                            $table->addCell('Região',      'left',   'title');
-                            $table->addCell('População',     'left',   'title');
-                            $table->addCell('Nasc.vivos', 'center', 'title');
+                            $table->addCell('Cod.',         'center',   'title');
+                            $table->addCell('Ano',       'center',   'title');
+                            $table->addCell('Região',       'center',   'title');
+                            $table->addCell('População',    'center',   'title');
+                            $table->addCell('Nasc.vivos (ano anterior)',   'center',   'title');
                         });
                         
+        
                         $table->setFooterCallback( function($table) {
                             $table->addRow();
-                            $table->addCell(date('Y-m-d h:i:s'), 'center', 'footer', 6);
+                            $table->addCell(date('Y-m-d h:i:s'), 'center', 'footer', 5);
                         });
                         
                         // controls the background filling
                         $colour= FALSE;
                         
                         // data rows
+                        
                         foreach ($data_objs as $data_obj)
                         {
                             $style = $colour ? 'datap' : 'datai';
                             $table->addRow();
-                            $table->addCell($data_obj->tb_data_tb_city_id,             'center', $style);
-                            $table->addCell($data_obj->tb_city->tb_city_name,           'left',   $style);
-                            $table->addCell($data_obj->tb_data_pop,          'left',   $style);
-                            $table->addCell($data_obj->tb_data_born,      'center', $style);
+                            $table->addCell($data_obj->tb_data_tb_city_id,     'center', $style);
+                            $table->addCell($data_obj->tb_data_year,           'center', $style);
+                            $table->addCell($data_obj->tb_city->tb_city_name,  'center',   $style);
+                            $table->addCell($data_obj->tb_data_pop,            'center',   $style);
+                            $table->addCell($data_obj->tb_data_born,           'center', $style);
 
-                            $table->setHeaderCallback( function($table) 
-                            {
-                                $table->addRow();
-                                $table->addCell('coluna 1',      'center', 'title');
-                                $table->addCell('coluna 2',      'center', 'title');
-                            });
-
+                            // SECTION 1 VALUES
+                            //P8 = pop
+                            //P9 = nas
                             $table->addRow();
-                            $table->addCell($data_obj->tb_data_pop * 0.5,             'center', $style);
+                            $table->addCell('Atenção à gravidez, parto e puerperio', 'center', 'div', 5);
+
+                            $pop_var = $data_obj->tb_data_pop;
+
+                            $this->new_table_row($table, 'value', $style, 4, 'Estimativa total de gestantes', $pop_var, 1.05 );
                             
+                            $this->new_table_row($table, 'value', $style, 4, 'Gestante de risco habitual', $pop_var, 0.85 );
+                            
+                          
+                            // SECTION 2 VALUES   
+
                             $colour = !$colour;
+
                         }
                         
                         $output = "app/output/tabular.{$format}";
@@ -183,5 +196,19 @@
                 TTransaction::rollback();
             }
         }
+
+
+        //function section_1(obj){do stuff};
+
+        function new_table_row($table, $row_style, $style, $size, $text, $pop, $val)
+        {
+            $pop = $pop * $val;
+            $table->addRow();
+            $table->addCell($text,      'center', $row_style, $size);
+            $table->addCell($pop,             'center', $style);
+
+        }
+
+
     }
 
