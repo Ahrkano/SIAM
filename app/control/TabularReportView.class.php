@@ -70,11 +70,16 @@
                 $repository = new TRepository('TB_data');
                 $criteria   = new TCriteria;
 
+                //if ($data->city_name)
+                //{
+                //    $criteria->add(new TFilter('tb_city_name', 'like', $data->tb_data_tb_city_id->tb_city_name));
+                //}
+
                 if ($data->year)
                 {
                     $criteria->add(new TFilter('tb_data_year', 'like', $data->year));
                 }
-               
+
                 $data_objs = $repository->load($criteria);
                 $format  = $data->output_type;
                 
@@ -144,16 +149,48 @@
                             $table->addCell($data_obj->tb_data_born,           'center', $style);
 
                             // SECTION 1 VALUES
-                            //P8 = pop
-                            //P9 = nas
+                            $pop_var = $data_obj->tb_data_pop;
+                            $born_var = $data_obj->tb_data_born;
+                            $total_ges = $pop_var * 1.05;
+                            $grh = $total_ges * 0.85;
+                            $gar = $total_ges * 0.15;
+                            $total_nasc = $pop_var * 1.05;
+                            $total_c_1 = $pop_var + ($pop_var * 0.99);
+                            $total_c_2 = $pop_var + ($pop_var * 0.98);
+                            $pop_f_f = $born_var * 0.33;
+
                             $table->addRow();
                             $table->addCell('Atenção à gravidez, parto e puerperio', 'center', 'div', 5);
 
-                            $pop_var = $data_obj->tb_data_pop;
-
-                            $this->new_table_row($table, 'value', $style, 4, 'Estimativa total de gestantes', $pop_var, 1.05 );
+                            $this->new_table_row($table, 'value', $style, 4, 'Estimativa total de gestantes', $total_ges);
+                            $this->new_table_row($table, 'value', $style, 4, 'Gestante de risco habitual', $grh);
+                            $this->new_table_row($table, 'value', $style, 4, 'Gestante de alto risco', $gar);
+                            $this->new_table_row($table, 'value', $style, 4, 'Estimativa de número total de recem nascidos', $total_nasc);
+                            $this->new_table_row($table, 'value', $style, 4, 'Estimativa de número total de crianças de 0 a 12 meses', $total_c_1);
+                            $this->new_table_row($table, 'value', $style, 4, 'Estimativa de número total de crianças de 12 a 24 meses', $total_c_2);
+                            $this->new_table_row($table, 'value', $style, 4, 'População feminina em idade fértil', $pop_f_f);
                             
-                            $this->new_table_row($table, 'value', $style, 4, 'Gestante de risco habitual', $pop_var, 0.85 );
+                            $this->new_table_row($table, 'value', $style, 4, 'Consulta de pré natal (consulta médica)', $total_ges*3);
+                            $this->new_table_row($table, 'value', $style, 4, 'Consulta pueperal (Consulta médica)', $total_ges*1);
+                            $this->new_table_row($table, 'value', $style, 4, 'Consulta de pré natal (consulta de enfermagem)', $total_ges*3);
+                            $this->new_table_row($table, 'value', $style, 4, 'Consulta odontologica na atenção básica', $total_ges*1);
+                            $this->new_table_row($table, 'value', $style, 4, 'Atividade Educativa/Orientação em grupo', $total_ges*4);
+                            $this->new_table_row($table, 'value', $style, 4, 'Determinação direta e reversa de grupo ABO', $total_ges*1);
+                            $this->new_table_row($table, 'value', $style, 4, 'Pesquisa de fator RH', $total_ges*1);
+                            $this->new_table_row($table, 'value', $style, 4, 'Teste ind. de antiglobulina humana Teste Coombs ind. p/ RH neg.', $total_ges*0.3);
+                            $this->new_table_row($table, 'value', $style, 4, 'Análise de caracteres físicos, elementos e sedimentos de urina', $total_ges*2);
+                            $this->new_table_row($table, 'value', $style, 4, 'Dosagem de glicose', $total_ges*2);
+                            $this->new_table_row($table, 'value', $style, 4, 'Dosagem proteinúria - fita reagente', $total_ges*0.3);
+                            $this->new_table_row($table, 'value', $style, 4, 'VDRL p/ detecção de sífilis em gestante', $total_ges*2);
+                            $this->new_table_row($table, 'value', $style, 4, 'Hematócrito', $total_ges*2);
+                            $this->new_table_row($table, 'value', $style, 4, 'Dosagem de hemoglobina', $total_ges*2);
+                            $this->new_table_row($table, 'value', $style, 4, 'Pesquisa de anticorpos IGM Antioxoplasma', $total_ges*1);
+                            $this->new_table_row($table, 'value', $style, 4, 'HBsAg', $total_ges*1);
+                            $this->new_table_row($table, 'value', $style, 4, 'Pesquisa de Anticorpos Anti-HIV1 + HIV2 (Elisa)', $total_ges*2);
+                            $this->new_table_row($table, 'value', $style, 4, 'Eletroforese de hemoglobina', $total_ges*1);
+                            $this->new_table_row($table, 'value', $style, 4, 'Ultrasonografia obstétrica', $total_ges*1);
+                            $this->new_table_row($table, 'value', $style, 4, 'Exame citopatologico cérvico-vaginal/microflora', $total_ges*1);
+                            $this->new_table_row($table, 'value', $style, 4, 'Cultura de bactérias para identificação', $total_ges*1);
                             
                           
                             // SECTION 2 VALUES   
@@ -200,13 +237,11 @@
 
         //function section_1(obj){do stuff};
 
-        function new_table_row($table, $row_style, $style, $size, $text, $pop, $val)
+        function new_table_row($table, $row_style, $style, $size, $text, $pop)
         {
-            $pop = $pop * $val;
             $table->addRow();
-            $table->addCell($text,      'center', $row_style, $size);
-            $table->addCell($pop,             'center', $style);
-
+            $table->addCell($text, 'left', $row_style, $size);
+            $table->addCell($pop,  'center', $style);
         }
 
 

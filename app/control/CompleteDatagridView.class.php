@@ -23,7 +23,7 @@
         $this->form = new BootstrapFormBuilder('form_search_City');
         $this->form->setFormTitle('Visualização');
         
-        $name = new TEntry('tb_city_name');
+        $name = new TEntry('tb_data_tb_city_id->tb_city_name');
         $this->form->addFields( [new TLabel('Busca:')], [$name] );  
         
         $this->form->addAction('Buscar', new TAction([$this, 'onSearch']), 'fa:search blue');
