@@ -105,7 +105,7 @@
                     
                     if (!empty($table))
                     {
-                        // create the document styles
+                         // create the document styles
                         $table->addStyle('header', 'Helvetica', '16', 'B', '#ffffff', '#4B5D8E');
                         $table->addStyle('title',  'Helvetica', '10', 'B', '#ffffff', '#617FC3');
                         $table->addStyle('datap',  'Helvetica', '10', '',  '#000000', '#E3E3E3', 'LR');
@@ -113,6 +113,7 @@
                         $table->addStyle('footer', 'Helvetica', '10', '',  '#2B2B2B', '#B4CAFF');
 
                         $table->addStyle('div',    'Helvetica', '12', 'B', '#ffffff', '#4B5D8E');
+                        $table->addStyle('sub',    'Helvetica', '10', 'B', '#ffffff', '#373B45');
                         $table->addStyle('value',  'Helvetica', '10', 'B', '#ffffff', '#617FC3');
                         
                         $table->setHeaderCallback( function($table) {
@@ -140,6 +141,9 @@
                         
                         foreach ($data_objs as $data_obj)
                         {
+                            // load params
+                            $formula = new Formula($data_obj->tb_data_pop, $data_obj->tb_data_born);
+
                             $style = $colour ? 'datap' : 'datai';
                             $table->addRow();
                             $table->addCell($data_obj->tb_data_tb_city_id,     'center', $style);
@@ -149,49 +153,24 @@
                             $table->addCell($data_obj->tb_data_born,           'center', $style);
 
                             // SECTION 1 VALUES
-                            $pop_var = $data_obj->tb_data_pop;
-                            $born_var = $data_obj->tb_data_born;
-                            $total_ges = $pop_var * 1.05;
-                            $grh = $total_ges * 0.85;
-                            $gar = $total_ges * 0.15;
-                            $total_nasc = $pop_var * 1.05;
-                            $total_c_1 = $pop_var + ($pop_var * 0.99);
-                            $total_c_2 = $pop_var + ($pop_var * 0.98);
-                            $pop_f_f = $born_var * 0.33;
+
 
                             $table->addRow();
                             $table->addCell('Atenção à gravidez, parto e puerperio', 'center', 'div', 5);
 
-                            $this->new_table_row($table, 'value', $style, 4, 'Estimativa total de gestantes', $total_ges);
-                            $this->new_table_row($table, 'value', $style, 4, 'Gestante de risco habitual', $grh);
-                            $this->new_table_row($table, 'value', $style, 4, 'Gestante de alto risco', $gar);
-                            $this->new_table_row($table, 'value', $style, 4, 'Estimativa de número total de recem nascidos', $total_nasc);
-                            $this->new_table_row($table, 'value', $style, 4, 'Estimativa de número total de crianças de 0 a 12 meses', $total_c_1);
-                            $this->new_table_row($table, 'value', $style, 4, 'Estimativa de número total de crianças de 12 a 24 meses', $total_c_2);
-                            $this->new_table_row($table, 'value', $style, 4, 'População feminina em idade fértil', $pop_f_f);
-                            
-                            $this->new_table_row($table, 'value', $style, 4, 'Consulta de pré natal (consulta médica)', $total_ges*3);
-                            $this->new_table_row($table, 'value', $style, 4, 'Consulta pueperal (Consulta médica)', $total_ges*1);
-                            $this->new_table_row($table, 'value', $style, 4, 'Consulta de pré natal (consulta de enfermagem)', $total_ges*3);
-                            $this->new_table_row($table, 'value', $style, 4, 'Consulta odontologica na atenção básica', $total_ges*1);
-                            $this->new_table_row($table, 'value', $style, 4, 'Atividade Educativa/Orientação em grupo', $total_ges*4);
-                            $this->new_table_row($table, 'value', $style, 4, 'Determinação direta e reversa de grupo ABO', $total_ges*1);
-                            $this->new_table_row($table, 'value', $style, 4, 'Pesquisa de fator RH', $total_ges*1);
-                            $this->new_table_row($table, 'value', $style, 4, 'Teste ind. de antiglobulina humana Teste Coombs ind. p/ RH neg.', $total_ges*0.3);
-                            $this->new_table_row($table, 'value', $style, 4, 'Análise de caracteres físicos, elementos e sedimentos de urina', $total_ges*2);
-                            $this->new_table_row($table, 'value', $style, 4, 'Dosagem de glicose', $total_ges*2);
-                            $this->new_table_row($table, 'value', $style, 4, 'Dosagem proteinúria - fita reagente', $total_ges*0.3);
-                            $this->new_table_row($table, 'value', $style, 4, 'VDRL p/ detecção de sífilis em gestante', $total_ges*2);
-                            $this->new_table_row($table, 'value', $style, 4, 'Hematócrito', $total_ges*2);
-                            $this->new_table_row($table, 'value', $style, 4, 'Dosagem de hemoglobina', $total_ges*2);
-                            $this->new_table_row($table, 'value', $style, 4, 'Pesquisa de anticorpos IGM Antioxoplasma', $total_ges*1);
-                            $this->new_table_row($table, 'value', $style, 4, 'HBsAg', $total_ges*1);
-                            $this->new_table_row($table, 'value', $style, 4, 'Pesquisa de Anticorpos Anti-HIV1 + HIV2 (Elisa)', $total_ges*2);
-                            $this->new_table_row($table, 'value', $style, 4, 'Eletroforese de hemoglobina', $total_ges*1);
-                            $this->new_table_row($table, 'value', $style, 4, 'Ultrasonografia obstétrica', $total_ges*1);
-                            $this->new_table_row($table, 'value', $style, 4, 'Exame citopatologico cérvico-vaginal/microflora', $total_ges*1);
-                            $this->new_table_row($table, 'value', $style, 4, 'Cultura de bactérias para identificação', $total_ges*1);
-                            
+                            $table->addRow();
+                            $table->addCell('Parâmetros populacionais da rede de atenção materno-infantil', 'center', 'sub', 5);
+                            $formula->section_1_A($table, 'value', $style, 4);
+
+                            $table->addRow();
+                            $table->addCell('Parâmetros assistenciais da rede de atenção materno-infantil', 'center', 'sub', 5);
+                            $table->addRow();
+                            $table->addCell('População-alvo: todas as gestantes', 'center', 'sub', 5);
+                            $formula->section_1_B($table, 'value', $style, 4);
+
+                            $table->addRow();
+                            $table->addCell('População-alvo: gestantes de alto risco', 'center', 'sub', 5);
+                            $formula->section_1_C($table, 'value', $style, 4);
                           
                             // SECTION 2 VALUES   
 
