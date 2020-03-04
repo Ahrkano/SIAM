@@ -119,13 +119,7 @@
                         $table->setHeaderCallback( function($table) {
                             $table->addRow();
                             $table->addCell('Resultados Ambulatoriais', 'center', 'header', 5);
-                            
                             $table->addRow();
-                            $table->addCell('Cod.',         'center',   'title');
-                            $table->addCell('Ano',       'center',   'title');
-                            $table->addCell('Região',       'center',   'title');
-                            $table->addCell('População',    'center',   'title');
-                            $table->addCell('Nasc.vivos (ano anterior)',   'center',   'title');
                         });
                         
         
@@ -136,6 +130,14 @@
                         
                         // controls the background filling
                         $colour= FALSE;
+
+                        // add region info
+                        $table->addRow();
+                        $table->addCell('Cod.',         'center',   'title');
+                        $table->addCell('Ano',       'center',   'title');
+                        $table->addCell('Região',       'center',   'title');
+                        $table->addCell('População',    'center',   'title');
+                        $table->addCell('Nasc.vivos (ano anterior)',   'center',   'title');
                         
                         // data rows
                         
@@ -175,6 +177,14 @@
                             $table->addRow();
                             $table->addCell('População-alvo: crianças de 0 a 12 meses', 'center', 'sub', 5);
                             $formula->section_1_D($table, 'value', $style, 4);
+
+                            $table->addRow();
+                            $table->addCell('População-alvo: crianças de 12 a 24 meses', 'center', 'sub', 5);
+                            $formula->section_1_E($table, 'value', $style, 4);
+
+                            $table->addRow();
+                            $table->addCell('Leitos', 'center', 'sub', 5);
+                            $formula->section_1_F($table, 'value', $style, 4);
                           
                             // SECTION 2 VALUES   
 
@@ -216,17 +226,6 @@
                 TTransaction::rollback();
             }
         }
-
-
-        //function section_1(obj){do stuff};
-
-        function new_table_row($table, $row_style, $style, $size, $text, $pop)
-        {
-            $table->addRow();
-            $table->addCell($text, 'left', $row_style, $size);
-            $table->addCell($pop,  'center', $style);
-        }
-
 
     }
 

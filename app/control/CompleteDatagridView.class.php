@@ -23,7 +23,7 @@
         $this->form = new BootstrapFormBuilder('form_search_City');
         $this->form->setFormTitle('Visualização');
         
-        $name = new TEntry('tb_data_tb_city_id->tb_city_name');
+        $name = new TEntry('tb_data_tb_city_id');
         $this->form->addFields( [new TLabel('Busca:')], [$name] );  
         
         $this->form->addAction('Buscar', new TAction([$this, 'onSearch']), 'fa:search blue');
@@ -37,10 +37,10 @@
         $this->datagrid->width = '100%';
         
         // creates the datagrid columns
-        $col_id    = new TDataGridColumn('tb_data_id', 'Id', 'right', '10%');
-        $col_year  = new TDataGridColumn('tb_data_year', 'Ano', 'center', '30%');
-        $col_city = new TDataGridColumn('tb_city->tb_city_name', 'Região', 'center', '30%');
-        $col_pop = new TDataGridColumn('tb_data_pop', 'População', 'center', '60%');
+        $col_id     = new TDataGridColumn('tb_data_id', 'Id', 'right', '10%');
+        $col_year   = new TDataGridColumn('tb_data_year', 'Ano', 'center', '30%');
+        $col_city   = new TDataGridColumn('tb_city->tb_city_name', 'Região', 'center', '30%');
+        $col_pop    = new TDataGridColumn('tb_data_pop', 'População', 'center', '60%');
         
         // assign the ordering actions
         $col_id->setAction(new TAction([$this, 'onReload']), ['order' => 'tb_data_id']);
@@ -84,16 +84,18 @@
     {
         // get the search form data
         $data = $this->form->getData();
+
+        TSession::setValue('City_filter', NULL);
         
         // check if the user has filled the form
-        if (isset($data->name))
+        if (isset($data->tb_data_tb_city_id))
         {
             // creates a filter using what the user has typed
-            $filter = new TFilter('tb_city_name', 'like', "%{$data->name}%");
+            $filter = new TFilter('tb_data_tb_city_id', 'like', "%{$data->tb_data_tb_city_id}%");
             
             // stores the filter in the session
             TSession::setValue('City_filter', $filter);
-            TSession::setValue('City_name',   $data->name);
+            TSession::setValue('City_name',   $data->tb_data_tb_city_id);
             
             // fill the form with data again
             $this->form->setData($data);
@@ -134,10 +136,10 @@
             $criteria->setProperties($param); // order, offset
             $criteria->setProperty('limit', $limit);
             
-            if (TSession::getValue('myfilter'))
+            if (TSession::getValue('City_filter'))
             {
                 // add the filter stored in the session to the criteria
-                $criteria->add(TSession::getValue('myfilter'));
+                $criteria->add(TSession::getValue('City_filter'));
             }
             
             // load the objects according to criteria

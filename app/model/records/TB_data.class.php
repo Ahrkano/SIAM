@@ -28,5 +28,10 @@ class TB_data extends TRecord
     {
         return TB_city::find($this->tb_data_tb_city_id);
     }
+
+    public function get_tb_city_name()
+    {
+        return TB_city::find($this->tb_data_tb_city_id->tb_city_name);
+    }
     
 }
