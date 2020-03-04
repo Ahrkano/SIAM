@@ -171,6 +171,10 @@
                             $table->addRow();
                             $table->addCell('População-alvo: gestantes de alto risco', 'center', 'sub', 5);
                             $formula->section_1_C($table, 'value', $style, 4);
+
+                            $table->addRow();
+                            $table->addCell('População-alvo: crianças de 0 a 12 meses', 'center', 'sub', 5);
+                            $formula->section_1_D($table, 'value', $style, 4);
                           
                             // SECTION 2 VALUES   
 

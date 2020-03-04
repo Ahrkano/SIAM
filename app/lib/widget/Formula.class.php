@@ -86,7 +86,39 @@
 
        public function section_1_C($table, $row_style, $style, $size)
        {
-            $this->new_table_row($table, 'value', $style, 4, ' ', $this->total_ges*1);
+            $this->new_table_row($table, 'value', $style, 4, 'Consulta médica em atenção especializada', $this->gar*5);
+            $this->new_table_row($table, 'value', $style, 4, 'Determinação de curva glicêmica clássica - Teste de tol. à glicose', $this->gar*1);
+            $this->new_table_row($table, 'value', $style, 4, 'ECG - Eletrocardiograma', $this->gar*0.3);
+            $this->new_table_row($table, 'value', $style, 4, 'Ultrassonografia obstétrica com Doppler colorido e pulsado', $this->gar*1);
+            $this->new_table_row($table, 'value', $style, 4, 'Ultrassonografia obstétrica', $this->gar*2);
+            $this->new_table_row($table, 'value', $style, 4, 'Tococardiografia ante-parto', $this->gar*1);
+            $this->new_table_row($table, 'value', $style, 4, 'Contagem de plaquetas', $this->gar*0.3);
+            $this->new_table_row($table, 'value', $style, 4, 'Uréria', $this->gar*1);
+            $this->new_table_row($table, 'value', $style, 4, 'Dosagem de creatina', $this->gar*1);
+            $this->new_table_row($table, 'value', $style, 4, 'Dosagem de ácido úrico', $this->gar*1);
+            $this->new_table_row($table, 'value', $style, 4, 'Consulta de profissional de nível superior - Psicossocial', $this->gar*1);
+            $this->new_table_row($table, 'value', $style, 4, 'Dosagem de proteínas totais', $this->gar*1);
+       }
+
+       public function section_1_D($table, $row_style, $style, $size)
+       {
+            $this->new_table_row($table, 'value', $style, 4, 'Visita domiciliar por profissional de nível superior', $this->total_nasc*1);
+            $this->new_table_row($table, 'value', $style, 4, 'Consulta médica em atenção especializada (RN > 2500g)', $this->total_nasc*0.92*3);
+            $this->new_table_row($table, 'value', $style, 4, 'Consulta de profissional de nivel superior na atenção básica (RN > 2500g)', $this->total_nasc*0.92*4);
+            $this->new_table_row($table, 'value', $style, 4, 'Consulta médica em atenção especializada (RN < 2500g)', $this->total_nasc*0.08*7);
+            $this->new_table_row($table, 'value', $style, 4, 'Consulta de profissional de nivel superior na atenção básica (RN < 2500g)', $this->total_nasc*0.08*6);
+            $this->new_table_row($table, 'value', $style, 4, 'Acompanhamento específico do RN egresso de UTI até 24 meses', 'De acordo com a necessidade');
+            $this->new_table_row($table, 'value', $style, 4, 'Vacinação básica', 'Ver protocolo de vacinação');
+            $this->new_table_row($table, 'value', $style, 4, 'Teste do pezinho (até o 7º dia)', $this->total_nasc*1);
+            $this->new_table_row($table, 'value', $style, 4, 'Teste da orelhinha', $this->total_nasc*1);
+            $this->new_table_row($table, 'value', $style, 4, 'Teste do olhinho (4º, 6º, 12º e 25º meses)', $this->total_nasc*1);
+            $this->new_table_row($table, 'value', $style, 4, 'Sulfato ferroso', 'Profilaxia de 6 a 18 meses');
+            $this->new_table_row($table, 'value', $style, 4, 'Vitamina A', 'Em área endêmica');
+            $this->new_table_row($table, 'value', $style, 4, 'Consulta de profissional de nivel superior na atenção básica (consulta odontológica)', $this->total_c_1*2);
+            $this->new_table_row($table, 'value', $style, 4, 'Exames (apoio diagnóstico e terapêutico)', 'De acordo com diagnóstico');
+            $this->new_table_row($table, 'value', $style, 4, 'Consulta médica em atenção especializada (consulta de especialidades)', 'De acordo com diagnóstico');
+            $this->new_table_row($table, 'value', $style, 4, 'Consulta/Atendimento de reabilitação', 'De acordo com diagnóstico');
+            $this->new_table_row($table, 'value', $style, 4, 'Atividade educativa/Orientação em grupo na atenção básica', '2 a.e/população coberta/ano');
        }
 
        
