@@ -142,7 +142,7 @@
                $this->new_table_row($table, 'value', $style, 4, 'Leitos obstétricos', ceil($this->aux));
                $this->new_table_row($table, 'value', $style, 4, 'Leitos obstétricos (GAR)', ceil($this->aux*0.15));
                $this->new_table_row($table, 'value', $style, 4, 'UTI adulto (consulta de especialidades)', ceil($this->aux*0.02));
-               $this->new_table_row($table, 'value', $style, 4, 'UCI Neonatal',  '2 leitos p/ cada 1000 nasc. vivos');
+               $this->new_table_row($table, 'value', $style, 4, 'UTI Neonatal',  '2 leitos p/ cada 1000 nasc. vivos');
                $this->new_table_row($table, 'value', $style, 4, 'UCI Neonatal',  '3 leitos p/ cada 1000 nasc. vivos');
                $this->new_table_row($table, 'value', $style, 4, 'Leito canguru', '1 leito p/ cada 1000 nasc. vivos');
           }

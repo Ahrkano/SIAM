@@ -156,7 +156,6 @@
 
                             // SECTION 1 VALUES
 
-
                             $table->addRow();
                             $table->addCell('Atenção à gravidez, parto e puerperio', 'center', 'div', 5);
 
@@ -187,6 +186,18 @@
                             $formula->section_1_F($table, 'value', $style, 4);
                           
                             // SECTION 2 VALUES   
+
+                            $table->addRow();
+                            $table->addCell('Atenção às pessoas com doenças crônicas não transmissíveis', 'center', 'div', 5);
+                            $table->addRow();
+                            $table->addCell('Doenças Crônicas Renocardiovasculares', 'center', 'div', 5);
+
+                            $table->addRow();
+                            $table->addCell('Diabetes Mellitus', 'center', 'sub', 5);
+                            $table->addRow();
+                            $table->addCell('População-alvo: 18 anos e mais', 'center', 'sub', 5);
+
+
 
                             $colour = !$colour;
 
