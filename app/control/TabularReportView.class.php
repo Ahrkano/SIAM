@@ -85,21 +85,27 @@
                 
                 if ($data_objs)
                 {
-                     $widths = array(80,40, 190, 120, 190);
+                     $widths    = array(80,40, 190, 120, 190);
+                     $widths2   = array(100,300, 55, 55, 55, 55);
+
                     
                     switch ($format)
                     {
                         case 'html':
-                            $table = new TTableWriterHTML($widths);
+                            $table   = new TTableWriterHTML($widths);
+                            $table2  = new TTableWriterHTML($widths);
                             break;
                         case 'pdf':
-                            $table = new TTableWriterPDF($widths);
+                            $table   = new TTableWriterPDF($widths);
+                            $table2  = new TTableWriterPDF($widths);
                             break;
                         case 'rtf':
-                            $table = new TTableWriterRTF($widths);
+                            $table   = new TTableWriterRTF($widths);
+                            $table2  = new TTableWriterRTF($widths);
                             break;
                         case 'xls':
-                            $table = new TTableWriterXLS($widths);
+                            $table   = new TTableWriterXLS($widths);
+                            $table2  = new TTableWriterXLS($widths);
                             break;
                     }
                     
@@ -196,6 +202,14 @@
                             $table->addCell('Diabetes Mellitus', 'center', 'sub', 5);
                             $table->addRow();
                             $table->addCell('População-alvo: 18 anos e mais', 'center', 'sub', 5);
+
+                            $table->addRow();
+                            $table->addCell('RISCO', 'center', 'sub', 2);
+                            $table->addCell('Parâmetro de prevalência', 'center', 'sub', 2);
+                            $table->addCell('Parâmetro de prevalência', 'center', 'sub', 1);
+                            $formula->section_2_A($table, 'value', $style, 2);
+
+                            
 
 
 

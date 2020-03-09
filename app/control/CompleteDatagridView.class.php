@@ -23,8 +23,8 @@
         $this->form = new BootstrapFormBuilder('form_search_City');
         $this->form->setFormTitle('Visualização');
         
-        $name = new TEntry('tb_data_tb_city_id');
-        $this->form->addFields( [new TLabel('Busca:')], [$name] );  
+        $name = new TEntry('cityname');
+        $this->form->addFields( [new TLabel('Busca:')], [$name] );          
         
         $this->form->addAction('Buscar', new TAction([$this, 'onSearch']), 'fa:search blue');
         $this->form->addActionLink('Novo',  new TAction(['PopulationFormView', 'onClear']), 'fa:plus-circle green');
@@ -41,6 +41,7 @@
         $col_year   = new TDataGridColumn('tb_data_year', 'Ano', 'center', '30%');
         $col_city   = new TDataGridColumn('tb_city->tb_city_name', 'Região', 'center', '30%');
         $col_pop    = new TDataGridColumn('tb_data_pop', 'População', 'center', '60%');
+        $col_born   = new TDataGridColumn('tb_data_born', 'Nascidos vivos', 'center', '30%');
         
         // assign the ordering actions
         $col_id->setAction(new TAction([$this, 'onReload']), ['order' => 'tb_data_id']);
@@ -51,6 +52,7 @@
         $this->datagrid->addColumn($col_city);
         $this->datagrid->addColumn($col_year);
         $this->datagrid->addColumn($col_pop);
+        $this->datagrid->addColumn($col_born);
         
         $action1 = new TDataGridAction(['PopulationFormView', 'onEdit'],   ['key' => '{tb_data_id}'] );
         $action2 = new TDataGridAction([$this, 'onDelete'],   ['key' => '{tb_data_id}'] );
@@ -88,14 +90,14 @@
         TSession::setValue('City_filter', NULL);
         
         // check if the user has filled the form
-        if (isset($data->tb_data_tb_city_id))
+        if (isset($data->cityname))
         {
             // creates a filter using what the user has typed
-            $filter = new TFilter('tb_data_tb_city_id', 'like', "%{$data->tb_data_tb_city_id}%");
+            $filter = new TFilter('tb_data_tb_city_id', 'like', $data->cityname);
             
             // stores the filter in the session
             TSession::setValue('City_filter', $filter);
-            TSession::setValue('City_name',   $data->tb_data_tb_city_id);
+            TSession::setValue('City_name',   $data->cityname);
             
             // fill the form with data again
             $this->form->setData($data);
