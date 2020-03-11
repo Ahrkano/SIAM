@@ -28,7 +28,8 @@
             $city_name    = new TDBCombo('tb_data_tb_city_id', 'siam', 'tb_city', 'tb_city_id', 'tb_city_name');
             $year         = new TEntry('year');
             $output_type  = new TRadioGroup('output_type');
-            
+            $city_name->enableSearch();
+
             $this->form->addFields( [new TLabel('Região')], [$city_name] );
             $this->form->addFields( [new TLabel('Ano')],     [$year] );
             $this->form->addFields( [new TLabel('Saída')],   [$output_type] );
@@ -70,14 +71,9 @@
                 $repository = new TRepository('TB_data');
                 $criteria   = new TCriteria;
 
-                //if ($data->city_name)
-                //{
-                //    $criteria->add(new TFilter('tb_city_name', 'like', $data->tb_data_tb_city_id->tb_city_name));
-                //}
-
                 if ($data->year)
                 {
-                    $criteria->add(new TFilter('tb_data_year', 'like', $data->year));
+                    $criteria->add(new TFilter('tb_city_name', 'like', $data->city_name), TExpression::AND_OPERATOR);
                 }
 
                 $data_objs = $repository->load($criteria);
@@ -85,27 +81,21 @@
                 
                 if ($data_objs)
                 {
-                     $widths    = array(80,40, 190, 120, 190);
-                     $widths2   = array(100,300, 55, 55, 55, 55);
+                     $widths = array(80,40, 190, 120, 190);
 
-                    
                     switch ($format)
                     {
                         case 'html':
                             $table   = new TTableWriterHTML($widths);
-                            $table2  = new TTableWriterHTML($widths);
                             break;
                         case 'pdf':
                             $table   = new TTableWriterPDF($widths);
-                            $table2  = new TTableWriterPDF($widths);
                             break;
                         case 'rtf':
                             $table   = new TTableWriterRTF($widths);
-                            $table2  = new TTableWriterRTF($widths);
                             break;
                         case 'xls':
                             $table   = new TTableWriterXLS($widths);
-                            $table2  = new TTableWriterXLS($widths);
                             break;
                     }
                     
@@ -121,7 +111,7 @@
                         $table->addStyle('div',    'Helvetica', '12', 'B', '#ffffff', '#4B5D8E');
                         $table->addStyle('sub',    'Helvetica', '10', 'B', '#ffffff', '#373B45');
                         $table->addStyle('value',  'Helvetica', '10', 'B', '#ffffff', '#617FC3');
-                        
+
                         $table->setHeaderCallback( function($table) {
                             $table->addRow();
                             $table->addCell('Resultados Ambulatoriais', 'center', 'header', 5);
@@ -207,12 +197,37 @@
                             $table->addCell('RISCO', 'center', 'sub', 2);
                             $table->addCell('Parâmetro de prevalência', 'center', 'sub', 2);
                             $table->addCell('Parâmetro de prevalência', 'center', 'sub', 1);
-                            $formula->section_2_A($table, 'value', $style, 2);
+                            $formula->section_2_1_A($table, 'value', $style, 2);
 
-                            
+                            //$widths2 = array(100,300, 55, 55, 55, 55);
+                            /*
+                            $table->addRow();
+                            $table->addCell('Exame/Procedimento', 'left', 'sub', $size);
+                            $table->addCell('Procedimento - sigtap', 'left', 'sub', $size);
+                            $table->addCell('Parâmetro - Extrato de risco', 'left', 'sub', $size);
+                            $table->addRow();
+                            $table->addCell('', 'left', 'sub', $size);
+                            $table->addCell('Baixo', 'left', 'sub', $size);
+                            $table->addCell('Médio', 'left', 'sub', $size);
+                            $table->addCell('Alto', 'left', 'sub', $size);
+                            $table->addCell('Muito Alto', 'left', 'sub', $size);
+                            $formula->section_2_1_B($table, 'value', $style, 2);
+
+                            $table->addRow();
+                            $table->addCell('RISCO', 'center', 'sub', 2);
+                            $table->addCell('Parâmetro de prevalência', 'center', 'sub', 2);
+                            $table->addCell('Parâmetro de prevalência', 'center', 'sub', 1);
+                            $formula->section_2_2_A($table, 'value', $style, 2);
+
+                            $table->addRow();
+                            $table->addCell('Exame/Procedimento', 'left', 'sub', $size);
+                            $table->addCell('Procedimento - sigtap', 'left', 'sub', $size);
+                            $table->addCell('Parâmetro', 'left', 'sub', $size);
+                            $formula->section_2_2_B($table, 'value', $style, 2);
 
 
 
+                            */
                             $colour = !$colour;
 
                         }

@@ -23,8 +23,9 @@
         $this->form = new BootstrapFormBuilder('form_search_City');
         $this->form->setFormTitle('Visualização');
         
-        $name = new TEntry('cityname');
-        $this->form->addFields( [new TLabel('Busca:')], [$name] );          
+        $name         = new TEntry('name');
+        $this->form->addFields( [new TLabel('Busca:')], [$name] );   
+        
         
         $this->form->addAction('Buscar', new TAction([$this, 'onSearch']), 'fa:search blue');
         $this->form->addActionLink('Novo',  new TAction(['PopulationFormView', 'onClear']), 'fa:plus-circle green');
@@ -90,14 +91,14 @@
         TSession::setValue('City_filter', NULL);
         
         // check if the user has filled the form
-        if (isset($data->cityname))
+        if (isset($data->name))
         {
             // creates a filter using what the user has typed
-            $filter = new TFilter('tb_data_tb_city_id', 'like', $data->cityname);
+            $filter = new TFilter('tb_data_tb_city_id', 'like', "%{$data->name}%");
             
             // stores the filter in the session
             TSession::setValue('City_filter', $filter);
-            TSession::setValue('City_name',   $data->cityname);
+            TSession::setValue('City_name',   $data->name);
             
             // fill the form with data again
             $this->form->setData($data);

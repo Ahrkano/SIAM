@@ -29,9 +29,8 @@ class TB_data extends TRecord
     public function get_tb_city()
     {
         return TB_city::find($this->tb_data_tb_city_id);
-        
     }
-
+/*
     public function get_tb_city_name()
     {
         // loads the associated object
@@ -39,19 +38,7 @@ class TB_data extends TRecord
             $this->cityname = new TB_city($this->tb_city_id);
     
         // returns the associated object
-        return $this->cityname;
-    }
-    
-    /* 
-
-    public function get_tb_city_name()
-    {
-        // loads the associated object
-        if (empty($this->tb_city))
-            $this->tb_data_tb_city_id = new TB_city($this->tb_city_id);
-    
-        // returns the associated object
-        return $this->tb_data_tb_city_id->tb_city_name;
+        return $this->cityname->tb_city_name;
     }
     */
 }

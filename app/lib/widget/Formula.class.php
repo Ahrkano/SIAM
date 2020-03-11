@@ -10,6 +10,7 @@
     {
         public $pop_var;                // populacao total da regiao
         public $born_var;               // nascidos vivos no ano anterior
+        public $aux;                    // hold temp values
 
         // section 1 params
         
@@ -21,7 +22,10 @@
         public $total_c_2;              // estimativa do numero total de criancas de 12 a 24 meses
         public $pop_f_f;                // populacao feminina em idade fertil
 
-        public $aux;                    // hold temp values
+        // section 2 params
+
+        public $melitus;                // popuação diabetes melitus
+        public $hipert;                 // população hipertensão
 
 
 
@@ -147,32 +151,201 @@
                $this->new_table_row($table, 'value', $style, $size, 'Leito canguru', '1 leito p/ cada 1000 nasc. vivos');
           }
 
-          public function section_2_A($table, $row_style, $style, $size)
+          public function section_2_1_A($table, $row_style, $style, $size)
           {
-               $this->aux = $this->pop_var*0.7049*0.069;               
+               $this->melitus = $this->pop_var*0.7049*0.069;               
                $table->addRow();
                $table->addCell('Baixo', 'left', $row_style, $size);
                $table->addCell('20% dos diabéticos',  'center', $style, $size);
-               $table->addCell(ceil($this->aux*0.2),  'center', $style);
+               $table->addCell(ceil($this->melitus*0.2),  'center', $style);
                $table->addRow();
                $table->addCell('Médio', 'left', $row_style, $size);
                $table->addCell('50% dos diabéticos',  'center', $style, $size);
-               $table->addCell(ceil($this->aux*0.5),  'center', $style);
+               $table->addCell(ceil($this->melitus*0.5),  'center', $style);
                $table->addRow();
                $table->addCell('Alto', 'left', $row_style, $size);
                $table->addCell('25% dos diabéticos',  'center', $style, $size);
-               $table->addCell(ceil($this->aux*0.25),  'center', $style);
+               $table->addCell(ceil($this->melitus*0.25),  'center', $style);
                $table->addRow();
                $table->addCell('Muito alto', 'left', $row_style, $size);
                $table->addCell('5% dos diabéticos',  'center', $style, $size);
-               $table->addCell(ceil($this->aux*0.05),  'center', $style);
+               $table->addCell(ceil($this->melitus*0.05),  'center', $style);
                $table->addRow();
                $table->addCell('Total', 'left', $row_style, $size);
                $table->addCell('6,9% da pop. de 18 anos e mais',  'center', $style, $size);
-               $table->addCell(ceil($this->aux),  'center', $style);
+               $table->addCell(ceil($this->melitus),  'center', $style);
+          }
 
+          public function section_2_1_B($table, $row_style, $style, $size)
+          {
+               $table->addRow();
+               $table->addCell('Exames de patologia clínica', 'left', $row_style, $size);
+               $table->addCell('Dosagem de glicose',  'center', $style, $size);
+               $table->addCell(ceil($this->melitus*1*0.2),  'center', $style);
+               $table->addCell(ceil($this->melitus*1*0.5),  'center', $style);
+               $table->addCell(ceil($this->melitus*2*0.25),  'center', $style);
+               $table->addCell(ceil($this->melitus*2*0.05),  'center', $style);
 
+               $table->addRow();
+               $table->addCell('Exames de patologia clínica', 'left', $row_style, $size);
+               $table->addCell('Dosagem de colesterol total',  'center', $style, $size);
+               $table->addCell(ceil($this->melitus*0.5*0.2),  'center', $style);
+               $table->addCell(ceil($this->melitus*1*0.5),  'center', $style);
+               $table->addCell(ceil($this->melitus*1*0.25),  'center', $style);
+               $table->addCell(ceil($this->melitus*1*0.05),  'center', $style);
 
+               $table->addRow();
+               $table->addCell('Exames de patologia clínica', 'left', $row_style, $size);
+               $table->addCell('Dosagem de colesterol HDL',  'center', $style, $size);
+               $table->addCell(ceil($this->melitus*0.5*0.2),  'center', $style);
+               $table->addCell(ceil($this->melitus*1*0.5),  'center', $style);
+               $table->addCell(ceil($this->melitus*1*0.25),  'center', $style);
+               $table->addCell(ceil($this->melitus*1*0.05),  'center', $style);
+
+               $table->addRow();
+               $table->addCell('Exames de patologia clínica', 'left', $row_style, $size);
+               $table->addCell('Dosagem de colesterol LDL',  'center', $style, $size);
+               $table->addCell(ceil($this->melitus*0.5*0.2),  'center', $style);
+               $table->addCell(ceil($this->melitus*1*0.5),  'center', $style);
+               $table->addCell(ceil($this->melitus*1*0.25),  'center', $style);
+               $table->addCell(ceil($this->melitus*1*0.05),  'center', $style);
+
+               $table->addRow();
+               $table->addCell('Exames de patologia clínica', 'left', $row_style, $size);
+               $table->addCell('Dosagem de colesterol triglicerídios',  'center', $style, $size);
+               $table->addCell(ceil($this->melitus*0.5*0.2),  'center', $style);
+               $table->addCell(ceil($this->melitus*1*0.5),  'center', $style);
+               $table->addCell(ceil($this->melitus*1*0.25),  'center', $style);
+               $table->addCell(ceil($this->melitus*1*0.05),  'center', $style);
+
+               $table->addRow();
+               $table->addCell('Exames de patologia clínica', 'left', $row_style, $size);
+               $table->addCell('Dosagem de hemoglobina glicosada',  'center', $style, $size);
+               $table->addCell(ceil($this->melitus*2*0.2),  'center', $style);
+               $table->addCell(ceil($this->melitus*2*0.5),  'center', $style);
+               $table->addCell(ceil($this->melitus*4*0.25),  'center', $style);
+               $table->addCell(ceil($this->melitus*4*0.05),  'center', $style);
+
+               $table->addRow();
+               $table->addCell('Exames de patologia clínica', 'left', $row_style, $size);
+               $table->addCell('Dosagem de creatina',  'center', $style, $size);
+               $table->addCell(ceil($this->melitus*1*0.2),  'center', $style);
+               $table->addCell(ceil($this->melitus*1*0.5),  'center', $style);
+               $table->addCell(ceil($this->melitus*2*0.25),  'center', $style);
+               $table->addCell(ceil($this->melitus*4*0.05),  'center', $style);
+
+               $table->addRow();
+               $table->addCell('Exames de patologia clínica', 'left', $row_style, $size);
+               $table->addCell('Análise de caracteres fís, elementos e sedimentos da urina',  'center', $style, $size);
+               $table->addCell(ceil($this->melitus*1*0.2),  'center', $style);
+               $table->addCell(ceil($this->melitus*1*0.5),  'center', $style);
+               $table->addCell(ceil($this->melitus*1*0.25),  'center', $style);
+               $table->addCell(ceil($this->melitus*2*0.05),  'center', $style);
+
+               $table->addRow();
+               $table->addCell('Exames de patologia clínica', 'left', $row_style, $size);
+               $table->addCell('Dosagem de microalbumina na urina',  'center', $style, $size);
+               $table->addCell(ceil($this->melitus*1*0.2),  'center', $style);
+               $table->addCell(ceil($this->melitus*1*0.5),  'center', $style);
+               $table->addCell(ceil($this->melitus*1*0.25),  'center', $style);
+               $table->addCell(ceil($this->melitus*1*0.05),  'center', $style);
+
+               $table->addRow();
+               $table->addCell('Oftalmológicos', 'left', $row_style, $size);
+               $table->addCell('Fundoscopia',  'center', $style, $size);
+               $table->addCell(ceil($this->melitus*1*0.2),  'center', $style);
+               $table->addCell(ceil($this->melitus*1*0.5),  'center', $style);
+               $table->addCell(ceil($this->melitus*1*0.25),  'center', $style);
+               $table->addCell(ceil($this->melitus*1*0.05),  'center', $style);
+
+               $table->addRow();
+               $table->addCell('Oftalmológicos', 'left', $row_style, $size);
+               $table->addCell('Retinografia binocular colorida',  'center', $style, $size);
+               $table->addCell(ceil($this->melitus*1*0.2),  'center', $style);
+               $table->addCell(ceil($this->melitus*1*0.5),  'center', $style);
+               $table->addCell(ceil($this->melitus*1*0.25),  'center', $style);
+               $table->addCell(ceil($this->melitus*1*0.05),  'center', $style);
+
+               $table->addRow();
+               $table->addCell('Oftalmológicos', 'left', $row_style, $size);
+               $table->addCell('Fotocoagulação a laser',  'center', $style, $size);
+               $table->addCell(ceil($this->melitus*0.2*0.2),  'center', $style);
+               $table->addCell(ceil($this->melitus*0.2*0.5),  'center', $style);
+               $table->addCell(ceil($this->melitus*0.2*0.25),  'center', $style);
+               $table->addCell(ceil($this->melitus*0.4*0.05),  'center', $style);
+
+               $table->addRow();
+               $table->addCell('Diagnose em cardiologia', 'left', $row_style, $size);
+               $table->addCell('Eletrocardiograma',  'center', $style, $size);
+               $table->addCell(ceil($this->melitus*1*0.2),  'center', $style);
+               $table->addCell(ceil($this->melitus*1*0.5),  'center', $style);
+               $table->addCell(ceil($this->melitus*1*0.25),  'center', $style);
+               $table->addCell(ceil($this->melitus*2*0.05),  'center', $style);
+          }
+
+          public function section_2_2_A($table, $row_style, $style, $size)
+          {
+               $this->hipert = $this->pop_var*0.7049*0.214;               
+               $table->addRow();
+               $table->addCell('Baixo', 'left', $row_style, $size);
+               $table->addCell('40% dos hipertensos',  'center', $style, $size);
+               $table->addCell(ceil($this->hipert*0.4),  'center', $style);
+               $table->addRow();
+               $table->addCell('Moderado', 'left', $row_style, $size);
+               $table->addCell('35% dos hipertensos',  'center', $style, $size);
+               $table->addCell(ceil($this->hipert*0.35),  'center', $style);
+               $table->addRow();
+               $table->addCell('Alto', 'left', $row_style, $size);
+               $table->addCell('25% dos hipertensos',  'center', $style, $size);
+               $table->addCell(ceil($this->hipert*0.25),  'center', $style);
+               $table->addRow();
+               $table->addCell('Total', 'left', $row_style, $size);
+               $table->addCell('21,4% da pop. de 18 anos e mais',  'center', $style, $size);
+               $table->addCell(ceil($this->melitus),  'center', $style);
+          }
+
+          public function section_2_2_B($table, $row_style, $style, $size)
+          {
+               $table->addRow();
+               $table->addCell('Exames de patologia clínica', 'left', $row_style, $size);
+               $table->addCell('Dosagem de glicose',  'center', $style, $size);
+               $table->addCell(ceil($this->hipert*1),  'center', $style);
+               $table->addRow();
+               $table->addCell('Exames de patologia clínica', 'left', $row_style, $size);
+               $table->addCell('Dosagem de colesterol total',  'center', $style, $size);
+               $table->addCell(ceil($this->hipert*1),  'center', $style);
+               $table->addRow();
+               $table->addCell('Exames de patologia clínica', 'left', $row_style, $size);
+               $table->addCell('Dosagem de colesterol HDL',  'center', $style, $size);
+               $table->addCell(ceil($this->hipert*1),  'center', $style);
+               $table->addRow();
+               $table->addCell('Exames de patologia clínica', 'left', $row_style, $size);
+               $table->addCell('Dosagem de colesterol LDL',  'center', $style, $size);
+               $table->addCell(ceil($this->hipert*1),  'center', $style);
+               $table->addRow();
+               $table->addCell('Exames de patologia clínica', 'left', $row_style, $size);
+               $table->addCell('Dosagem de triglicerídios',  'center', $style, $size);
+               $table->addCell(ceil($this->hipert*1),  'center', $style);
+               $table->addRow();
+               $table->addCell('Exames de patologia clínica', 'left', $row_style, $size);
+               $table->addCell('Dosagem de creatina',  'center', $style, $size);
+               $table->addCell(ceil($this->hipert*1),  'center', $style);
+               $table->addRow();
+               $table->addCell('Exames de patologia clínica', 'left', $row_style, $size);
+               $table->addCell('Análise de caracteres fís, elementos e sedimentos da urina',  'center', $style, $size);
+               $table->addCell(ceil($this->hipert*1),  'center', $style);
+               $table->addRow();
+               $table->addCell('Exames de patologia clínica', 'left', $row_style, $size);
+               $table->addCell('Dosagem de potássio',  'center', $style, $size);
+               $table->addCell(ceil($this->hipert*1),  'center', $style);
+               $table->addRow();
+               $table->addCell('Oftalmológicos', 'left', $row_style, $size);
+               $table->addCell('Fundoscopia',  'center', $style, $size);
+               $table->addCell(ceil($this->hipert*1),  'center', $style);
+               $table->addRow();
+               $table->addCell('Diagnose em cardiologia', 'left', $row_style, $size);
+               $table->addCell('Eletrocardiograma',  'center', $style, $size);
+               $table->addCell(ceil($this->hipert*1),  'center', $style);
           }
        
     }
