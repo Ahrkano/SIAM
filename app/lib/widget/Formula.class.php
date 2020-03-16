@@ -347,5 +347,19 @@
                $table->addCell('Eletrocardiograma',  'center', $style, $size);
                $table->addCell(ceil($this->hipert*1),  'center', $style);
           }
+
+          public function section_2_3_A($table, $row_style, $style, $size)
+          {
+               // hold population with 55+ years
+               $this->aux = pop*0.1512;
+               $table->addRow();
+               $table->addCell('Casos novos de ICC - Incidência', 'left', $row_style, $size);
+               $table->addCell('0,87% da população com 55 anos e mais',  'center', $style, $size);
+               $table->addCell(ceil($this->aux*0.087),  'center', $style);
+               $table->addRow();
+               $table->addCell('Prevalência', 'left', $row_style, $size);
+               $table->addCell('2,46% da população com 55 anos e mais',  'center', $style, $size);
+               $table->addCell(ceil($this->aux*0.246),  'center', $style);
+          }
        
     }

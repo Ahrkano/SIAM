@@ -225,6 +225,15 @@
                             $table->addCell('Parâmetro', 'left', 'sub', $size);
                             $formula->section_2_2_B($table, 'value', $style, 2);
 
+                            $table->addRow();
+                            $table->addCell('Insuficiência Cardíaca', 'center', 'sub', 5);
+                            $table->addRow();
+                            $table->addCell('População-alvo: 55 anos e mais', 'center', 'sub', 5);
+                            $table->addRow();
+                            $table->addCell('Categoria', 'center', 'sub', 2);
+                            $table->addCell('Parâmetro de prevalência', 'center', 'sub', 2);
+                            $table->addCell('Parâmetro de prevalência', 'center', 'sub', 1);
+                            $formula->section_2_3_A($table, 'value', $style, 2);
 
 
                             */
