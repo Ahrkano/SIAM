@@ -73,10 +73,14 @@
 
                 if ($data->year)
                 {
-                    $criteria->add(new TFilter('tb_data_year', 'like', $data->year));
-                    //$criteria2->add(new TFilter('(SELECT tb_city_name from tb_city WHERE tb_city_id=tb_data_tb_city_id)', 'like', "%{$data->name}%"));
+                    $criteria->add(new TFilter('tb_data_year', 'like', $data->year), TExpression::OR_OPERATOR);
                 }
-
+/*
+                if ($data->city_name)
+                {
+                    $criteria->add(new TFilter('(SELECT tb_city_name from tb_city WHERE tb_city_id=tb_data_tb_city_id)', 'like', "%{$data->city_name}%"), TExpression::OR_OPERATOR);
+                }
+*/
                 $data_objs = $repository->load($criteria);
                 $format  = $data->output_type;
                 
@@ -112,6 +116,8 @@
                         $table->addStyle('div',    'Helvetica', '12', 'B', '#ffffff', '#4B5D8E');
                         $table->addStyle('sub',    'Helvetica', '10', 'B', '#ffffff', '#373B45');
                         $table->addStyle('value',  'Helvetica', '10', 'B', '#ffffff', '#617FC3');
+                        $table->addStyle('leg',    'Helvetica', '9',  'B', '#ffffff', '#7F848F');
+
 
                         $table->setHeaderCallback( function($table) {
                             $table->addRow();
@@ -195,6 +201,8 @@
                             $table->addCell('População-alvo: 18 anos e mais', 'center', 'sub', 5);
 
                             $table->addRow();
+                            $table->addCell('Parâmetros de prevalência total e por estrato de risco com relação à Diabetes Mellitus', 'center', 'leg', 5);
+                            $table->addRow();
                             $table->addCell('RISCO', 'center', 'sub', 2);
                             $table->addCell('Parâmetro de prevalência', 'center', 'sub', 2);
                             $table->addCell('Parâmetro de prevalência', 'center', 'sub', 1);
@@ -202,6 +210,8 @@
 
                             //$widths2 = array(100,300, 55, 55, 55, 55);
                             /*
+                            $table->addRow();
+                            $table->addCell('Parâmetros para diagnóstico e acompanhamento do Diabetes Mellitus', 'center', 'leg', 5);
                             $table->addRow();
                             $table->addCell('Exame/Procedimento', 'left', 'sub', $size);
                             $table->addCell('Procedimento - sigtap', 'left', 'sub', $size);
@@ -215,11 +225,19 @@
                             $formula->section_2_1_B($table, 'value', $style, 2);
 
                             $table->addRow();
+                            $table->addCell('População-alvo: 18 anos e mais', 'center', 'sub', 5);
+                            $table->addRow();
+                            $table->addCell('Estimativa de casos de hipertensão', 'center', 'leg', 5);
+                            $table->addRow();
                             $table->addCell('RISCO', 'center', 'sub', 2);
                             $table->addCell('Parâmetro de prevalência', 'center', 'sub', 2);
                             $table->addCell('Parâmetro de prevalência', 'center', 'sub', 1);
                             $formula->section_2_2_A($table, 'value', $style, 2);
 
+                            $table->addRow();
+                            $table->addCell('População-alvo: 18 anos e mais', 'center', 'sub', 5);
+                            $table->addRow();
+                            $table->addCell('Parâmetros para exames laboratoriais, oftalmológicos e de diagnóstico em cardiologia', 'center', 'leg', 5);
                             $table->addRow();
                             $table->addCell('Exame/Procedimento', 'left', 'sub', $size);
                             $table->addCell('Procedimento - sigtap', 'left', 'sub', $size);
@@ -231,11 +249,15 @@
                             $table->addRow();
                             $table->addCell('População-alvo: 55 anos e mais', 'center', 'sub', 5);
                             $table->addRow();
+                            $table->addCell('Estimativa de casos para programação da assistência à insuficiência cardíaca.', 'center', 'leg', 5);
+                            $table->addRow();
                             $table->addCell('Categoria', 'center', 'sub', 2);
                             $table->addCell('Parâmetro de prevalência', 'center', 'sub', 2);
                             $table->addCell('Parâmetro de prevalência', 'center', 'sub', 1);
                             $formula->section_2_3_A($table, 'value', $style, 2);
 
+                            $table->addRow();
+                            $table->addCell('Parâmetros para diagnóstico e estadiamento da Insuficiência Cardíaca - IC', 'center', 'leg', 5);
                             $table->addRow();
                             $table->addCell('Exame/Procedimento', 'left', 'sub', $size);
                             $table->addCell('Procedimento - sigtap', 'left', 'sub', $size);
@@ -243,11 +265,23 @@
                             $formula->section_2_3_B($table, 'value', $style, 2);
 
                             $table->addRow();
+                            $table->addCell('Parâmetros para acompanhamento de pacientes com IC de origem não isquemica ou valvar ou de causa', 'center', 'leg', 5);
+                            $table->addRow();
                             $table->addCell('Exame/Procedimento', 'left', 'sub', $size);
                             $table->addCell('Procedimento - sigtap', 'left', 'sub', $size);
                             $table->addCell('Parâmetro', 'left', 'sub', $size);
                             $formula->section_2_3_C($table, 'value', $style, 2);
 
+                            $table->addRow();
+                            $table->addCell('Parâmetros para acompanhamento de pacientes com IC de origem isquemica ou valvar ou de causa', 'center', 'leg', 5);
+                            $table->addRow();
+                            $table->addCell('Exame/Procedimento', 'left', 'sub', $size);
+                            $table->addCell('Procedimento - sigtap', 'left', 'sub', $size);
+                            $table->addCell('Parâmetro', 'left', 'sub', $size);
+                            // This table uses the same formulas and present the same results of the previous table
+                            $formula->section_2_3_C($table, 'value', $style, 2);
+
+                            
 
                             */
                             $colour = !$colour;
