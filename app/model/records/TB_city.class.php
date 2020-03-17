@@ -18,6 +18,10 @@ class TB_city extends TRecord
         parent::__construct($tb_city_id, $callObjectLoad);
         parent::addAttribute('tb_city_name');
     }
-
-
+/*
+    public function get_tb_city_name()
+    {
+        return $this->tb_city_name;
+    }
+*/
 }

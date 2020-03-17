@@ -73,7 +73,8 @@
 
                 if ($data->year)
                 {
-                    $criteria->add(new TFilter('tb_city_name', 'like', $data->city_name), TExpression::AND_OPERATOR);
+                    $criteria->add(new TFilter('tb_data_year', 'like', $data->year));
+                    //$criteria2->add(new TFilter('(SELECT tb_city_name from tb_city WHERE tb_city_id=tb_data_tb_city_id)', 'like', "%{$data->name}%"));
                 }
 
                 $data_objs = $repository->load($criteria);
@@ -234,6 +235,18 @@
                             $table->addCell('Parâmetro de prevalência', 'center', 'sub', 2);
                             $table->addCell('Parâmetro de prevalência', 'center', 'sub', 1);
                             $formula->section_2_3_A($table, 'value', $style, 2);
+
+                            $table->addRow();
+                            $table->addCell('Exame/Procedimento', 'left', 'sub', $size);
+                            $table->addCell('Procedimento - sigtap', 'left', 'sub', $size);
+                            $table->addCell('Parâmetro', 'left', 'sub', $size);
+                            $formula->section_2_3_B($table, 'value', $style, 2);
+
+                            $table->addRow();
+                            $table->addCell('Exame/Procedimento', 'left', 'sub', $size);
+                            $table->addCell('Procedimento - sigtap', 'left', 'sub', $size);
+                            $table->addCell('Parâmetro', 'left', 'sub', $size);
+                            $formula->section_2_3_C($table, 'value', $style, 2);
 
 
                             */

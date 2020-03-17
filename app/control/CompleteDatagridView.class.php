@@ -94,7 +94,8 @@
         if (isset($data->name))
         {
             // creates a filter using what the user has typed
-            $filter = new TFilter('tb_data_tb_city_id', 'like', "%{$data->name}%");
+            //$filter = new TFilter('tb_data_tb_city_id->tb_city_name', 'like', "%{$data->name}%");
+            $filter = new TFilter('(SELECT tb_city_name from tb_city WHERE tb_city_id=tb_data_tb_city_id)', 'like', "%{$data->name}%");
             
             // stores the filter in the session
             TSession::setValue('City_filter', $filter);
