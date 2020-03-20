@@ -48,7 +48,7 @@
           {
                $table->addRow();
                $table->addCell($text, 'left', $row_style, $size);
-               $table->addCell($pop,  'center', $style);
+               $table->addCell(ceil($pop),  'center', $style);
           }
 
           public function section_1_A($table, $row_style, $style, $size)
@@ -155,25 +155,25 @@
           {
                $this->melitus = $this->pop_var*0.7049*0.069;               
                $table->addRow();
-               $table->addCell('Baixo', 'left', $row_style, $size);
-               $table->addCell('20% dos diabéticos',  'left', $style, $size);
-               $table->addCell(ceil($this->melitus*0.2),  'center', $style);
+               $table->addCell('Baixo', 'left', $row_style, $size+1);
+               $table->addCell('20% dos diabéticos',  'center', $style, $size);
+               $table->addCell(ceil($this->melitus*0.2),  'center', $style, $size);
                $table->addRow();
-               $table->addCell('Médio', 'left', $row_style, $size);
-               $table->addCell('50% dos diabéticos',  'left', $style, $size);
-               $table->addCell(ceil($this->melitus*0.5),  'center', $style);
+               $table->addCell('Médio', 'left', $row_style, $size+1);
+               $table->addCell('50% dos diabéticos',  'center', $style, $size);
+               $table->addCell(ceil($this->melitus*0.5),  'center', $style, $size);
                $table->addRow();
-               $table->addCell('Alto', 'left', $row_style, $size);
-               $table->addCell('25% dos diabéticos',  'left', $style, $size);
-               $table->addCell(ceil($this->melitus*0.25),  'center', $style);
+               $table->addCell('Alto', 'left', $row_style, $size+1);
+               $table->addCell('25% dos diabéticos',  'center', $style, $size);
+               $table->addCell(ceil($this->melitus*0.25),  'center', $style, $size);
                $table->addRow();
-               $table->addCell('Muito alto', 'left', $row_style, $size);
-               $table->addCell('5% dos diabéticos',  'left', $style, $size);
-               $table->addCell(ceil($this->melitus*0.05),  'center', $style);
+               $table->addCell('Muito alto', 'left', $row_style, $size+1);
+               $table->addCell('5% dos diabéticos',  'center', $style, $size);
+               $table->addCell(ceil($this->melitus*0.05),  'center', $style, $size);
                $table->addRow();
-               $table->addCell('Total', 'left', $row_style, $size);
-               $table->addCell('6,9% da pop. de 18 anos e mais',  'left', $style, $size);
-               $table->addCell(ceil($this->melitus),  'center', $style);
+               $table->addCell('Total', 'left', $row_style, $size+1);
+               $table->addCell('6,9% da pop. de 18 anos e mais',  'center', $style, $size);
+               $table->addCell(ceil($this->melitus),  'center', $style, $size);
           }
 
           public function section_2_1_B($table, $row_style, $style, $size)
@@ -351,7 +351,7 @@
           public function section_2_3_A($table, $row_style, $style, $size)
           {
                // hold population with 55+ years
-               $this->aux = pop*0.1512;
+               $this->aux = $this->pop_var*0.1512;
                $table->addRow();
                $table->addCell('Casos novos de ICC - Incidência', 'left', $row_style, $size);
                $table->addCell('0,87% da população com 55 anos e mais',  'left', $style, $size);
@@ -421,5 +421,80 @@
                $table->addCell('Ecocardiografia transtorácica',  'left', $style, $size);
                $table->addCell(ceil($this->aux*0.246*0.1),  'center', $style);
           }
-       
+
+          public function section_2_3_D($table, $row_style, $style, $size)
+          {
+               $this->section_2_3_C($table, $row_style, $style, $size);
+          }
+
+          public function section_2_4_A($table, $row_style, $sub_style, $style, $size)
+          {
+               $table->addRow();
+               $table->addCell('População alvo - fumantes (10,6%) ou ex-fumantes (56,7%)', 'left', $row_style, $size);
+               $table->addCell('67,3% dos Homens de 65 a 74 anos', 'left', $row_style, $size);
+               $table->addCell(ceil($this->pop_var*0.0204*0.673),  'center', $style);
+               $table->addRow();
+               $table->addCell('Riscos', 'center', $sub_style, 2);
+               $table->addCell('Parâmetros', 'center', $sub_style, 2);
+               $table->addCell('Parâmetro de prevalência', 'center', $sub_style, 1);
+
+               $table->addRow();
+               $table->addCell('Pacientes com aneurismas de 30 a 40 nm', 'left', $row_style, $size);
+               $table->addCell('Dosagem de potássio',  'left', $style, $size);
+               $table->addCell(ceil($this->pop_var*0.0204*0.673*0.0583),  'center', $style);
+
+               $table->addRow();
+               $table->addCell('Pacientes com aneurismas de 40 a 54 nm', 'left', $row_style, $size);
+               $table->addCell('Dosagem de potássio',  'left', $style, $size);
+               $table->addCell(ceil($this->pop_var*0.0204*0.673*0.019),  'center', $style);
+
+               $table->addRow();
+               $table->addCell('Obs 1', 'left', $row_style, $size);
+               $table->addCell('Dosagem de potássio',  'left', $style, $size);
+               $table->addCell(ceil($this->pop_var*0.0204*0.673*0.019*0.6),  'center', $style);
+
+               $table->addRow();
+               $table->addCell('Pacientes com aneurismas > 54 nm', 'left', $row_style, $size);
+               $table->addCell('Dosagem de potássio',  'left', $style, $size);
+               $table->addCell(ceil($this->pop_var*0.0204*0.673*0.0027),  'center', $style);
+
+               $table->addRow();
+               $table->addCell('Obs 2', 'left', $row_style, $size);
+               $table->addCell('Dosagem de potássio',  'left', $style, $size);
+               $table->addCell(ceil($this->pop_var*0.0204*0.673*0.0027*1),  'center', $style);
+          }
+
+          public function section_2_4_B($table, $row_style, $sub_style, $style, $size)
+          {
+               $table->addRow();
+               $table->addCell('Exames em imagem', 'left', $row_style, $size);
+               $table->addCell('Ultrasonografia de Abdomen Superior (p/ rastreio)',  'left', $style, $size);
+               $table->addCell(ceil($this->aux*0.246*0.1),  'center', $style);
+               $table->addRow();
+               $table->addCell('Exames em imagem', 'left', $row_style, $size);
+               $table->addCell('Ultrasonografia de Abdomen Superior ()',  'left', $style, $size);
+               $table->addCell(ceil($this->aux*0.246*0.1),  'center', $style);
+               $table->addRow();
+               $table->addCell('Exames em imagem', 'left', $row_style, $size);
+               $table->addCell('Ecocardiografia transtorácica',  'left', $style, $size);
+               $table->addCell(ceil($this->aux*0.246*0.1),  'center', $style);
+          }
+
+          public function section_2_5_A($table, $row_style, $sub_style, $style, $size)
+          {
+               $table->addRow();
+               $table->addCell('Casos novos AIT - incidência', 'left', $row_style, $size);
+               $table->addCell('0,112% da população com 35 anos e mais',  'left', $style, $size);
+               $table->addCell(ceil($this->pop_var*0.4122*0.00112),  'center', $style);
+
+               $table->addRow();
+               $table->addCell('Pacientes com AIT que não apresenta diag. causal', 'left', $row_style, $size);
+               $table->addCell('0,038% da população com 35 anos e mais',  'left', $style, $size);
+               $table->addCell(ceil($this->pop_var*0.4122*0.00038),  'center', $style);
+          }
+
+          public function section_2_5_B($table, $row_style, $sub_style, $style, $size)
+          {
+               
+          }
     }

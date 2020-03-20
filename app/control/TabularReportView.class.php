@@ -86,7 +86,9 @@
                 
                 if ($data_objs)
                 {
-                     $widths = array(80,40, 190, 120, 190);
+                     //$widths = array(80, 40, 190, 120, 190);
+                     $widths = array(80, 40, 180, 90, 110, 60, 60);
+                     $num_col = 7;
 
                     switch ($format)
                     {
@@ -121,14 +123,14 @@
 
                         $table->setHeaderCallback( function($table) {
                             $table->addRow();
-                            $table->addCell('Resultados Ambulatoriais', 'center', 'header', 5);
+                            $table->addCell('Resultados Ambulatoriais', 'center', 'header', 7);
                             $table->addRow();
                         });
                         
         
                         $table->setFooterCallback( function($table) {
                             $table->addRow();
-                            $table->addCell(date('Y-m-d h:i:s'), 'center', 'footer', 5);
+                            $table->addCell(date('Y-m-d h:i:s'), 'center', 'footer', 7);
                         });
                         
                         // controls the background filling
@@ -138,9 +140,9 @@
                         $table->addRow();
                         $table->addCell('Cod.',         'center',   'title');
                         $table->addCell('Ano',       'center',   'title');
-                        $table->addCell('Região',       'center',   'title');
+                        $table->addCell('Localidade',       'center',   'title', 2);
                         $table->addCell('População',    'center',   'title');
-                        $table->addCell('Nasc.vivos (ano anterior)',   'center',   'title');
+                        $table->addCell('Nasc.vivos',   'center',   'title', 2);
                         
                         // data rows
                         
@@ -151,64 +153,63 @@
 
                             $style = $colour ? 'datap' : 'datai';
                             $table->addRow();
-                            $table->addCell($data_obj->tb_data_tb_city_id,     'center', $style);
-                            $table->addCell($data_obj->tb_data_year,           'center', $style);
-                            $table->addCell($data_obj->tb_city->tb_city_name,  'center',   $style);
-                            $table->addCell($data_obj->tb_data_pop,            'center',   $style);
-                            $table->addCell($data_obj->tb_data_born,           'center', $style);
+                            $table->addCell($data_obj->tb_data_tb_city_id,     'center',    $style, 1);
+                            $table->addCell($data_obj->tb_data_year,           'center',    $style, 1);
+                            $table->addCell($data_obj->tb_city->tb_city_name,  'center',    $style, 2);
+                            $table->addCell($data_obj->tb_data_pop,            'center',    $style, 1);
+                            $table->addCell($data_obj->tb_data_born,           'center',    $style, 2);
 
                             // SECTION 1 VALUES
 
                             $table->addRow();
-                            $table->addCell('Atenção à gravidez, parto e puerperio', 'center', 'div', 5);
+                            $table->addCell('Atenção à gravidez, parto e puerperio', 'center', 'div', 7);
+                            $table->addRow();
+                            $table->addCell('Parâmetros populacionais da rede de atenção materno-infantil', 'center', 'sub', 7);
+                            $formula->section_1_A($table, 'value', $style, 6);
+                            
+                            $table->addRow();
+                            $table->addCell('Parâmetros assistenciais da rede de atenção materno-infantil', 'center', 'sub', $num_col);
+                            $table->addRow();
+                            $table->addCell('População-alvo: todas as gestantes', 'center', 'sub', $num_col);
+                            $formula->section_1_B($table, 'value', $style, ($num_col - 1));
+                            
+                            $table->addRow();
+                            $table->addCell('População-alvo: gestantes de alto risco', 'center', 'sub', $num_col);
+                            $formula->section_1_C($table, 'value', $style, ($num_col - 1));
 
                             $table->addRow();
-                            $table->addCell('Parâmetros populacionais da rede de atenção materno-infantil', 'center', 'sub', 5);
-                            $formula->section_1_A($table, 'value', $style, 4);
+                            $table->addCell('População-alvo: crianças de 0 a 12 meses', 'center', 'sub', $num_col);
+                            $formula->section_1_D($table, 'value', $style, ($num_col - 1));
 
                             $table->addRow();
-                            $table->addCell('Parâmetros assistenciais da rede de atenção materno-infantil', 'center', 'sub', 5);
-                            $table->addRow();
-                            $table->addCell('População-alvo: todas as gestantes', 'center', 'sub', 5);
-                            $formula->section_1_B($table, 'value', $style, 4);
+                            $table->addCell('População-alvo: crianças de 12 a 24 meses', 'center', 'sub', $num_col);
+                            $formula->section_1_E($table, 'value', $style, ($num_col - 1));
 
                             $table->addRow();
-                            $table->addCell('População-alvo: gestantes de alto risco', 'center', 'sub', 5);
-                            $formula->section_1_C($table, 'value', $style, 4);
-
-                            $table->addRow();
-                            $table->addCell('População-alvo: crianças de 0 a 12 meses', 'center', 'sub', 5);
-                            $formula->section_1_D($table, 'value', $style, 4);
-
-                            $table->addRow();
-                            $table->addCell('População-alvo: crianças de 12 a 24 meses', 'center', 'sub', 5);
-                            $formula->section_1_E($table, 'value', $style, 4);
-
-                            $table->addRow();
-                            $table->addCell('Leitos', 'center', 'sub', 5);
-                            $formula->section_1_F($table, 'value', $style, 4);
+                            $table->addCell('Leitos', 'center', 'sub', $num_col);
+                            $formula->section_1_F($table, 'value', $style, ($num_col - 1));
                           
                             // SECTION 2 VALUES   
 
                             $table->addRow();
-                            $table->addCell('Atenção às pessoas com doenças crônicas não transmissíveis', 'center', 'div', 5);
+                            $table->addCell('Atenção às pessoas com doenças crônicas não transmissíveis', 'center', 'div', $num_col);
                             $table->addRow();
-                            $table->addCell('Doenças Crônicas Renocardiovasculares', 'center', 'div', 5);
+                            $table->addCell('Doenças Crônicas Renocardiovasculares', 'center', 'div', $num_col);
 
                             $table->addRow();
-                            $table->addCell('Diabetes Mellitus', 'center', 'sub', 5);
+                            $table->addCell('Diabetes Mellitus', 'center', 'sub', $num_col);
                             $table->addRow();
-                            $table->addCell('População-alvo: 18 anos e mais', 'center', 'sub', 5);
+                            $table->addCell('População-alvo: 18 anos e mais', 'center', 'sub', $num_col);
 
                             $table->addRow();
-                            $table->addCell('Parâmetros de prevalência total e por estrato de risco com relação à Diabetes Mellitus', 'center', 'leg', 5);
+                            $table->addCell('Parâmetros de prevalência total e por estrato de risco com relação à Diabetes Mellitus', 'center', 'leg', $num_col);
                             $table->addRow();
-                            $table->addCell('RISCO', 'center', 'sub', 2);
-                            $table->addCell('Parâmetro de prevalência', 'center', 'sub', 2);
-                            $table->addCell('Parâmetro de prevalência', 'center', 'sub', 1);
+                            $table->addCell('RISCO', 'center', 'sub', 3);
+                            $table->addCell('Parâm. de prevalência', 'center', 'sub', 2);
+                            $table->addCell('Parâm. de prevalência', 'center', 'sub', 2);
                             $formula->section_2_1_A($table, 'value', $style, 2);
-
-                            //$widths2 = array(100,300, 55, 55, 55, 55);
+/*
+                            
                             /*
                             $table->addRow();
                             $table->addCell('Parâmetros para diagnóstico e acompanhamento do Diabetes Mellitus', 'center', 'leg', 5);
@@ -278,11 +279,43 @@
                             $table->addCell('Exame/Procedimento', 'left', 'sub', $size);
                             $table->addCell('Procedimento - sigtap', 'left', 'sub', $size);
                             $table->addCell('Parâmetro', 'left', 'sub', $size);
-                            // This table uses the same formulas and present the same results of the previous table
-                            $formula->section_2_3_C($table, 'value', $style, 2);
+                            $formula->section_2_3_D($table, 'value', $style, 2);
 
-                            
+                            $table->addRow();
+                            $table->addCell('Aneurisma de Aorta Abdominal (AAA)', 'center', 'div', 5);
+                            $table->addRow();
+                            $table->addCell('População-alvo: Homem de 65 a 74 anos', 'center', 'sub', 5);
+                            $table->addRow();
+                            $table->addCell('Estimatimativa de casos de programação da assistência ao AAA', 'center', 'leg', 5);
+                            $table->addCell('Categoria', 'center', 'sub', 2);
+                            $table->addCell('Parâmetro de prevalência', 'center', 'sub', 2);
+                            $table->addCell('Parâmetro de prevalência', 'center', 'sub', 1);
+                            $formula->section_2_4_A($table, 'value', 'sub', $style, 4);
 
+                            $table->addCell('Parâmetros propostos para acompanhamento de pacientes com AAA', 'center', 'leg', 5);
+                            $table->addRow();
+                            $table->addCell('Exame/Procedimento', 'left', 'sub', $size);
+                            $table->addCell('Procedimento - sigtap', 'left', 'sub', $size);
+                            $table->addCell('Parâmetro', 'left', 'sub', $size);
+                            $formula->section_2_4_B($table, 'value', $style, 2);
+
+                            $table->addRow();
+                            $table->addCell('Ataque Isquêmico Transitório (AIT)', 'center', 'div', 5);
+                            $table->addRow();
+                            $table->addCell('População-alvo: 35 anos ou mais', 'center', 'sub', 5);
+                            $table->addRow();
+                            $table->addCell('Estimatimativa de casos para programação da assistência ao AIT', 'center', 'leg', 5);
+                            $table->addCell('Categoria', 'center', 'sub', 2);
+                            $table->addCell('Parâmetro de prevalência', 'center', 'sub', 2);
+                            $table->addCell('Parâmetro de prevalência', 'center', 'sub', 1);
+                            $formula->section_2_5_A($table, 'value', 'sub', $style, 4);
+
+                            $table->addRow();
+                            $table->addCell('Parâmetros propostos para acompanhamento de pacientes com AIT/ Necessidade de proced.', 'center', 'leg', 5);
+                            $table->addCell('Exame/Procedimanto', 'center', 'sub', 2);
+                            $table->addCell('Procedimento sigtap', 'center', 'sub', 2);
+                            $table->addCell('Parâmetro', 'center', 'sub', 1);
+                            $formula->section_2_5_B($table, 'value', 'sub', $style, 4);
                             */
                             $colour = !$colour;
 
