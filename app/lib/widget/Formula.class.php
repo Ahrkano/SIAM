@@ -44,88 +44,192 @@
                $this->aux                  = 0;
           }
      
-          public function new_table_row($table, $row_style, $style, $size, $text, $pop)
-          {
-               $table->addRow();
-               $table->addCell($text, 'left', $row_style, $size);
-               $table->addCell(ceil($pop),  'center', $style);
-          }
-
+ 
           public function section_1_A($table, $row_style, $style, $size)
           {
-
-               $this->new_table_row($table, $row_style, $style, $size, 'Estimativa total de gestantes',  $this->total_ges);
-               $this->new_table_row($table, $row_style, $style, $size, 'Gestante de risco habitual',  $this->grh);
-               $this->new_table_row($table, $row_style, $style, $size, 'Gestante de alto risco',  $this->gar);
-               $this->new_table_row($table, $row_style, $style, $size, 'Estimativa de número total de recem nascidos',  $this->total_nasc);
-               $this->new_table_row($table, $row_style, $style, $size, 'Estimativa de número total de crianças de 0 a 12 meses',  $this->total_c_1);
-               $this->new_table_row($table, $row_style, $style, $size, 'Estimativa de número total de crianças de 12 a 24 meses',  $this->total_c_2);
-               $this->new_table_row($table, $row_style, $style, $size, 'População feminina em idade fértil',  $this->pop_f_f);
-                    
+               $table->addRow();   
+               $table->addCell( 'Estimativa total de gestantes' , 'left', $row_style, $size-6);
+               $table->addCell(ceil($this->total_ges),  'center', $style, 6);
+               $table->addRow();   
+               $table->addCell( 'Gestante de risco habitual' , 'left', $row_style, $size-6);
+               $table->addCell(ceil($this->grh),  'center', $style, 6);
+               $table->addRow();   
+               $table->addCell( 'Gestante de alto risco' , 'left', $row_style, $size-6);
+               $table->addCell(ceil($this->gar),  'center', $style, 6);
+               $table->addRow();   
+               $table->addCell( 'Estimativa de número total de recem nascidos' , 'left', $row_style, $size-6);
+               $table->addCell(ceil($this->total_nasc),  'center', $style, 6);
+               $table->addRow();   
+               $table->addCell( 'Estimativa de número total de crianças de 0 a 12 meses' , 'left', $row_style, $size-6);
+               $table->addCell(ceil($this->total_c_1),  'center', $style, 6);
+               $table->addRow();   
+               $table->addCell( 'Estimativa de número total de crianças de 12 a 24 meses' , 'left', $row_style, $size-6);
+               $table->addCell(ceil($this->total_c_2),  'center', $style, 6);
+               $table->addRow();   
+               $table->addCell( 'População feminina em idade fértil' , 'left', $row_style, $size-6);
+               $table->addCell(ceil($this->pop_f_f),  'center', $style, 6);
           }
 
           public function section_1_B($table, $row_style, $style, $size)
           {
-
-               $this->new_table_row($table, 'value', $style, $size, 'Consulta de pré natal (consulta médica)', $this->total_ges*3);
-               $this->new_table_row($table, 'value', $style, $size, 'Consulta pueperal (Consulta médica)', $this->total_ges*1);
-               $this->new_table_row($table, 'value', $style, $size, 'Consulta de pré natal (consulta de enfermagem)', $this->total_ges*3);
-               $this->new_table_row($table, 'value', $style, $size, 'Consulta odontologica na atenção básica', $this->total_ges*1);
-               $this->new_table_row($table, 'value', $style, $size, 'Atividade Educativa/Orientação em grupo', $this->total_ges*4);
-               $this->new_table_row($table, 'value', $style, $size, 'Determinação direta e reversa de grupo ABO', $this->total_ges*1);
-               $this->new_table_row($table, 'value', $style, $size, 'Pesquisa de fator RH', $this->total_ges*1);
-               $this->new_table_row($table, 'value', $style, $size, 'Teste ind. de antiglobulina humana Teste Coombs ind. p/ RH neg.', $this->total_ges*0.3);
-               $this->new_table_row($table, 'value', $style, $size, 'Análise de caracteres físicos, elementos e sedimentos de urina', $this->total_ges*2);
-               $this->new_table_row($table, 'value', $style, $size, 'Dosagem de glicose', $this->total_ges*2);
-               $this->new_table_row($table, 'value', $style, $size, 'Dosagem proteinúria - fita reagente', $this->total_ges*0.3);
-               $this->new_table_row($table, 'value', $style, $size, 'VDRL p/ detecção de sífilis em gestante', $this->total_ges*2);
-               $this->new_table_row($table, 'value', $style, $size, 'Hematócrito', $this->total_ges*2);
-               $this->new_table_row($table, 'value', $style, $size, 'Dosagem de hemoglobina', $this->total_ges*2);
-               $this->new_table_row($table, 'value', $style, $size, 'Pesquisa de anticorpos IGM Antioxoplasma', $this->total_ges*1);
-               $this->new_table_row($table, 'value', $style, $size, 'HBsAg', $this->total_ges*1);
-               $this->new_table_row($table, 'value', $style, $size, 'Pesquisa de Anticorpos Anti-HIV1 + HIV2 (Elisa)', $this->total_ges*2);
-               $this->new_table_row($table, 'value', $style, $size, 'Eletroforese de hemoglobina', $this->total_ges*1);
-               $this->new_table_row($table, 'value', $style, $size, 'Ultrasonografia obstétrica', $this->total_ges*1);
-               $this->new_table_row($table, 'value', $style, $size, 'Exame citopatologico cérvico-vaginal/microflora', $this->total_ges*1);
-               $this->new_table_row($table, 'value', $style, $size, 'Cultura de bactérias para identificação', $this->total_ges*1);
-               
+               $table->addRow();   
+               $table->addCell( 'Consulta de pré natal (consulta médica)' , 'left', $row_style, $size-6);
+               $table->addCell(ceil($this->total_ges*3),  'center', $style, 6);
+               $table->addRow();   
+               $table->addCell( 'Consulta pueperal (Consulta médica)' , 'left', $row_style, $size-6);
+               $table->addCell(ceil($this->total_ges*1),  'center', $style, 6);
+               $table->addRow();   
+               $table->addCell( 'Consulta de pré natal (consulta de enfermagem)' , 'left', $row_style, $size-6);
+               $table->addCell(ceil($this->total_ges*3),  'center', $style, 6);
+               $table->addRow();   
+               $table->addCell( 'Consulta odontologica na atenção básica' , 'left', $row_style, $size-6);
+               $table->addCell(ceil($this->total_ges*1),  'center', $style, 6);
+               $table->addRow();   
+               $table->addCell( 'Atividade Educativa/Orientação em grupo' , 'left', $row_style, $size-6);
+               $table->addCell(ceil($this->total_ges*4),  'center', $style, 6);
+               $table->addRow();   
+               $table->addCell( 'Determinação direta e reversa de grupo ABO' , 'left', $row_style, $size-6);
+               $table->addCell(ceil($this->total_ges*1),  'center', $style, 6);
+               $table->addRow();   
+               $table->addCell( 'Pesquisa de fator RH' , 'left', $row_style, $size-6);
+               $table->addCell(ceil($this->total_ges*1),  'center', $style, 6);
+               $table->addRow();   
+               $table->addCell( 'Teste ind. de antiglobulina humana Teste Coombs ind. p/ RH neg.' , 'left', $row_style, $size-6);
+               $table->addCell(ceil($this->total_ges*0.3),  'center', $style, 6);
+               $table->addRow();   
+               $table->addCell( 'Análise de caracteres físicos, elementos e sedimentos de urina' , 'left', $row_style, $size-6);
+               $table->addCell(ceil($this->total_ges*2),  'center', $style, 6);
+               $table->addRow();   
+               $table->addCell( 'Dosagem de glicose' , 'left', $row_style, $size-6);
+               $table->addCell(ceil($this->total_ges*2),  'center', $style, 6);
+               $table->addRow();   
+               $table->addCell( 'Dosagem proteinúria - fita reagente' , 'left', $row_style, $size-6);
+               $table->addCell(ceil($this->total_ges*0.3),  'center', $style, 6);
+               $table->addRow();   
+               $table->addCell( 'VDRL p/ detecção de sífilis em gestante' , 'left', $row_style, $size-6);
+               $table->addCell(ceil($this->total_ges*2),  'center', $style, 6);
+               $table->addRow();   
+               $table->addCell( 'Hematócrito' , 'left', $row_style, $size-6);
+               $table->addCell(ceil($this->total_ges*2),  'center', $style, 6);
+               $table->addRow();   
+               $table->addCell( 'Dosagem de hemoglobina' , 'left', $row_style, $size-6);
+               $table->addCell(ceil($this->total_ges*2),  'center', $style, 6);
+               $table->addRow();   
+               $table->addCell( 'Pesquisa de anticorpos IGM Antioxoplasma' , 'left', $row_style, $size-6);
+               $table->addCell(ceil($this->total_ges*1),  'center', $style, 6);
+               $table->addRow();   
+               $table->addCell( 'HBsAg' , 'left', $row_style, $size-6);
+               $table->addCell(ceil($this->total_ges*1),  'center', $style, 6);
+               $table->addRow();   
+               $table->addCell( 'Pesquisa de Anticorpos Anti-HIV1 + HIV2 (Elisa)' , 'left', $row_style, $size-6);
+               $table->addCell(ceil($this->total_ges*2),  'center', $style, 6);
+               $table->addRow();   
+               $table->addCell( 'Eletroforese de hemoglobina' , 'left', $row_style, $size-6);
+               $table->addCell(ceil($this->total_ges*1),  'center', $style, 6);
+               $table->addRow();   
+               $table->addCell( 'Ultrasonografia obstétrica' , 'left', $row_style, $size-6);
+               $table->addCell(ceil($this->total_ges*1),  'center', $style, 6);
+               $table->addRow();   
+               $table->addCell( 'Exame citopatologico cérvico-vaginal/microflora' , 'left', $row_style, $size-6);
+               $table->addCell(ceil($this->total_ges*1),  'center', $style, 6);
+               $table->addRow();   
+               $table->addCell( 'Cultura de bactérias para identificação' , 'left', $row_style, $size-6);
+               $table->addCell(ceil($this->total_ges*1),  'center', $style, 6);
           }
 
           public function section_1_C($table, $row_style, $style, $size)
           {
-               $this->new_table_row($table, 'value', $style, $size, 'Consulta médica em atenção especializada', $this->gar*5);
-               $this->new_table_row($table, 'value', $style, $size, 'Determinação de curva glicêmica clássica - Teste de tol. à glicose', $this->gar*1);
-               $this->new_table_row($table, 'value', $style, $size, 'ECG - Eletrocardiograma', $this->gar*0.3);
-               $this->new_table_row($table, 'value', $style, $size, 'Ultrassonografia obstétrica com Doppler colorido e pulsado', $this->gar*1);
-               $this->new_table_row($table, 'value', $style, $size, 'Ultrassonografia obstétrica', $this->gar*2);
-               $this->new_table_row($table, 'value', $style, $size, 'Tococardiografia ante-parto', $this->gar*1);
-               $this->new_table_row($table, 'value', $style, $size, 'Contagem de plaquetas', $this->gar*0.3);
-               $this->new_table_row($table, 'value', $style, $size, 'Uréria', $this->gar*1);
-               $this->new_table_row($table, 'value', $style, $size, 'Dosagem de creatina', $this->gar*1);
-               $this->new_table_row($table, 'value', $style, $size, 'Dosagem de ácido úrico', $this->gar*1);
-               $this->new_table_row($table, 'value', $style, $size, 'Consulta de profissional de nível superior - Psicossocial', $this->gar*1);
-               $this->new_table_row($table, 'value', $style, $size, 'Dosagem de proteínas totais', $this->gar*1);
+               $table->addRow();   
+               $table->addCell( 'Consulta médica em atenção especializada' , 'left', $row_style, $size-6);
+               $table->addCell(ceil($this->gar*5),  'center', $style, 6);
+               $table->addRow();   
+               $table->addCell( 'Determinação de curva glicêmica clássica - Teste de tol. à glicose' , 'left', $row_style, $size-6);
+               $table->addCell(ceil($this->gar*1),  'center', $style, 6);
+               $table->addRow();   
+               $table->addCell( 'ECG - Eletrocardiograma' , 'left', $row_style, $size-6);
+               $table->addCell(ceil($this->gar*0.3),  'center', $style, 6);
+               $table->addRow();   
+               $table->addCell( 'Ultrassonografia obstétrica com Doppler colorido e pulsado' , 'left', $row_style, $size-6);
+               $table->addCell(ceil($this->gar*1),  'center', $style, 6);
+               $table->addRow();   
+               $table->addCell( 'Ultrassonografia obstétrica' , 'left', $row_style, $size-6);
+               $table->addCell(ceil($this->gar*2),  'center', $style, 6);
+               $table->addRow();   
+               $table->addCell( 'Tococardiografia ante-parto' , 'left', $row_style, $size-6);
+               $table->addCell(ceil($this->gar*1),  'center', $style, 6);
+               $table->addRow();   
+               $table->addCell( 'Contagem de plaquetas' , 'left', $row_style, $size-6);
+               $table->addCell(ceil($this->gar*0.3),  'center', $style, 6);
+               $table->addRow();   
+               $table->addCell( 'Uréria' , 'left', $row_style, $size-6);
+               $table->addCell(ceil($this->gar*1),  'center', $style, 6);
+               $table->addRow();   
+               $table->addCell( 'Dosagem de creatina' , 'left', $row_style, $size-6);
+               $table->addCell(ceil($this->gar*1),  'center', $style, 6);
+               $table->addRow();   
+               $table->addCell( 'Dosagem de ácido úrico' , 'left', $row_style, $size-6);
+               $table->addCell(ceil($this->gar*1),  'center', $style, 6);
+               $table->addRow();   
+               $table->addCell( 'Consulta de profissional de nível superior - Psicossocial' , 'left', $row_style, $size-6);
+               $table->addCell(ceil($this->gar*1),  'center', $style, 6);
+               $table->addRow();   
+               $table->addCell( 'Dosagem de proteínas totais' , 'left', $row_style, $size-6);
+               $table->addCell(ceil($this->gar*1),  'center', $style, 6);
           }
 
           public function section_1_D($table, $row_style, $style, $size)
           {
-               $this->new_table_row($table, 'value', $style, $size, 'Visita domiciliar por profissional de nível superior', $this->total_nasc*1);
-               $this->new_table_row($table, 'value', $style, $size, 'Consulta médica em atenção especializada (RN > 2500g)', $this->total_nasc*0.92*3);
-               $this->new_table_row($table, 'value', $style, $size, 'Consulta de profissional de nivel superior na atenção básica (RN > 2500g)', $this->total_nasc*0.92*4);
-               $this->new_table_row($table, 'value', $style, $size, 'Consulta médica em atenção especializada (RN < 2500g)', $this->total_nasc*0.08*7);
-               $this->new_table_row($table, 'value', $style, $size, 'Consulta de profissional de nivel superior na atenção básica (RN < 2500g)', $this->total_nasc*0.08*6);
-               $this->new_table_row($table, 'value', $style, $size, 'Acompanhamento específico do RN egresso de UTI até 24 meses', 'De acordo com a necessidade');
-               $this->new_table_row($table, 'value', $style, $size, 'Vacinação básica', 'Ver protocolo de vacinação');
-               $this->new_table_row($table, 'value', $style, $size, 'Teste do pezinho (até o 7º dia)', $this->total_nasc*1);
-               $this->new_table_row($table, 'value', $style, $size, 'Teste da orelhinha', $this->total_nasc*1);
-               $this->new_table_row($table, 'value', $style, $size, 'Teste do olhinho (4º, 6º, 12º e 25º meses)', $this->total_nasc*1);
-               $this->new_table_row($table, 'value', $style, $size, 'Sulfato ferroso', 'Profilaxia de 6 a 18 meses');
-               $this->new_table_row($table, 'value', $style, $size, 'Vitamina A', 'Em área endêmica');
-               $this->new_table_row($table, 'value', $style, $size, 'Consulta de profissional de nivel superior na atenção básica (odontológica)', $this->total_c_1*2);
-               $this->new_table_row($table, 'value', $style, $size, 'Exames (apoio diagnóstico e terapêutico)', 'De acordo com diagnóstico');
-               $this->new_table_row($table, 'value', $style, $size, 'Consulta médica em atenção especializada (consulta de especialidades)', 'De acordo com diagnóstico');
-               $this->new_table_row($table, 'value', $style, $size, 'Consulta/Atendimento de reabilitação', 'De acordo com diagnóstico');
-               $this->new_table_row($table, 'value', $style, $size, 'Atividade educativa/Orientação em grupo na atenção básica', '2 a.e/população coberta/ano');
+               $table->addRow();   
+               $table->addCell( 'Visita domiciliar por profissional de nível superior' , 'left', $row_style, $size-6);
+               $table->addCell(ceil($this->total_nasc*1),  'center', $style, 6);
+               $table->addRow();   
+               $table->addCell( 'Consulta médica em atenção especializada (RN > 2500g)' , 'left', $row_style, $size-6);
+               $table->addCell(ceil($this->total_nasc*0.92*3),  'center', $style, 6);
+               $table->addRow();   
+               $table->addCell( 'Consulta de profissional de nivel superior na atenção básica (RN > 2500g)' , 'left', $row_style, $size-6);
+               $table->addCell(ceil($this->total_nasc*0.92*4),  'center', $style, 6);
+               $table->addRow();   
+               $table->addCell( 'Consulta médica em atenção especializada (RN < 2500g)' , 'left', $row_style, $size-6);
+               $table->addCell(ceil($this->total_nasc*0.08*7),  'center', $style, 6);
+               $table->addRow();   
+               $table->addCell( 'Consulta de profissional de nivel superior na atenção básica (RN < 2500g)' , 'left', $row_style, $size-6);
+               $table->addCell(ceil($this->total_nasc*0.08*6),  'center', $style, 6);
+               $table->addRow();   
+               $table->addCell( 'Acompanhamento específico do RN egresso de UTI até 24 meses' , 'left', $row_style, $size-6);
+               $table->addCell( 'De acordo com a necessidade',  'center', $style, 6);
+               $table->addRow();   
+               $table->addCell( 'Vacinação básica' , 'left', $row_style, $size-6);
+               $table->addCell( 'Ver protocolo de vacinação',  'center', $style, 6);
+               $table->addRow();   
+               $table->addCell( 'Teste do pezinho (até o 7º dia)' , 'left', $row_style, $size-6);
+               $table->addCell(ceil($this->total_nasc*1),  'center', $style, 6);
+               $table->addRow();   
+               $table->addCell( 'Teste da orelhinha' , 'left', $row_style, $size-6);
+               $table->addCell(ceil($this->total_nasc*1),  'center', $style, 6);
+               $table->addRow();   
+               $table->addCell( 'Teste do olhinho (4º, 6º, 12º e 25º meses)' , 'left', $row_style, $size-6);
+               $table->addCell(ceil($this->total_nasc*1),  'center', $style, 6);
+               $table->addRow();   
+               $table->addCell( 'Sulfato ferroso' , 'left', $row_style, $size-6);
+               $table->addCell( 'Profilaxia de 6 a 18 meses',  'center', $style, 6);
+               $table->addRow();   
+               $table->addCell( 'Vitamina A' , 'left', $row_style, $size-6);
+               $table->addCell( 'Em área endêmica',  'center', $style, 6);
+               $table->addRow();   
+               $table->addCell( 'Consulta de profissional de nivel superior na atenção básica (odontológica)' , 'left', $row_style, $size-6);
+               $table->addCell(ceil($this->total_c_1*2),  'center', $style, 6);
+               $table->addRow();   
+               $table->addCell( 'Exames (apoio diagnóstico e terapêutico)' , 'left', $row_style, $size-6);
+               $table->addCell( 'De acordo com diagnóstico',  'center', $style, 6);
+               $table->addRow();   
+               $table->addCell( 'Consulta médica em atenção especializada' , 'left', $row_style, $size-6);
+               $table->addCell( 'De acordo com diagnóstico',  'center', $style, 6);
+               $table->addRow();   
+               $table->addCell( 'Consulta/Atendimento de reabilitação' , 'left', $row_style, $size-6);
+               $table->addCell( 'De acordo com diagnóstico',  'center', $style, 6);
+               $table->addRow();   
+               $table->addCell( 'Atividade educativa/Orientação em grupo na atenção básica' , 'left', $row_style, $size-6);
+               $table->addCell( '2 a.e/população coberta/ano',  'center', $style, 6);
           }
 
           public function section_1_E($table, $row_style, $style, $size)

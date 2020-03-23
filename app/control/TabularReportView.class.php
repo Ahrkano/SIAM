@@ -86,8 +86,17 @@
                 
                 if ($data_objs)
                 {
-                     $widths = array(80, 40, 180, 90, 110, 60, 60); // use 10
-                     $num_col = 7;
+                    $widths = array(    10,10,10,10,10,10,10,10,10,10,
+                                        10,10,10,10,10,10,10,10,10,10,
+                                        10,10,10,10,10,10,10,10,10,10,
+                                        10,10,10,10,10,10,10,10,10,10,
+                                        10,10,10,10,10,10,10,10,10,10,
+                                        10,10,10,10,10,10,10,10,10,10,
+                                        10,10   );
+                    $num_col = 62;
+
+                    // tam (80, 40, 180, 90, 110, 60, 60)
+
 
                     switch ($format)
                     {
@@ -122,14 +131,14 @@
 
                         $table->setHeaderCallback( function($table) {
                             $table->addRow();
-                            $table->addCell('Resultados Ambulatoriais', 'center', 'header', 7);
+                            $table->addCell('Resultados Ambulatoriais', 'center', 'header', 62);
                             $table->addRow();
                         });
                         
         
                         $table->setFooterCallback( function($table) {
                             $table->addRow();
-                            $table->addCell(date('Y-m-d h:i:s'), 'center', 'footer', 7);
+                            $table->addCell(date('Y-m-d h:i:s'), 'center', 'footer', 62);
                         });
                         
                         // controls the background filling
@@ -137,11 +146,11 @@
 
                         // add region info
                         $table->addRow();
-                        $table->addCell('Cod.',         'center',   'title');
-                        $table->addCell('Ano',       'center',   'title');
-                        $table->addCell('Localidade',       'center',   'title', 2);
-                        $table->addCell('População',    'center',   'title');
-                        $table->addCell('Nasc.vivos',   'center',   'title', 2);
+                        $table->addCell('Cod.',         'center',   'title', 8);
+                        $table->addCell('Ano',          'center',   'title', 4);
+                        $table->addCell('Localidade',   'center',   'title', 26);
+                        $table->addCell('População',    'center',   'title', 12);
+                        $table->addCell('Nasc.vivos',   'center',   'title', 12);
                         
                         // data rows
                         
@@ -152,34 +161,34 @@
 
                             $style = $colour ? 'datap' : 'datai';
                             $table->addRow();
-                            $table->addCell($data_obj->tb_data_tb_city_id,     'center',    $style, 1);
-                            $table->addCell($data_obj->tb_data_year,           'center',    $style, 1);
-                            $table->addCell($data_obj->tb_city->tb_city_name,  'center',    $style, 2);
-                            $table->addCell($data_obj->tb_data_pop,            'center',    $style, 1);
-                            $table->addCell($data_obj->tb_data_born,           'center',    $style, 2);
+                            $table->addCell($data_obj->tb_data_tb_city_id,     'center',    $style, 8);
+                            $table->addCell($data_obj->tb_data_year,           'center',    $style, 4);
+                            $table->addCell($data_obj->tb_city->tb_city_name,  'center',    $style, 26);
+                            $table->addCell($data_obj->tb_data_pop,            'center',    $style, 12);
+                            $table->addCell($data_obj->tb_data_born,           'center',    $style, 12);
 
                             // SECTION 1 VALUES
 
                             $table->addRow();
-                            $table->addCell('Atenção à gravidez, parto e puerperio', 'center', 'div', 7);
+                            $table->addCell('Atenção à gravidez, parto e puerperio', 'center', 'div', $num_col);
                             $table->addRow();
-                            $table->addCell('Parâmetros populacionais da rede de atenção materno-infantil', 'center', 'sub', 7);
-                            $formula->section_1_A($table, 'value', $style, 6);
-                            
+                            $table->addCell('Parâmetros populacionais da rede de atenção materno-infantil', 'center', 'sub', $num_col);
+                            $formula->section_1_A($table, 'value', $style, $num_col);
+                          
                             $table->addRow();
                             $table->addCell('Parâmetros assistenciais da rede de atenção materno-infantil', 'center', 'sub', $num_col);
                             $table->addRow();
                             $table->addCell('População-alvo: todas as gestantes', 'center', 'sub', $num_col);
-                            $formula->section_1_B($table, 'value', $style, ($num_col - 1));
+                            $formula->section_1_B($table, 'value', $style, ($num_col));
                             
                             $table->addRow();
                             $table->addCell('População-alvo: gestantes de alto risco', 'center', 'sub', $num_col);
-                            $formula->section_1_C($table, 'value', $style, ($num_col - 1));
-
+                            $formula->section_1_C($table, 'value', $style, ($num_col));
+ 
                             $table->addRow();
                             $table->addCell('População-alvo: crianças de 0 a 12 meses', 'center', 'sub', $num_col);
-                            $formula->section_1_D($table, 'value', $style, ($num_col - 1));
-
+                            $formula->section_1_D($table, 'value', $style, ($num_col));
+/* 
                             $table->addRow();
                             $table->addCell('População-alvo: crianças de 12 a 24 meses', 'center', 'sub', $num_col);
                             $formula->section_1_E($table, 'value', $style, ($num_col - 1));
