@@ -29,14 +29,34 @@ class PopulationFormView extends TPage
         $prev_born          = new TEntry('tb_data_born');
         $year               = new TEntry('tb_data_year');
         $tb_data_tb_city_id = new TDBCombo('tb_data_tb_city_id', 'siam', 'tb_city', 'tb_city_id', 'tb_city_name');
+        $hep_vulne          = new TEntry('tb_data_hep_vulne');
+        $hepB_sem           = new TEntry('tb_data_hepB_sem');
+        $hepB_com           = new TEntry('tb_data_hepB_com');
+        $hepC_pop           = new TEntry('tb_data_hepC_pop');
+        $hepC_sem           = new TEntry('tb_data_hepC_sem');
+        $hepC_com           = new TEntry('tb_data_hepC_com');
+        $hans_pop           = new TEntry('tb_data_hans_pop');
+        $hans_pauci         = new TEntry('tb_data_hans_pauci');
+        $hans_multi         = new TEntry('tb_data_hans_multi');
+        $hans_prev          = new TEntry('tb_data_hans_prev');
         $id->setEditable(FALSE);
-        
+
         // add the form fields
         $this->form->addFields( [new TLabel('ID')],    [$id] );
-        $this->form->addFields( [new TLabel('População', 'red')],  [$population] );
-        $this->form->addFields( [new TLabel('Nascidos vivos ano anterior', 'red')],  [$prev_born] );
-        $this->form->addFields( [new TLabel('Ano', 'red')], [$year] );
-        $this->form->addFields( [new TLabel('Região', 'red')], [$tb_data_tb_city_id] );
+        $this->form->addFields( [new TLabel('População', 'blue')],  [$population] );
+        $this->form->addFields( [new TLabel('Nascidos vivos no ano anterior', 'blue')],  [$prev_born] );
+        $this->form->addFields( [new TLabel('Ano', 'blue')], [$year] );
+        $this->form->addFields( [new TLabel('Área', 'blue')], [$tb_data_tb_city_id] );
+        $this->form->addFields( [new TLabel('Pessoas Vulneráveis (Hepatite viral)', 'red')], [$hep_vulne] );
+        $this->form->addFields( [new TLabel('Portadores de Hepatite B crônica sem cirrose', 'red')], [$hepB_sem] );
+        $this->form->addFields( [new TLabel('Portadores de Hepatite B crônica com cirrose', 'red')], [$hepB_com] );
+        $this->form->addFields( [new TLabel('Portadores de Hepatite C', 'red')], [$hepC_pop] );
+        $this->form->addFields( [new TLabel('Portadores de Hepatite C crônica sem cirrose', 'red')], [$hepC_sem] );
+        $this->form->addFields( [new TLabel('Portadores de Hepatite C crônica com cirrose', 'red')], [$hepC_com] );
+        $this->form->addFields( [new TLabel('Casos de Hanseníase', 'red')], [$hans_pop] );
+        $this->form->addFields( [new TLabel('Casos de Hanseníase (Paucibacilares)', 'red')], [$hans_pauci] );
+        $this->form->addFields( [new TLabel('Casos de Hanseníase (Multibacilares)', 'red')], [$hans_multi] );
+        $this->form->addFields( [new TLabel('Casos de Hanseníase (Prevalência)', 'red')], [$hans_prev ] );
         
         $population->addValidation('População', new TRequiredValidator);
         $tb_data_tb_city_id->addValidation('Município', new TRequiredValidator);

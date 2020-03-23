@@ -40,7 +40,7 @@
         // creates the datagrid columns
         $col_id     = new TDataGridColumn('tb_data_id', 'Id', 'right', '10%');
         $col_year   = new TDataGridColumn('tb_data_year', 'Ano', 'center', '30%');
-        $col_city   = new TDataGridColumn('tb_city->tb_city_name', 'Região', 'center', '30%');
+        $col_city   = new TDataGridColumn('tb_city->tb_city_name', 'Área', 'center', '30%');
         $col_pop    = new TDataGridColumn('tb_data_pop', 'População', 'center', '60%');
         $col_born   = new TDataGridColumn('tb_data_born', 'Nascidos vivos', 'center', '30%');
         

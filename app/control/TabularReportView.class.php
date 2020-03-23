@@ -30,7 +30,7 @@
             $output_type  = new TRadioGroup('output_type');
             $city_name->enableSearch();
 
-            $this->form->addFields( [new TLabel('Região')], [$city_name] );
+            $this->form->addFields( [new TLabel('Área')],    [$city_name] );
             $this->form->addFields( [new TLabel('Ano')],     [$year] );
             $this->form->addFields( [new TLabel('Saída')],   [$output_type] );
             
@@ -86,8 +86,7 @@
                 
                 if ($data_objs)
                 {
-                     //$widths = array(80, 40, 190, 120, 190);
-                     $widths = array(80, 40, 180, 90, 110, 60, 60);
+                     $widths = array(80, 40, 180, 90, 110, 60, 60); // use 10
                      $num_col = 7;
 
                     switch ($format)
@@ -205,26 +204,26 @@
                             $table->addCell('Parâmetros de prevalência total e por estrato de risco com relação à Diabetes Mellitus', 'center', 'leg', $num_col);
                             $table->addRow();
                             $table->addCell('RISCO', 'center', 'sub', 3);
-                            $table->addCell('Parâm. de prevalência', 'center', 'sub', 2);
-                            $table->addCell('Parâm. de prevalência', 'center', 'sub', 2);
+                            $table->addCell('Parâmetro de prevalência', 'center', 'sub', 2);
+                            $table->addCell('Parâmetro', 'center', 'sub', 2);
                             $formula->section_2_1_A($table, 'value', $style, 2);
-/*
-                            
-                            /*
-                            $table->addRow();
-                            $table->addCell('Parâmetros para diagnóstico e acompanhamento do Diabetes Mellitus', 'center', 'leg', 5);
-                            $table->addRow();
-                            $table->addCell('Exame/Procedimento', 'left', 'sub', $size);
-                            $table->addCell('Procedimento - sigtap', 'left', 'sub', $size);
-                            $table->addCell('Parâmetro - Extrato de risco', 'left', 'sub', $size);
-                            $table->addRow();
-                            $table->addCell('', 'left', 'sub', $size);
-                            $table->addCell('Baixo', 'left', 'sub', $size);
-                            $table->addCell('Médio', 'left', 'sub', $size);
-                            $table->addCell('Alto', 'left', 'sub', $size);
-                            $table->addCell('Muito Alto', 'left', 'sub', $size);
-                            $formula->section_2_1_B($table, 'value', $style, 2);
 
+                            
+                           
+                            $table->addRow();
+                            $table->addCell('Parâmetros para diagnóstico e acompanhamento do Diabetes Mellitus', 'center', 'leg', 7);
+                            $table->addRow();
+                            $table->addCell('Exame/Procedimento', 'left', 'sub', 3);
+                            $table->addCell('Procedimento - sigtap', 'left', 'sub', 2);
+                            $table->addCell('Extrato de risco', 'left', 'sub', 2);
+                            $table->addRow();
+                            $table->addCell('', 'left', 'sub', 1);
+                            $table->addCell('Baixo', 'left', 'sub', 1);
+                            $table->addCell('Médio', 'left', 'sub', 1);
+                            $table->addCell('Alto', 'left', 'sub', 1);
+                            $table->addCell('Muito Alto', 'left', 'sub', 1);
+                            //$formula->section_2_1_B($table, 'value', $style, 2);
+ /*
                             $table->addRow();
                             $table->addCell('População-alvo: 18 anos e mais', 'center', 'sub', 5);
                             $table->addRow();
