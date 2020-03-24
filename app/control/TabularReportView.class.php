@@ -188,14 +188,14 @@
                             $table->addRow();
                             $table->addCell('População-alvo: crianças de 0 a 12 meses', 'center', 'sub', $num_col);
                             $formula->section_1_D($table, 'value', $style, ($num_col));
-/* 
-                            $table->addRow();
-                            $table->addCell('População-alvo: crianças de 12 a 24 meses', 'center', 'sub', $num_col);
-                            $formula->section_1_E($table, 'value', $style, ($num_col - 1));
 
                             $table->addRow();
+                            $table->addCell('População-alvo: crianças de 12 a 24 meses', 'center', 'sub', $num_col);
+                            $formula->section_1_E($table, 'value', $style, ($num_col));
+ 
+                            $table->addRow();
                             $table->addCell('Leitos', 'center', 'sub', $num_col);
-                            $formula->section_1_F($table, 'value', $style, ($num_col - 1));
+                            $formula->section_1_F($table, 'value', $style, ($num_col));
                           
                             // SECTION 2 VALUES   
 
@@ -203,46 +203,42 @@
                             $table->addCell('Atenção às pessoas com doenças crônicas não transmissíveis', 'center', 'div', $num_col);
                             $table->addRow();
                             $table->addCell('Doenças Crônicas Renocardiovasculares', 'center', 'div', $num_col);
-
                             $table->addRow();
                             $table->addCell('Diabetes Mellitus', 'center', 'sub', $num_col);
                             $table->addRow();
                             $table->addCell('População-alvo: 18 anos e mais', 'center', 'sub', $num_col);
-
                             $table->addRow();
                             $table->addCell('Parâmetros de prevalência total e por estrato de risco com relação à Diabetes Mellitus', 'center', 'leg', $num_col);
                             $table->addRow();
-                            $table->addCell('RISCO', 'center', 'sub', 3);
-                            $table->addCell('Parâmetro de prevalência', 'center', 'sub', 2);
-                            $table->addCell('Parâmetro', 'center', 'sub', 2);
-                            $formula->section_2_1_A($table, 'value', $style, 2);
-
-                            
+                            $table->addCell('RISCO', 'center', 'sub', 12);
+                            $table->addCell('Parâmetro de prevalência', 'center', 'sub', 38);
+                            $table->addCell('Parâmetro', 'center', 'sub', 12);
+                            $formula->section_2_1_A($table, 'value', $style, 6);
                            
                             $table->addRow();
-                            $table->addCell('Parâmetros para diagnóstico e acompanhamento do Diabetes Mellitus', 'center', 'leg', 7);
+                            $table->addCell('Parâmetros para diagnóstico e acompanhamento do Diabetes Mellitus', 'center', 'leg', $num_col);
                             $table->addRow();
-                            $table->addCell('Exame/Procedimento', 'left', 'sub', 3);
-                            $table->addCell('Procedimento - sigtap', 'left', 'sub', 2);
-                            $table->addCell('Extrato de risco', 'left', 'sub', 2);
+                            $table->addCell('Exame/Procedimento', 'left', 'sub', 12);
+                            $table->addCell('Procedimento - sigtap', 'left', 'sub', 26);
+                            $table->addCell('Extrato de risco', 'left', 'sub', 24);
                             $table->addRow();
-                            $table->addCell('', 'left', 'sub', 1);
-                            $table->addCell('Baixo', 'left', 'sub', 1);
-                            $table->addCell('Médio', 'left', 'sub', 1);
-                            $table->addCell('Alto', 'left', 'sub', 1);
-                            $table->addCell('Muito Alto', 'left', 'sub', 1);
-                            //$formula->section_2_1_B($table, 'value', $style, 2);
- /*
-                            $table->addRow();
-                            $table->addCell('População-alvo: 18 anos e mais', 'center', 'sub', 5);
-                            $table->addRow();
-                            $table->addCell('Estimativa de casos de hipertensão', 'center', 'leg', 5);
-                            $table->addRow();
-                            $table->addCell('RISCO', 'center', 'sub', 2);
-                            $table->addCell('Parâmetro de prevalência', 'center', 'sub', 2);
-                            $table->addCell('Parâmetro de prevalência', 'center', 'sub', 1);
-                            $formula->section_2_2_A($table, 'value', $style, 2);
+                            $table->addCell('', 'left', 'sub', 38);
+                            $table->addCell('Baixo', 'left', 'sub', 6);
+                            $table->addCell('Médio', 'left', 'sub', 6);
+                            $table->addCell('Alto', 'left', 'sub', 6);
+                            $table->addCell('Muito Alto', 'left', 'sub', 6);
+                            $formula->section_2_1_B($table, 'value', $style, 6);
 
+                            $table->addRow();
+                            $table->addCell('População-alvo: 18 anos e mais', 'center', 'sub', $num_col);
+                            $table->addRow();
+                            $table->addCell('Estimativa de casos de hipertensão', 'center', 'leg', $num_col);
+                            $table->addRow();
+                            $table->addCell('RISCO', 'center', 'sub', 12);
+                            $table->addCell('Parâmetro de prevalência', 'center', 'sub', 38);
+                            $table->addCell('Parâmetro', 'center', 'sub', 12);
+                            $formula->section_2_2_A($table, 'value', $style, 6);
+ /*
                             $table->addRow();
                             $table->addCell('População-alvo: 18 anos e mais', 'center', 'sub', 5);
                             $table->addRow();
