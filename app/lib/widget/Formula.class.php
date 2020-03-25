@@ -609,21 +609,30 @@
 
           public function section_2_4_B($table, $row_style, $style, $size)
           {
+               $this->aux = $this->pop_var*0.0204*0.673;
                $table->addRow();
-               $table->addCell('Exames em imagem',                                   'left', $row_style, $size*3);
-               $table->addCell('Ultrasonografia de Abdomen Superior (p/ rastreio)',  'left', $style, $size*5 +4);
-               $table->addCell(ceil($this->aux*0.246*0.1),                           'center', $style, $size +4);
+               $table->addCell('Exames em imagem',                                                                 'left', $row_style, $size*2+2);
+               $table->addCell('Ultrasonografia de Abdomen Superior (p/ rastreio)',                                'left', $style, $size*6 +2);
+               $table->addCell(ceil($this->aux*1),                                                                 'center', $style, $size +4);
                $table->addRow();
-               $table->addCell('Exames em imagem',                                   'left', $row_style, $size*3);
-               $table->addCell('Ultrasonografia de Abdomen Superior ()',             'left', $style, $size*5 +4);
-               $table->addCell(ceil($this->aux*0.246*0.1),                           'center', $style, $size +4);
+               $table->addCell('Exames em imagem',                                                                 'left', $row_style, $size*2+2);
+               $table->addCell('Ultrasonografia de Abdomen Superior (contr. de aneurisma 30 a 40mm)',              'left', $style, $size*6 +2);
+               $table->addCell(ceil($this->aux*0.0583*0.3),                                                        'center', $style, $size +4);
                $table->addRow();
-               $table->addCell('Exames em imagem',                                   'left', $row_style, $size*3);
-               $table->addCell('Ecocardiografia transtorácica',                      'left', $style, $size*5 +4);
-               $table->addCell(ceil($this->aux*0.246*0.1),                           'center', $style, $size +4);
+               $table->addCell('Exames em imagem',                                                                 'left', $row_style, $size*2+2);
+               $table->addCell('Ultrasonografia de Abdomen Superior (contr. de aneurisma 40 a 54mm)',              'left', $style, $size*6 +2);
+               $table->addCell(ceil($this->aux*0.019*1),                                                           'center', $style, $size +4);
+               $table->addRow();
+               $table->addCell('Cirurgia',                                                                         'left', $row_style, $size*2+2);
+               $table->addCell('Cirurgia vascular - aneurisma 40 a 54mm que evolui para >54mm',                    'left', $style, $size*6 +2);
+               $table->addCell(ceil($this->aux*0.246*0.1),                                                         'center', $style, $size +4);
+               $table->addRow();
+               $table->addCell('Cirurgia',                                                                         'left', $row_style, $size*2+2);
+               $table->addCell('Cirurgia vascular - aneurisma >54mm',                                              'left', $style, $size*6 +2);
+               $table->addCell(ceil($this->aux*0.0027*0.2),                                                        'center', $style, $size +4);
           }
 
-          public function section_2_5_A($table, $row_style, $sub_style, $style, $size)
+          public function section_2_5_A($table, $row_style, $style, $size)
           {
                $table->addRow();
                $table->addCell('Casos novos AIT - incidência',                       'left', $row_style, $size*5);
@@ -636,8 +645,106 @@
                $table->addCell(ceil($this->pop_var*0.4122*0.00038),                  'center', $style, $size +4);
           }
 
-          public function section_2_5_B($table, $row_style, $sub_style, $style, $size)
+          public function section_2_5_B($table, $row_style, $style, $size)
           {
+               $this->aux = $this->pop_var*0.4122*0.00112;
+
+               $table->addRow();
+               $table->addCell('Exames de patologia clínica',              'left', $row_style, $size*3);
+               $table->addCell('Hemograma',                                'left', $style, $size*5 +2);
+               $table->addCell(ceil($this->aux*1),                         'center', $style, $size*2);
+               $table->addRow();
+               $table->addCell('Exames de patologia clínica',              'left', $row_style, $size*3);
+               $table->addCell('Glicemia',                                 'left', $style, $size*5 +2);
+               $table->addCell(ceil($this->aux*1),                         'center', $style, $size*2);
+               $table->addRow();
+               $table->addCell('Exames de patologia clínica',              'left', $row_style, $size*3);
+               $table->addCell('Dosagem de creatina',                      'left', $style, $size*5 +2);
+               $table->addCell(ceil($this->aux*1),                         'center', $style, $size*2);
+               $table->addRow();
+               $table->addCell('Exames de patologia clínica',              'left', $row_style, $size*3);
+               $table->addCell('Dosagem de tempo de protrombina (RNI)',    'left', $style, $size*5 +2);
+               $table->addCell(ceil($this->aux*1),                         'center', $style, $size*2);
+               $table->addRow();
+               $table->addCell('Exames de patologia clínica',              'left', $row_style, $size*3);
+               $table->addCell('Dosagem de colesterol HDL',                'left', $style, $size*5 +2);
+               $table->addCell(ceil($this->aux*1),                         'center', $style, $size*2);
+               $table->addRow();
+               $table->addCell('Exames de patologia clínica',              'left', $row_style, $size*3);
+               $table->addCell('Dosagem de colesterol LDL',                'left', $style, $size*5 +2);
+               $table->addCell(ceil($this->aux*1),                         'center', $style, $size*2);
+               $table->addRow();
+               $table->addCell('Exames de patologia clínica',              'left', $row_style, $size*3);
+               $table->addCell('Dosagem de triglicerídios',                'left', $style, $size*5 +2);
+               $table->addCell(ceil($this->aux*1),                         'center', $style, $size*2);
+               $table->addRow();
+               $table->addCell('Diagnóstico em cardiologia',               'left', $row_style, $size*3);
+               $table->addCell('Ultrassom de arterias vertebrais',         'left', $style, $size*5 +2);
+               $table->addCell(ceil($this->aux*1),                         'center', $style, $size*2);
+               $table->addRow();
+               $table->addCell('Diagnóstico em cardiologia',               'left', $row_style, $size*3);
+               $table->addCell('Ultrassom de arterias carótidas',          'left', $style, $size*5 +2);
+               $table->addCell(ceil($this->aux*1),                         'center', $style, $size*2);
+               $table->addRow();
+               $table->addCell('Diagnóstico em cardiologia',               'left', $row_style, $size*3);
+               $table->addCell('TC de crânio',                             'left', $style, $size*5 +2);
+               $table->addCell(ceil($this->aux*1),                         'center', $style, $size*2);
+               $table->addRow();
+               $table->addCell('Diagnóstico em cardiologia',               'left', $row_style, $size*3);
+               $table->addCell('Eletrocardiograma de repouso',             'left', $style, $size*5 +2);
+               $table->addCell(ceil($this->aux*1),                         'center', $style, $size*2);
+               $table->addRow();
+               $table->addCell('Diagnóstico em cardiologia',               'left', $row_style, $size*3);
+               $table->addCell('Ecocardiografia',                          'left', $style, $size*5 +2);
+               $table->addCell(ceil($this->aux*0.34),                      'center', $style, $size*2);
+               $table->addRow();
+               $table->addCell('Diagnóstico em cardiologia',               'left', $row_style, $size*3);
+               $table->addCell('Holter',                                   'left', $style, $size*5 +2);
+               $table->addCell(ceil($this->aux*0.34),                      'center', $style, $size*2);
+          }
+
+          public function section_2_6_A($table, $row_style, $style, $size)
+          {
+               $this->aux = $this->pop_var*0.2706*0.00525;
+
+               $table->addRow();
+               $table->addCell('Casos novos de AVE - Incidência',                                        'left', $row_style, $size*3 +2);
+               $table->addCell('0,525% da população com 45 anos e mais',                                 'left', $style, $size*5);
+               $table->addCell(ceil($this->aux),                                                         'center', $style, $size*2);
                
+          }
+
+          public function section_2_6_B($table, $row_style, $style, $size)
+          {
+               $this->aux = $this->pop_var*0.2706*0.00525;
+
+               $table->addRow();
+               $table->addCell('Exame de patologia clínica',               'left', $row_style, $size*3);
+               $table->addCell('Dosagem de creatina',                      'left', $style, $size*5 +2);
+               $table->addCell(ceil($this->aux*1),                         'center', $style, $size*2);
+               $table->addRow();
+               $table->addCell('Exame de patologia clínica',               'left', $row_style, $size*3);
+               $table->addCell('Dosagem de tempo de protrombina (RNI)',    'left', $style, $size*5 +2);
+               $table->addCell(ceil($this->aux*0.15*12),                   'center', $style, $size*2);
+               $table->addRow();
+               $table->addCell('Exame de patologia clínica',               'left', $row_style, $size*3);
+               $table->addCell('Dosagem de colesterol HDL',                'left', $style, $size*5 +2);
+               $table->addCell(ceil($this->aux*1),                         'center', $style, $size*2);
+               $table->addRow();
+               $table->addCell('Exame de patologia clínica',               'left', $row_style, $size*3);
+               $table->addCell('Dosagem de colesterol LDL',                'left', $style, $size*5 +2);
+               $table->addCell(ceil($this->aux*1),                         'center', $style, $size*2);
+               $table->addRow();
+               $table->addCell('Exame de patologia clínica',               'left', $row_style, $size*3);
+               $table->addCell('Dosagem de triglicerídios',                'left', $style, $size*5 +2);
+               $table->addCell(ceil($this->aux*1),                         'center', $style, $size*2);
+               $table->addRow();
+               $table->addCell('Diagnóstico em cardiologia',               'left', $row_style, $size*3);
+               $table->addCell('Ultrassom de arterias vertebrais',         'left', $style, $size*5 +2);
+               $table->addCell(ceil($this->aux*1),                         'center', $style, $size*2);
+               $table->addRow();
+               $table->addCell('Diagnóstico em cardiologia',               'left', $row_style, $size*3);
+               $table->addCell('Ultrassom de arterias carótidas',          'left', $style, $size*5 +2);
+               $table->addCell(ceil($this->aux*1),                         'center', $style, $size*2);
           }
     }

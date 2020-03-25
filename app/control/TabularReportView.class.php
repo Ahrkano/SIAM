@@ -254,7 +254,7 @@
                             $table->addRow();
                             $table->addCell('População-alvo: 55 anos e mais', 'center', 'sub', $num_col);
                             $table->addRow();
-                            $table->addCell('Estimativa de casos para programação da assistência à insuficiência cardíaca.', 'center', 'leg', $num_col);
+                            $table->addCell('Estimativa de casos para programação da assistência à insuficiência cardíaca', 'center', 'leg', $num_col);
                             $table->addRow();
                             $table->addCell('Categoria', 'center', 'sub', 18);
                             $table->addCell('Parâmetro de prevalência', 'center', 'sub', 32);
@@ -300,8 +300,8 @@
                             $table->addRow();
                             $table->addCell('Parâmetros propostos para acompanhamento de pacientes com AAA', 'center', 'leg', $num_col);
                             $table->addRow();
-                            $table->addCell('Exame/Procedimento', 'center', 'sub', 18);
-                            $table->addCell('Procedimento - sigtap', 'center', 'sub', 34);
+                            $table->addCell('Exame/Procedimento', 'center', 'sub', 14);
+                            $table->addCell('Procedimento - sigtap', 'center', 'sub', 38);
                             $table->addCell('Parâmetro', 'center', 'sub', 10);
                             $formula->section_2_4_B($table, 'value', $style, 6);
 
@@ -315,15 +315,36 @@
                             $table->addCell('Categoria', 'center', 'sub', 30);
                             $table->addCell('Parâmetro de prevalência', 'center', 'sub', 22);
                             $table->addCell('Parâmetro', 'center', 'sub', 10);
-                            $formula->section_2_5_A($table, 'value', 'sub', $style, 6);
-/*
+                            $formula->section_2_5_A($table, 'value', $style, 6);
+
                             $table->addRow();
-                            $table->addCell('Parâmetros propostos para acompanhamento de pacientes com AIT/ Necessidade de proced.', 'center', 'leg', 5);
-                            $table->addCell('Exame/Procedimanto', 'center', 'sub', 2);
-                            $table->addCell('Procedimento sigtap', 'center', 'sub', 2);
-                            $table->addCell('Parâmetro', 'center', 'sub', 1);
-                            $formula->section_2_5_B($table, 'value', 'sub', $style, 4);
-                            */
+                            $table->addCell('Parâmetros propostos para acompanhamento de pacientes com AIT/ Necessidade de procedimento', 'center', 'leg', $num_col);
+                            $table->addRow();
+                            $table->addCell('Exame/Procedimanto', 'center', 'sub', 18);
+                            $table->addCell('Procedimento sigtap', 'center', 'sub', 32);
+                            $table->addCell('Parâmetro', 'center', 'sub', 12);
+                            $formula->section_2_5_B($table, 'value', $style, 6);
+
+                            $table->addRow();
+                            $table->addCell('Acidente VAscular Encefálico (AVE)', 'center', 'div', $num_col);
+                            $table->addRow();
+                            $table->addCell('População-alvo: 45 anos ou mais', 'center', 'sub', $num_col);
+                            $table->addRow();
+                            $table->addCell('Estimatimativa de casos para programação da assistência ao AVE', 'center', 'leg', $num_col);
+                            $table->addRow();
+                            $table->addCell('Categoria', 'center', 'sub', 20);
+                            $table->addCell('Parâmetro de prevalência', 'center', 'sub', 30);
+                            $table->addCell('Parâmetro', 'center', 'sub', 12);
+                            $formula->section_2_6_A($table, 'value', $style, 6);
+
+                            $table->addRow();
+                            $table->addCell('Parâmetros propostos para acompanhamento de pacientes com AVE/ Necessidade de procedimento', 'center', 'leg', $num_col);
+                            $table->addRow();
+                            $table->addCell('Categoria', 'center', 'sub', 18);
+                            $table->addCell('Parâmetro de prevalência', 'center', 'sub', 32);
+                            $table->addCell('Parâmetro', 'center', 'sub', 12);
+                            $formula->section_2_6_B($table, 'value', $style, 6);
+  /*                          */
                             $colour = !$colour;
 
                         }
