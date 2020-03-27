@@ -352,9 +352,9 @@
                             $table->addRow();
                             $table->addCell('Estimatimativa de casos para programação da assistência à DAC', 'center', 'leg', $num_col);
                             $table->addRow();
-                            $table->addCell('Categoria', 'center', 'sub', 18);
-                            $table->addCell('Parâmetro de prevalência', 'center', 'sub', 32);
-                            $table->addCell('Parâmetro', 'center', 'sub', 12);
+                            $table->addCell('Categoria', 'center', 'sub', 30);
+                            $table->addCell('Parâmetro de prevalência', 'center', 'sub', 22);
+                            $table->addCell('Parâmetro', 'center', 'sub', 10);
                             $formula->section_2_7_A($table, 'value', $style, 6);
 
                             $table->addRow();
