@@ -326,7 +326,7 @@
                             $formula->section_2_5_B($table, 'value', $style, 6);
 
                             $table->addRow();
-                            $table->addCell('Acidente VAscular Encefálico (AVE)', 'center', 'div', $num_col);
+                            $table->addCell('Acidente Vascular Encefálico (AVE)', 'center', 'div', $num_col);
                             $table->addRow();
                             $table->addCell('População-alvo: 45 anos ou mais', 'center', 'sub', $num_col);
                             $table->addRow();
@@ -344,6 +344,70 @@
                             $table->addCell('Parâmetro de prevalência', 'center', 'sub', 32);
                             $table->addCell('Parâmetro', 'center', 'sub', 12);
                             $formula->section_2_6_B($table, 'value', $style, 6);
+
+                            $table->addRow();
+                            $table->addCell('Doença Arterial Coronariana (DAC)', 'center', 'div', $num_col);
+                            $table->addRow();
+                            $table->addCell('População-alvo: 45 anos ou mais', 'center', 'sub', $num_col);
+                            $table->addRow();
+                            $table->addCell('Estimatimativa de casos para programação da assistência à DAC', 'center', 'leg', $num_col);
+                            $table->addRow();
+                            $table->addCell('Categoria', 'center', 'sub', 18);
+                            $table->addCell('Parâmetro de prevalência', 'center', 'sub', 32);
+                            $table->addCell('Parâmetro', 'center', 'sub', 12);
+                            $formula->section_2_7_A($table, 'value', $style, 6);
+
+                            $table->addRow();
+                            $table->addCell('Parâmetros propostos para acompanhamento de pacientes com DAC (ICO) - primeiro atendimento', 'center', 'leg', $num_col);
+                            $table->addRow();
+                            $table->addCell('Exame/Procedimanto', 'center', 'sub', 18);
+                            $table->addCell('Procedimento sigtap', 'center', 'sub', 32);
+                            $table->addCell('Parâmetro', 'center', 'sub', 12);
+                            $formula->section_2_7_B($table, 'value', $style, 6);
+
+                            $table->addRow();
+                            $table->addCell('Parâmetros propostos para acompanhamento de pacientes com DAC (ICO) - acompanhamento', 'center', 'leg', $num_col);
+                            $table->addRow();
+                            $table->addCell('Exame/Procedimanto', 'center', 'sub', 18);
+                            $table->addCell('Procedimento sigtap', 'center', 'sub', 32);
+                            $table->addCell('Parâmetro', 'center', 'sub', 12);
+                            $formula->section_2_7_C($table, 'value', $style, 6);
+
+                            $table->addRow();
+                            $table->addCell('Doença Renal Cronica (DRC)', 'center', 'div', $num_col);
+                            $table->addRow();
+                            $table->addCell('População-alvo: 20 anos ou mais', 'center', 'sub', $num_col);
+                            $table->addRow();
+                            $table->addCell('Parâmetros propostos para estimar a prevalência de pacientes com DRC', 'center', 'leg', $num_col);
+                            $table->addRow();
+                            $table->addCell('Estratos', 'center', 'sub', 6);
+                            $table->addCell('Descrição simplificada', 'center', 'sub', 29);
+                            $table->addCell('Parâmetro', 'center', 'sub', 21);
+                            $table->addCell('Parâmetro', 'center', 'sub', 6);
+                            $formula->section_2_8_A($table, 'value', $style, 6);
+
+                            $table->addRow();
+                            $table->addCell('Estimatimativa de casos para programação da assistência à paciente em diálise - Estágio 5 da DRC', 'center', 'leg', $num_col);
+                            $table->addRow();
+                            $table->addCell('Categoria', 'center', 'sub', 30);
+                            $table->addCell('Parâmetro', 'center', 'sub', 22);
+                            $table->addCell('Parâmetro', 'center', 'sub', 10);
+                            $formula->section_2_8_B($table, 'value', $style, 6);
+
+                            $table->addRow();
+                            $table->addCell('Parâmetros propostos para acompanhamento de pacientes com DRC - Estágio/Necessidade de proced.', 'center', 'leg', $num_col);
+                            $table->addRow();
+                            $table->addCell('Exam./Proced.',    'center', 'sub', 8);
+                            $table->addCell('Procedimento - sigtap', 'center', 'sub', 39);
+                            $table->addCell('DRC',  'center', 'sub', 3);
+                            $table->addCell('I',    'center', 'sub', 3);
+                            $table->addCell('II',   'center', 'sub', 3);
+                            $table->addCell('III',  'center', 'sub', 3);
+                            $table->addCell('IV',   'center', 'sub', 3);
+                            $formula->section_2_8_C($table, 'value', $style, 6);
+
+
+
   /*                          */
                             $colour = !$colour;
 
