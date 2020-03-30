@@ -1120,5 +1120,83 @@
 
           }
 
+          public function section_2_10_A($table, $row_style, $sub_style, $style, $size)
+          {
+               $this->aux = $this->pop_var*0.4122*0.0085;
+
+               $table->addRow();
+               $table->addCell('Casos novos de DPOC (incidência)',                                  'left', $row_style, $size*4);
+               $table->addCell('0,85% da população de 35 anos e mais',                              'left', $style, $size*5 +2);
+               $table->addCell(ceil($this->aux),                                                    'center', $style, $size);
+               $table->addRow();
+               $table->addCell('RISCO', 'center', $sub_style, 24);
+               $table->addCell('Parâmetro', 'center', $sub_style, 32);
+               $table->addCell('Parâmetro', 'center', $sub_style, 6);
+               $table->addRow();
+               $table->addCell('Grau I (leve)',                                                     'left', $row_style, $size*4);
+               $table->addCell('64% da população alvo com DPOC',                                    'left', $style, $size*5 +2);
+               $table->addCell(ceil($this->aux*0.64),                                               'center', $style, $size);
+               $table->addRow();
+               $table->addCell('Grau II (moderado)',                                                'left', $row_style, $size*4);
+               $table->addCell('29,7% da população alvo com DPOC',                                  'left', $style, $size*5 +2);
+               $table->addCell(ceil($this->aux*0.297),                                              'center', $style, $size);
+               $table->addRow();
+               $table->addCell('Grau III e IV (grave e muito grave)',                               'left', $row_style, $size*4);
+               $table->addCell('6,3% da população alvo com DPOC',                                   'left', $style, $size*5 +2);
+               $table->addCell(ceil($this->aux*0.063),                                              'center', $style, $size);
+               $table->addRow();
+               $table->addCell('Total',                                                             'left', $row_style, $size*4);
+               $table->addCell('0,85% da população com 65 anos e mais',                             'left', $style, $size*5 +2);
+               $table->addCell(ceil($this->aux),                                                    'center', $style, $size);
+          }
+
+          public function section_2_10_B($table, $row_style, $style, $size)
+          {
+               $this->aux = $this->pop_var*0.4122*0.0085;
+
+               $table->addRow();
+               $table->addCell('Exames clínicos na AB',                                             'left', $row_style, $size*5 +2);
+               $table->addCell(ceil($this->aux*1),                                                  'center', $style, $size*2);
+               $table->addCell('',                                                                  'center', $style, $size);
+               $table->addCell('',                                                                  'center', $style, $size);
+               $table->addCell('',                                                                  'center', $style, $size);
+               $table->addRow();
+               $table->addCell('Espirometria/prova de função pulmonar completa* na AB',             'left', $row_style, $size*5 +2);
+               $table->addCell(ceil($this->aux*0.25),                                               'center', $style, $size*2);
+               $table->addCell('',                                                                  'center', $style, $size);
+               $table->addCell('',                                                                  'center', $style, $size);
+               $table->addCell('',                                                                  'center', $style, $size);
+               $table->addRow();
+               $table->addCell('Raio X de tórax em 2 incidencias (PA e perfil)',                    'left', $row_style, $size*5 +2);
+               $table->addCell(ceil($this->aux*1),                                                  'center', $style, $size*2);
+               $table->addCell('',                                                                  'center', $style, $size);
+               $table->addCell('',                                                                  'center', $style, $size);
+               $table->addCell('',                                                                  'center', $style, $size);
+               $table->addRow();
+               $table->addCell('Vacinação Anti-pneumocócica e contra influenza',                    'left', $row_style, $size*5 +2);
+               $table->addCell('',                                                                  'center', $style, $size*2);
+               $table->addCell(ceil($this->aux*0.64*1),                                              'center', $style, $size);
+               $table->addCell(ceil($this->aux*0.297*1),                                            'center', $style, $size);
+               $table->addCell(ceil($this->aux*0.063*1),                                            'center', $style, $size);
+               $table->addRow();
+               $table->addCell('Acompanhamento clínico',                                            'left', $row_style, $size*5 +2);
+               $table->addCell('',                                                                  'center', $style, $size*2);
+               $table->addCell(ceil($this->aux*0.64*1),                                              'center', $style, $size);
+               $table->addCell(ceil($this->aux*0.297*1),                                            'center', $style, $size);
+               $table->addCell(ceil($this->aux*0.063*1),                                            'center', $style, $size);
+               $table->addRow();
+               $table->addCell('Consulta médica em atenção especializada',                          'left', $row_style, $size*5 +2);
+               $table->addCell('',                                                                  'center', $style, $size*2);
+               $table->addCell('',                                                                  'center', $style, $size);
+               $table->addCell(ceil($this->aux*0.297*1),                                            'center', $style, $size);
+               $table->addCell(ceil($this->aux*0.063*1),                                            'center', $style, $size);
+               $table->addRow();
+               $table->addCell('Espirometria/prova de função pulmonar completa*',                   'left', $row_style, $size*5 +2);
+               $table->addCell('',                                                                  'center', $style, $size*2);
+               $table->addCell(ceil($this->aux*0.64*1),                                              'center', $style, $size);
+               $table->addCell(ceil($this->aux*0.297*1),                                            'center', $style, $size);
+               $table->addCell(ceil($this->aux*0.063*1),                                            'center', $style, $size);
+               
+          }
 
     }

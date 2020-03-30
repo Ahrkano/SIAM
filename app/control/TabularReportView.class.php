@@ -426,9 +426,35 @@
                             $table->addCell('Parâmetro', 'center', 'sub', 6);
                             $formula->section_2_9_B($table, 'value', $style, 6);
                             
+                            $table->addRow();
+                            $table->addCell('Doença Pulmonar Obstrutiva Crônica (DPOC)', 'center', 'div', $num_col);
+                            $table->addRow();
+                            $table->addCell('População-alvo: 35 anos e mais', 'center', 'sub', $num_col);
+                            $table->addRow();
+                            $table->addCell('Parâmetros propostos para acompanhamento de pacientes com DPOC - definidos por estratos de estágio', 'center', 'leg', $num_col);
+                            $table->addRow();
+                            $table->addCell('Categoria', 'center', 'sub', 24);
+                            $table->addCell('Parâmetro', 'center', 'sub', 32);
+                            $table->addCell('Parâmetro', 'center', 'sub', 6);
+                            $formula->section_2_10_A($table, 'value', 'sub', $style, 6);
+
+                            $table->addRow();
+                            $table->addCell('Parâmetros propostos para diagnóstico, estadiamento e acompanhamento de pacientes com DPOC', 'center', 'leg', $num_col);
+                            $table->addRow();
+                            $table->addCell('Exame/Procedimentos', 'center', 'sub', 32);
+                            $table->addCell('Diag./Estadiamento', 'center', 'sub', 12);
+                            $table->addCell('I', 'center', 'sub', 6);
+                            $table->addCell('II', 'center', 'sub', 6);
+                            $table->addCell('III e IV', 'center', 'sub', 6); 
+                            $formula->section_2_10_B($table, 'value', $style, 6);
+                            $table->addRow();
+                            $table->addCell('*Prova de função pulmonar completa com broncodilatador', 'center', 'leg', $num_col);
+                              
+
+                            // SECTION 3 VALUES
 
 
-  /*                          */
+
                             $colour = !$colour;
 
                         }
