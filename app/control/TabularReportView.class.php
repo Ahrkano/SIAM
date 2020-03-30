@@ -406,6 +406,26 @@
                             $table->addCell('IV',   'center', 'sub', 3);
                             $formula->section_2_8_C($table, 'value', $style, 6);
 
+                            $table->addRow();
+                            $table->addCell('Doença Arterial Obstrutiva Periférica (DAOP)', 'center', 'div', $num_col);
+                            $table->addRow();
+                            $table->addCell('População-alvo: Homens de 55 a 74 anos e Mulheres de 65 a 74 anos', 'center', 'sub', $num_col);
+                            $table->addRow();
+                            $table->addCell('Estimatimativa de casos para programação da assistência à DAOP', 'center', 'leg', $num_col);
+                            $table->addRow();
+                            $table->addCell('Categoria', 'center', 'sub', 18);
+                            $table->addCell('Parâmetro', 'center', 'sub', 38);
+                            $table->addCell('Parâmetro', 'center', 'sub', 6);
+                            $formula->section_2_9_A($table, 'value', $style, 6);
+
+                            $table->addRow();
+                            $table->addCell('Parâmetros propostos para acompanhamento de pacientes com DAOP/Necessidade de proced.', 'center', 'leg', $num_col);
+                            $table->addRow();
+                            $table->addCell('Categoria', 'center', 'sub', 18);
+                            $table->addCell('Procedimento sigtap', 'center', 'sub', 38);
+                            $table->addCell('Parâmetro', 'center', 'sub', 6);
+                            $formula->section_2_9_B($table, 'value', $style, 6);
+                            
 
 
   /*                          */
