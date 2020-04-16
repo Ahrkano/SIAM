@@ -25,26 +25,35 @@
             
             // create the form fields
             
-            $city_name    = new TDBCombo('tb_data_tb_city_id', 'siam', 'tb_city', 'tb_city_id', 'tb_city_name');
-            $year         = new TEntry('year');
+            $combo_area = new TDBCombo('tb_data_tb_city_id', 'siam', 'tb_city', 'tb_city_id', 'tb_city_name');
+            $combo_year = new TCombo('years');
             $output_type  = new TRadioGroup('output_type');
-            $city_name->enableSearch();
 
-            $this->form->addFields( [new TLabel('Área')],    [$city_name] );
-            $this->form->addFields( [new TLabel('Ano')],     [$year] );
-            $this->form->addFields( [new TLabel('Saída')],   [$output_type] );
+            $temp         = new TEntry('temp');
             
+            // add the fields inside the form
+            $this->form->addFields([new TLabel('Área')],    [$combo_area] );
+            $this->form->addFields([new TLabel('Ano')],     [$combo_year] );
+            $this->form->addFields([new TLabel('Saída')],   [$output_type] );
+
+            $this->form->addFields( [new TLabel('TEMP')],     [$temp] );
+            
+            $combo_area->setChangeAction( new TAction( array($this, 'onAreaChange' )) );
+            
+
             // define field properties
-            $year->setSize( '80%' );
-            $city_name->setSize( '80%' );
+            $combo_year->setSize( '80%' );
+            $combo_area->setSize( '80%' );
             $output_type->setUseButton();
-            $year->setMinLength(1);
+            $temp->setSize( '80%' );
+            $temp->setMinLength(1900);
             $options = ['html' =>'HTML', 'pdf' =>'PDF', 'rtf' =>'RTF', 'xls' =>'XLS'];
             $output_type->addItems($options);
             $output_type->setValue('pdf');
             $output_type->setLayout('horizontal');
             
             $this->form->addAction( 'Gerar dados', new TAction(array($this, 'onGenerate')), 'fa:download blue');
+            
             
             // wrap the page content using vertical box
             $vbox = new TVBox;
@@ -54,6 +63,31 @@
             
             parent::add($vbox);
         }
+
+        public static function onAreaChange($param)
+        {
+            TTransaction::open('siam');
+            $repo = new TRepository('TB_data');
+            $criteria = new TCriteria;
+            
+            if (isset($param['combo_area']))
+            {
+               $criteria->add(new TFilter('tb_data_year', 'IN', $param['combo_area']));
+            }
+            
+            $years = $repo->load($criteria);
+            TTransaction::close();
+            
+            $options = array();
+            foreach ($years as $year)
+            {
+                $options[ $year->tb_data_tb_city_id] = $year->tb_data_year;
+            }
+            
+            TCombo::reload('form_Customer_report', 'years', $options);
+        }
+
+
         /**
          * method onGenerate()
          * Executed whenever the user clicks at the generate button
@@ -62,7 +96,7 @@
         {
             try
             {
-                // open a transaction with database 'samples'
+                // open a transaction with database 'siam'
                 TTransaction::open('siam');
                 
                 // get the form data into
@@ -71,16 +105,11 @@
                 $repository = new TRepository('TB_data');
                 $criteria   = new TCriteria;
 
-                if ($data->year)
+                if ($data->temp)
                 {
-                    $criteria->add(new TFilter('tb_data_year', 'like', $data->year), TExpression::OR_OPERATOR);
+                    $criteria->add(new TFilter('tb_data_year', 'like', $data->temp)); 
                 }
-/*
-                if ($data->city_name)
-                {
-                    $criteria->add(new TFilter('(SELECT tb_city_name from tb_city WHERE tb_city_id=tb_data_tb_city_id)', 'like', "%{$data->city_name}%"), TExpression::OR_OPERATOR);
-                }
-*/
+
                 $data_objs = $repository->load($criteria);
                 $format  = $data->output_type;
                 
@@ -398,12 +427,12 @@
                             $table->addCell('Parâmetros propostos para acompanhamento de pacientes com DRC - Estágio/Necessidade de proced.', 'center', 'leg', $num_col);
                             $table->addRow();
                             $table->addCell('Exam./Proced.',    'center', 'sub', 8);
-                            $table->addCell('Procedimento - sigtap', 'center', 'sub', 39);
-                            $table->addCell('DRC',  'center', 'sub', 3);
-                            $table->addCell('I',    'center', 'sub', 3);
-                            $table->addCell('II',   'center', 'sub', 3);
-                            $table->addCell('III',  'center', 'sub', 3);
-                            $table->addCell('IV',   'center', 'sub', 3);
+                            $table->addCell('Procedimento - sigtap', 'center', 'sub', 29);
+                            $table->addCell('DRC',  'center', 'sub', 5);
+                            $table->addCell('I',    'center', 'sub', 5);
+                            $table->addCell('II',   'center', 'sub', 5);
+                            $table->addCell('III',  'center', 'sub', 5);
+                            $table->addCell('IV',   'center', 'sub', 5);
                             $formula->section_2_8_C($table, 'value', $style, 6);
 
                             $table->addRow();
@@ -494,5 +523,8 @@
             }
         }
 
+        
+
     }
 
+    
