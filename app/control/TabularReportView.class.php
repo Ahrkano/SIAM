@@ -38,8 +38,9 @@
 
             $this->form->addFields( [new TLabel('TEMP')],     [$temp] );
             
-            $combo_area->setChangeAction( new TAction( array($this, 'onAreaChange' )) );
             
+            $combo_area->setChangeAction( new TAction( array($this, 'onAreaChange' )) );
+            $combo_area->enableSearch();
 
             // define field properties
             $combo_year->setSize( '80%' );
@@ -69,20 +70,34 @@
             TTransaction::open('siam');
             $repo = new TRepository('TB_data');
             $criteria = new TCriteria;
-            
-            if (isset($param['combo_area']))
+
+            //var_dump($param['tb_data_tb_city_id']);
+
+            if($param)
             {
-               $criteria->add(new TFilter('tb_data_year', 'IN', $param['combo_area']));
+                //$criteria->add(new TFilter('tb_data_year', 'IN', $param));
+                $criteria->add(new TFilter('tb_data_tb_city_id', '=', $param['tb_data_tb_city_id']));
+/*
+                $mssql =    "SELECT DISTINCT    tb_data_year
+                            FROM                tb_data
+                            WHERE               (tb_data_tb_city_id = '{$param['tb_data_tb_city_id']}')";
+
+                var_dump($mssql);
+*/
             }
             
             $years = $repo->load($criteria);
             TTransaction::close();
+
+            var_dump($years);
             
             $options = array();
+
             foreach ($years as $year)
             {
                 $options[ $year->tb_data_tb_city_id] = $year->tb_data_year;
             }
+            
             
             TCombo::reload('form_Customer_report', 'years', $options);
         }
@@ -101,15 +116,24 @@
                 
                 // get the form data into
                 $data = $this->form->getData();
+                var_dump($data);
+                
                 
                 $repository = new TRepository('TB_data');
                 $criteria   = new TCriteria;
+                
+                
 
-                if ($data->temp)
+                if ($data->years)
+                {
+                    $criteria->add(new TFilter( '(SELECT tb_data_year from tb_data WHERE tb_data_tb_city_id=years)' , 'like', $data->temp)); 
+                }
+                /*
+                 if (!empty($data->combo_area))
                 {
                     $criteria->add(new TFilter('tb_data_year', 'like', $data->temp)); 
-                }
-
+                 }
+                */
                 $data_objs = $repository->load($criteria);
                 $format  = $data->output_type;
                 
