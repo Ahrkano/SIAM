@@ -25,22 +25,23 @@
             
             // create the form fields
             
-            $combo_area = new TDBCombo('tb_data_tb_city_id', 'siam', 'tb_city', 'tb_city_id', 'tb_city_name');
-            $combo_year = new TCombo('years');
+            $combo_area   = new TDBCombo('tb_data_tb_city_id', 'siam', 'tb_city', 'tb_city_id', 'tb_city_name');
+            $combo_year   = new TCombo('years');
             $output_type  = new TRadioGroup('output_type');
 
+            //variavel que guarda o ano da consulta
             $temp         = new TEntry('temp');
             
             // add the fields inside the form
             $this->form->addFields([new TLabel('Área')],    [$combo_area] );
             $this->form->addFields([new TLabel('Ano')],     [$combo_year] );
             $this->form->addFields([new TLabel('Saída')],   [$output_type] );
-
-            $this->form->addFields( [new TLabel('TEMP')],     [$temp] );
+            $this->form->addFields([new TLabel('TEMP')],    [$temp] );
+            TQuickForm::hideField('form_Customer_report', 'temp'); 
             
             
             $combo_area->setChangeAction( new TAction( array($this, 'onAreaChange' )) );
-            $combo_area->enableSearch();
+            //$combo_area->enableSearch();
 
             // define field properties
             $combo_year->setSize( '80%' );
@@ -54,8 +55,7 @@
             $output_type->setLayout('horizontal');
             
             $this->form->addAction( 'Gerar dados', new TAction(array($this, 'onGenerate')), 'fa:download blue');
-            
-            
+                
             // wrap the page content using vertical box
             $vbox = new TVBox;
             $vbox->style = 'width: 100%';
@@ -71,35 +71,35 @@
             $repo = new TRepository('TB_data');
             $criteria = new TCriteria;
 
-            //var_dump($param['tb_data_tb_city_id']);
-
             if($param)
             {
-                //$criteria->add(new TFilter('tb_data_year', 'IN', $param));
                 $criteria->add(new TFilter('tb_data_tb_city_id', '=', $param['tb_data_tb_city_id']));
-/*
-                $mssql =    "SELECT DISTINCT    tb_data_year
+
+           /*     $mssql =    "SELECT DISTINCT    tb_data_year
                             FROM                tb_data
                             WHERE               (tb_data_tb_city_id = '{$param['tb_data_tb_city_id']}')";
 
                 var_dump($mssql);
-*/
+            */
             }
-            
+
             $years = $repo->load($criteria);
             TTransaction::close();
 
-            var_dump($years);
-            
             $options = array();
 
             foreach ($years as $year)
             {
                 $options[ $year->tb_data_tb_city_id] = $year->tb_data_year;
             }
-            
-            
+
+            $obj = new stdclass();
+            $obj->temp = $year->tb_data_year;
+            TForm::sendData('form_Customer_report', $obj, FALSE, FALSE);            
             TCombo::reload('form_Customer_report', 'years', $options);
+            
+
+            
         }
 
 
@@ -116,24 +116,19 @@
                 
                 // get the form data into
                 $data = $this->form->getData();
+
+                echo (" funcao ongenerate ");
                 var_dump($data);
                 
                 
                 $repository = new TRepository('TB_data');
                 $criteria   = new TCriteria;
-                
-                
 
-                if ($data->years)
+                if ($data)
                 {
-                    $criteria->add(new TFilter( '(SELECT tb_data_year from tb_data WHERE tb_data_tb_city_id=years)' , 'like', $data->temp)); 
+                    $criteria->add(new TFilter( 'tb_data_year'  , 'like', $data->temp)); 
                 }
-                /*
-                 if (!empty($data->combo_area))
-                {
-                    $criteria->add(new TFilter('tb_data_year', 'like', $data->temp)); 
-                 }
-                */
+
                 $data_objs = $repository->load($criteria);
                 $format  = $data->output_type;
                 
@@ -147,9 +142,6 @@
                                         10,10,10,10,10,10,10,10,10,10,
                                         10,10   );
                     $num_col = 62;
-
-                    // tam (80, 40, 180, 90, 110, 60, 60)
-
 
                     switch ($format)
                     {
