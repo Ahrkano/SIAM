@@ -21,6 +21,16 @@ class TB_data extends TRecord
         parent::addAttribute('tb_data_year');
         parent::addAttribute('tb_data_pop');
         parent::addAttribute('tb_data_born');
+        parent::addAttribute('tb_data_hep_vulne');
+        parent::addAttribute('tb_data_hepB_sem');
+        parent::addAttribute('tb_data_hepB_com');
+        parent::addAttribute('tb_data_hepC_pop');
+        parent::addAttribute('tb_data_hepC_sem');
+        parent::addAttribute('tb_data_hepC_com');
+        parent::addAttribute('tb_data_hans_pop');
+        parent::addAttribute('tb_data_hans_pauci');
+        parent::addAttribute('tb_data_hans_multi');
+        parent::addAttribute('tb_data_hans_prev');
     }
     
     /**
