@@ -126,7 +126,10 @@
 
                 if ($data)
                 {
-                    $criteria->add(new TFilter( 'tb_data_year'  , 'like', $data->temp)); 
+                    $criteria->add(new TFilter( 'tb_data_tb_city_id'  , 'like', $data->tb_data_tb_city_id), TExpression::AND_OPERATOR); 
+                    $criteria->add(new TFilter( 'tb_data_year'  , 'like', $data->temp), TExpression::AND_OPERATOR);
+                    
+                    var_dump($data->tb_data_tb_city_id);
                 }
 
                 $data_objs = $repository->load($criteria);
