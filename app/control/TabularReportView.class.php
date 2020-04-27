@@ -117,9 +117,7 @@
                 // get the form data into
                 $data = $this->form->getData();
 
-                echo (" funcao ongenerate ");
-                var_dump($data);
-                
+                //var_dump($data);
                 
                 $repository = new TRepository('TB_data');
                 $criteria   = new TCriteria;
@@ -129,7 +127,7 @@
                     $criteria->add(new TFilter( 'tb_data_tb_city_id'  , 'like', $data->tb_data_tb_city_id), TExpression::AND_OPERATOR); 
                     $criteria->add(new TFilter( 'tb_data_year'  , 'like', $data->temp), TExpression::AND_OPERATOR);
                     
-                    var_dump($data->tb_data_tb_city_id);
+                    //var_dump($data->tb_data_tb_city_id);
                 }
 
                 $data_objs = $repository->load($criteria);
@@ -501,6 +499,14 @@
 
                             // SECTION 3 VALUES
 
+                            $table->addRow();
+                            $table->addCell('HIV / AIDS em adulto', 'center', 'div', $num_col);
+                            $table->addRow();
+                            $table->addCell('População de 15 anos a 49 anos com HIV', 'center', 'sub', $num_col);
+                            $table->addRow();
+                            $table->addCell('Populações alvo', 'center', 'sub', 52);
+                            $table->addCell('Prevalência', 'center', 'sub', 10);
+                            $formula->section_3_1_A($table, 'value', 'sub', $style, 6);
 
 
                             $colour = !$colour;

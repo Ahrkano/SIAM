@@ -1199,4 +1199,20 @@
                
           }
 
+          public function section_3_1_A($table, $row_style, $sub_style, $style, $size)
+          {
+               $this->aux = 
+               (
+                    $this->pop_var*0.030 + $this->pop_var*0.033 + $this->pop_var*0.035 + $this->pop_var*0.040 +
+                    $this->pop_var*0.044 + $this->pop_var*0.045 + $this->pop_var*0.045 +
+                    $this->pop_var*0.032 + $this->pop_var*0.035 + $this->pop_var*0.037 + $this->pop_var*0.042 + 
+                    $this->pop_var*0.045 + $this->pop_var*0.045 + $this->pop_var*0.044
+               ) * 0.005;
+
+               $table->addRow();
+               $table->addCell('Prevalência de 0,5% da população de 15 a 45 anos com diag. de HIV', 'left', $row_style, $size*8 +4);
+               $table->addCell(ceil($this->aux),                                                    'center', $style, $size +4);
+               $table->addRow();
+          }
+
     }

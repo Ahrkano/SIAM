@@ -8230,7 +8230,8 @@ body.theme-purple > section > aside.sidebar > div.user-info
 
 body.theme-red > section > aside.sidebar > div.user-info
 {
-    background: repeating-linear-gradient(0, rgba(168, 168, 168, 0.24) 0px, rgba(168, 168, 168, 0.24) 9px,rgba(242, 242, 242, 0.24) 9px, rgba(242, 242, 242, 0.24) 18px),repeating-linear-gradient(90deg, rgba(237, 237, 237, 0.09) 0px, rgba(237, 237, 237, 0.09) 10px,rgba(73, 73, 73, 0.09) 10px, rgba(73, 73, 73, 0.09) 20px),linear-gradient(90deg, rgb(181, 36, 36),rgb(241, 112, 112)) !important;
+    /*background: repeating-linear-gradient(0, rgba(168, 168, 168, 0.24) 0px, rgba(168, 168, 168, 0.24) 9px,rgba(242, 242, 242, 0.24) 9px, rgba(242, 242, 242, 0.24) 18px),repeating-linear-gradient(90deg, rgba(237, 237, 237, 0.09) 0px, rgba(237, 237, 237, 0.09) 10px,rgba(73, 73, 73, 0.09) 10px, rgba(73, 73, 73, 0.09) 20px),linear-gradient(90deg, rgb(181, 36, 36),rgb(241, 112, 112)) !important;
+    */background: linear-gradient(#f44336, #9198e5);
 }
 
 body.theme-teal > section > aside.sidebar > div.user-info
