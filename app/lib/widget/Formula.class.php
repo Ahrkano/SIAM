@@ -1210,9 +1210,28 @@
                ) * 0.005;
 
                $table->addRow();
-               $table->addCell('Prevalência de 0,5% da população de 15 a 45 anos com diag. de HIV', 'left', $row_style, $size*8 +4);
-               $table->addCell(ceil($this->aux),                                                    'center', $style, $size +4);
+               $table->addCell('Prevalência de 0,5% da população de 15 a 45 anos com diag. de HIV',                               'left', $row_style, $size*8 +4);
+               $table->addCell(ceil($this->aux),                                                                                  'center', $style, $size +4);
                $table->addRow();
+               $table->addCell('AÇÕES: Acompanhamento - abordagem inicial',                                                       'center', $sub_style, $size*10 +2);
+               $table->addRow();
+               $table->addCell('Níveis de atenção : AB, AAE',                                                                     'center', $sub_style, $size*10 +2);
+               $table->addRow();
+               $table->addCell('Procedimento',                                                                                   'center', $sub_style, $size+2);
+               $table->addCell('Critérios e/ou parâmetros propostos',                                                             'center', $sub_style, $size*7 +2);
+               $table->addCell('Prevalência',                                                                                     'center', $sub_style, $size+4);
+               $table->addRow();
+               $table->addCell('Acolhimento',                                                                                     'left', $row_style, $size+2);
+               $table->addCell('Pacientes estáveis consulta médica/caso de 6/6 meses, se não, reduzir intervalo das consultas' ,  'left', $row_style, $size*7 +2);
+               $table->addCell(ceil($this->aux*2) ,                                                                               'center', $style, $size +4);
+               $table->addRow();
+               $table->addCell('Exame',                                                                                           'left', $row_style, $size+2);
+               $table->addCell('Hemograma completo - 01 exame/caso/ano' ,                                                         'left', $row_style, $size*7 +2);
+               $table->addCell(ceil($this->aux*1) ,                                                                               'center', $style, $size +4);
+
+               
+               
+               //$table->addCell('Consulta médica - início do tratamento e sequenciamento realizado na AAE. *' , 'center', $sub_style);
           }
 
     }
