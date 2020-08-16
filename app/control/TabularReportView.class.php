@@ -10,7 +10,7 @@
     class TabularReportView extends TPage
     {
         private $form; // form
-        
+
         /**
          * Class constructor
          * Creates the page and the registration form
@@ -18,28 +18,32 @@
         function __construct()
         {
             parent::__construct();
-            
+
             // creates the form
             $this->form = new BootstrapFormBuilder('form_Customer_report');
             $this->form->setFormTitle('Resultados Ambulatoriais');
-            
+
             // create the form fields
-            
-            $combo_area   = new TDBCombo('tb_data_tb_city_id', 'siam', 'tb_city', 'tb_city_id', 'tb_city_name');
-            $combo_year   = new TCombo('years');
+            $filter = new TCriteria;
+            $filter->add(new TFilter('tb_data_id', '<', '0'));
+
+            $combo_area   = new TDBCombo('tb_data_tb_city_id', 'siam', 'tb_city', 'tb_city_id', 'tb_city_name', 'tb_city_id');
+            $combo_year   = new TDBCombo('tb_data_year', 'siam', 'tb_data', 'tb_data_id', 'tb_data_year', 'tb_data_year', $filter);
+            //$combo_area->enableSearch();
+            //$combo_year   = new TCombo('years');
             $output_type  = new TRadioGroup('output_type');
 
             //variavel que guarda o ano da consulta
             $temp         = new TEntry('temp');
-            
+
             // add the fields inside the form
             $this->form->addFields([new TLabel('Área')],    [$combo_area] );
             $this->form->addFields([new TLabel('Ano')],     [$combo_year] );
             $this->form->addFields([new TLabel('Saída')],   [$output_type] );
             $this->form->addFields([new TLabel('TEMP')],    [$temp] );
-            TQuickForm::hideField('form_Customer_report', 'temp'); 
-            
-            
+            TQuickForm::hideField('form_Customer_report', 'temp');
+
+
             $combo_area->setChangeAction( new TAction( array($this, 'onAreaChange' )) );
             //$combo_area->enableSearch();
 
@@ -49,59 +53,81 @@
             $output_type->setUseButton();
             $temp->setSize( '80%' );
             $temp->setMinLength(1900);
-            $options = ['html' =>'HTML', 'pdf' =>'PDF', 'rtf' =>'RTF', 'xls' =>'XLS'];
+            $options = ['pdf' =>'PDF', 'html' =>'HTML', 'xls' =>'XLS'];
             $output_type->addItems($options);
             $output_type->setValue('pdf');
             $output_type->setLayout('horizontal');
-            
+
             $this->form->addAction( 'Gerar dados', new TAction(array($this, 'onGenerate')), 'fa:download blue');
-                
+
             // wrap the page content using vertical box
             $vbox = new TVBox;
             $vbox->style = 'width: 100%';
             $vbox->add(new TXMLBreadCrumb('menu.xml', __CLASS__));
             $vbox->add($this->form);
-            
+
             parent::add($vbox);
+        }
+
+
+        public function fireEvents( $object )
+        {
+            $obj              = new stdClass;
+            $obj->$combo_area    = $object->$combo_area;
+            $obj->$combo_year    = $object->$combo_year;
+            TForm::sendData('form_Customer_report', $obj);
+        }
+
+        public function onEdit( $param )
+        {
+            try
+            {
+                if (isset($param['key']))
+                {
+                    $key = $param['key'];  // get the parameter $key
+                    TTransaction::open('siam'); // open a transaction
+                    $object = new Test($key); // instantiates the Active Record
+                    $this->form->setData($object); // fill the form
+                    TTransaction::close(); // close the transaction
+
+                    $this->fireEvents( $object );
+                }
+                else
+                {
+                    $this->form->clear();
+                }
+            }
+            catch (Exception $e) // in case of exception
+            {
+                new TMessage('error', $e->getMessage()); // shows the exception error message
+                TTransaction::rollback(); // undo all pending operations
+            }
         }
 
         public static function onAreaChange($param)
         {
-            TTransaction::open('siam');
-            $repo = new TRepository('TB_data');
-            $criteria = new TCriteria;
-
-            if($param)
+            try
             {
-                $criteria->add(new TFilter('tb_data_tb_city_id', '=', $param['tb_data_tb_city_id']));
+                TTransaction::open('siam');
+                if (!empty($param['tb_data_tb_city_id']))
+                {
+                    $criteria = TCriteria::create( ['tb_data_tb_city_id' => $param['tb_data_tb_city_id'] ] );
 
-           /*     $mssql =    "SELECT DISTINCT    tb_data_year
-                            FROM                tb_data
-                            WHERE               (tb_data_tb_city_id = '{$param['tb_data_tb_city_id']}')";
+                    // formname, field, database, model, key, value, ordercolumn = NULL, criteria = NULL, startEmpty = FALSE
+                    TDBCombo::reloadFromModel('form_Customer_report', 'tb_data_year', 'siam', 'tb_data', 'tb_data_id', 'tb_data_year', 'tb_data_year', $criteria);
+                }
+                else
+                {
+                    TCombo::clearField('form_Customer_report', 'tb_data_year');
+                }
 
-                var_dump($mssql);
-            */
+                TTransaction::close();
             }
-
-            $years = $repo->load($criteria);
-            TTransaction::close();
-
-            $options = array();
-
-            foreach ($years as $year)
+            catch (Exception $e)
             {
-                $options[ $year->tb_data_tb_city_id] = $year->tb_data_year;
+                new TMessage('error', $e->getMessage());
             }
-
-            $obj = new stdclass();
-            $obj->temp = $year->tb_data_year;
-            TForm::sendData('form_Customer_report', $obj, FALSE, FALSE);            
-            TCombo::reload('form_Customer_report', 'years', $options);
-            
-
-            
         }
-
 
         /**
          * method onGenerate()
@@ -113,26 +139,28 @@
             {
                 // open a transaction with database 'siam'
                 TTransaction::open('siam');
-                
+
                 // get the form data into
                 $data = $this->form->getData();
 
                 //var_dump($data);
-                
+
                 $repository = new TRepository('TB_data');
                 $criteria   = new TCriteria;
 
                 if ($data)
                 {
-                    $criteria->add(new TFilter( 'tb_data_tb_city_id'  , 'like', $data->tb_data_tb_city_id), TExpression::AND_OPERATOR); 
-                    $criteria->add(new TFilter( 'tb_data_year'  , 'like', $data->temp), TExpression::AND_OPERATOR);
-                    
-                    //var_dump($data->tb_data_tb_city_id);
+                    //var_dump($data);
+                    $object = TB_data::find( $data->tb_data_year );
+                    //var_dump($object->tb_data_year);
+
+                    $criteria->add(new TFilter( 'tb_data_tb_city_id'  , 'like', $data->tb_data_tb_city_id), TExpression::AND_OPERATOR);
+                    $criteria->add(new TFilter( 'tb_data_year'  , 'like', $object->tb_data_year), TExpression::AND_OPERATOR);
                 }
 
                 $data_objs = $repository->load($criteria);
                 $format  = $data->output_type;
-                
+
                 if ($data_objs)
                 {
                     $widths = array(    10,10,10,10,10,10,10,10,10,10,
@@ -159,7 +187,7 @@
                             $table   = new TTableWriterXLS($widths);
                             break;
                     }
-                    
+
                     if (!empty($table))
                     {
                          // create the document styles
@@ -180,13 +208,13 @@
                             $table->addCell('Resultados Ambulatoriais', 'center', 'header', 62);
                             $table->addRow();
                         });
-                        
-        
+
+
                         $table->setFooterCallback( function($table) {
                             $table->addRow();
                             $table->addCell(date('Y-m-d h:i:s'), 'center', 'footer', 62);
                         });
-                        
+
                         // controls the background filling
                         $colour= FALSE;
 
@@ -197,9 +225,9 @@
                         $table->addCell('Localidade',   'center',   'title', 26);
                         $table->addCell('População',    'center',   'title', 12);
                         $table->addCell('Nasc.vivos',   'center',   'title', 12);
-                        
+
                         // data rows
-                        
+
                         foreach ($data_objs as $data_obj)
                         {
                             // load params
@@ -220,17 +248,17 @@
                             $table->addRow();
                             $table->addCell('Parâmetros populacionais da rede de atenção materno-infantil', 'center', 'sub', $num_col);
                             $formula->section_1_A($table, 'value', $style, $num_col);
-                          
+
                             $table->addRow();
                             $table->addCell('Parâmetros assistenciais da rede de atenção materno-infantil', 'center', 'sub', $num_col);
                             $table->addRow();
                             $table->addCell('População-alvo: todas as gestantes', 'center', 'sub', $num_col);
                             $formula->section_1_B($table, 'value', $style, ($num_col));
-                            
+
                             $table->addRow();
                             $table->addCell('População-alvo: gestantes de alto risco', 'center', 'sub', $num_col);
                             $formula->section_1_C($table, 'value', $style, ($num_col));
- 
+
                             $table->addRow();
                             $table->addCell('População-alvo: crianças de 0 a 12 meses', 'center', 'sub', $num_col);
                             $formula->section_1_D($table, 'value', $style, ($num_col));
@@ -238,12 +266,12 @@
                             $table->addRow();
                             $table->addCell('População-alvo: crianças de 12 a 24 meses', 'center', 'sub', $num_col);
                             $formula->section_1_E($table, 'value', $style, ($num_col));
- 
+
                             $table->addRow();
                             $table->addCell('Leitos', 'center', 'sub', $num_col);
                             $formula->section_1_F($table, 'value', $style, ($num_col));
-                          
-                            // SECTION 2 VALUES   
+
+                            // SECTION 2 VALUES
 
                             $table->addRow();
                             $table->addCell('Atenção às pessoas com doenças crônicas não transmissíveis', 'center', 'div', $num_col);
@@ -260,7 +288,7 @@
                             $table->addCell('Parâmetro de prevalência', 'center', 'sub', 38);
                             $table->addCell('Parâmetro', 'center', 'sub', 12);
                             $formula->section_2_1_A($table, 'value', $style, 6);
-                           
+
                             $table->addRow();
                             $table->addCell('Parâmetros para diagnóstico e acompanhamento do Diabetes Mellitus', 'center', 'leg', $num_col);
                             $table->addRow();
@@ -284,7 +312,7 @@
                             $table->addCell('Parâmetro de prevalência', 'center', 'sub', 38);
                             $table->addCell('Parâmetro', 'center', 'sub', 12);
                             $formula->section_2_2_A($table, 'value', $style, 6);
- 
+
                             $table->addRow();
                             $table->addCell('População-alvo: 18 anos e mais', 'center', 'sub', $num_col);
                             $table->addRow();
@@ -471,7 +499,7 @@
                             $table->addCell('Procedimento sigtap', 'center', 'sub', 38);
                             $table->addCell('Parâmetro', 'center', 'sub', 6);
                             $formula->section_2_9_B($table, 'value', $style, 6);
-                            
+
                             $table->addRow();
                             $table->addCell('Doença Pulmonar Obstrutiva Crônica (DPOC)', 'center', 'div', $num_col);
                             $table->addRow();
@@ -491,11 +519,11 @@
                             $table->addCell('Diag./Estadiamento', 'center', 'sub', 12);
                             $table->addCell('I', 'center', 'sub', 6);
                             $table->addCell('II', 'center', 'sub', 6);
-                            $table->addCell('III e IV', 'center', 'sub', 6); 
+                            $table->addCell('III e IV', 'center', 'sub', 6);
                             $formula->section_2_10_B($table, 'value', $style, 6);
                             $table->addRow();
                             $table->addCell('*Prova de função pulmonar completa com broncodilatador', 'center', 'leg', $num_col);
-                              
+
 
                             // SECTION 3 VALUES
 
@@ -514,9 +542,9 @@
                             $colour = !$colour;
 
                         }
-                        
+
                         $output = "app/output/tabular.{$format}";
-                        
+
                         // stores the file
                         if (!file_exists($output) OR is_writable($output))
                         {
@@ -527,7 +555,7 @@
                         {
                             throw new Exception(_t('Permission denied') . ': ' . $output);
                         }
-                        
+
                         // shows the success message
                         new TMessage('info', 'Report generated. Please, enable popups in the browser.');
                     }
@@ -536,10 +564,10 @@
                 {
                     new TMessage('error', 'No records found');
                 }
-        
+
                 // fill the form with the active record data
                 $this->form->setData($data);
-                
+
                 // close the transaction
                 TTransaction::close();
             }
@@ -550,8 +578,6 @@
             }
         }
 
-        
+
 
     }
-
-    
