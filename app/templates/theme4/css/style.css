@@ -2519,7 +2519,7 @@ section.content {
 .panel .btn-primary:hover,
 .panel .btn-primary:active,
 .panel .btn-primary:focus {
-  background-color: #1f91f3 !important; }
+  background-color: #f44336 !important; }
 
 /* Bootstrap Tags Input ======================== */
 .bootstrap-tagsinput {
@@ -8472,4 +8472,3 @@ body.theme-yellow .dtp div.dtp-date, body.theme-yellow .dtp div.dtp-time {
 body.theme-yellow .dtp table.dtp-picker-days tr > td > a.selected {
     background: #b0a90b !important;
 }
-
