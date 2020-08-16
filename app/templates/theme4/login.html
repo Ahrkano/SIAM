@@ -9,10 +9,10 @@
     <link rel="apple-touch-icon" sizes="180x180" href="app/images/icon.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    
+
     {LIBRARIES}
     {HEAD}
-    
+
     <link href="app/templates/{template}/plugins/node-waves/waves.css" rel="stylesheet" />
     <link href="app/templates/{template}/plugins/animate-css/animate.css" rel="stylesheet" />
     <link href="app/templates/{template}/css/style.css" rel="stylesheet">
@@ -43,34 +43,40 @@
             </div>
         </div>
         <!-- #END# Page Loader -->
-        
+
         <nav class="bg-red main-header navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0; text-align:center; position:relative">
             <div class="navbar-header" style="display: inline-block;float:none; width:100%;">
                 <span class="navbar-brand" style="color:white">Sistema de Informação Ambulatorial e Hospitalar</san>
             </div>
             <!-- /.navbar-header -->
         </nav>
-        
+
         <div id="wrapper" style="width:90%;margin:auto;margin-top:10px">
             <!-- Navigation -->
-    
+
             <div id="adianti_div_content"></div>
             <div id="adianti_online_content"></div>
             <div id="adianti_online_content2"></div>
-            
+
         </div>
+  <!--
         <div style="text-align:center">
-            <!--[CREATE-ACCOUNT]--> <a href="index.php?class=SystemRegistrationForm"><i class="fa fa-user-plus green" aria-hidden="true"></i> _t{Create account}</a> <!--[/CREATE-ACCOUNT]-->
+            CREATE PASSWORD
+            <a href="index.php?class=SystemRegistrationForm"><i class="fa fa-user-plus green" aria-hidden="true"></i> _t{Create account}</a>
             &nbsp;&nbsp;
-            <!--[RESET-PASSWORD]--> <a href="index.php?class=SystemRequestPasswordResetForm"><i class="fa fa-eraser orange" aria-hidden="true"></i> _t{Reset password}</a> <!--[/RESET-PASSWORD]-->
+            RESET PASSWORD
+            <a href="index.php?class=SystemRequestPasswordResetForm"><i class="fa fa-eraser orange" aria-hidden="true"></i> _t{Reset password}</a>
         </div>
-        
+-->
+
+<!--
+        Check Modules
         <a class="little-float-button bg-orange" title="PHP Modules" href="index.php?class=SystemModulesCheckView" style="pointer-events: auto;">
             <i class="fa fa-cog internal-float-button"></i>
         </a>
-        
+-->
         <!-- /#wrapper -->
-        
+
         <script src="app/templates/{template}/js/admin-login.js"></script>
     </body>
 </html>

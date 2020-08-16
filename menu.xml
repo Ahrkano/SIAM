@@ -116,7 +116,7 @@
       </menuitem>
     </menu>
   </menuitem>
-  <menuitem label="Logout">
+  <menuitem label="Sair">
     <action>LoginForm#method=onLogout#static=1</action>
     <icon>fas:sign-out-alt fa-fw</icon>
   </menuitem>

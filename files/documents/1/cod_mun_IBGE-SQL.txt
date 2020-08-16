@@ -1,0 +1,336 @@
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240000','RN');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240010','Acari');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240020','Açu');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240030','Afonso Bezerra');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240040','Água Nova');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240050','Alexandria');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240060','Almino Afonso');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240070','Alto do Rodrigues');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240080','Angicos');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240090','Antônio Martins');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240100','Apodi');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240110','Areia Branca');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240120','Arês');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240130','Augusto Severo');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240140','Baía Formosa');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240145','Baraúna');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240150','Barcelona');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240160','Bento Fernandes');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240165','Bodó');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240170','Bom Jesus');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240180','Brejinho');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240185','Caiçara do Norte');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240190','Caiçara do Rio do Vento');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240200','Caicó');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240210','Campo Redondo');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240220','Canguaretama');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240230','Caraúbas');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240240','Carnaúba Dos Dantas');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240250','Carnaubais');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240260','Ceará-mirim');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240270','Cerro Corá');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240280','Coronel Ezequiel');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240290','Coronel João Pessoa');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240300','Cruzeta');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240310','Currais Novos');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240320','Doutor Severiano');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240330','Parnamirim');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240340','Encanto');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240350','Equador');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240360','Espírito Santo');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240370','Extremoz');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240375','Felipe Guerra');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240380','Fernando Pedroza');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240390','Florânia');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240400','Francisco Dantas');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240410','Frutuoso Gomes');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240420','Galinhos');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240430','Goianinha');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240440','Governador Dix-sept Rosado');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240450','Grossos');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240460','Guamaré');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240470','Ielmo Marinho');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240480','Ipanguaçu');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240485','Ipueira');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240490','Itajá');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240500','Itaú');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240510','Jaçanã');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240520','Jandaíra');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240530','Janduís');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240540','Januário Cicco');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240550','Japi');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240560','Jardim de Angicos');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240570','Jardim de Piranhas');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240580','Jardim do Seridó');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240590','João Câmara');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240600','João Dias');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240610','José da Penha');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240615','Jucurutu');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240620','Jundiá');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240630','Lagoa D´anta');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240640','Lagoa de Pedras');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240650','Lagoa de Velhos');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240660','Lagoa Nova');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240670','Lagoa Salgada');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240680','Lajes');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240690','Lajes Pintadas');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240700','Lucrécia');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240710','Luís Gomes');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240720','Macaíba');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240725','Macau');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240730','Major Sales');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240740','Marcelino Vieira');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240750','Martins');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240760','Maxaranguape');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240770','Messias Targino');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240780','Montanhas');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240790','Monte Alegre');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240800','Monte Das Gameleiras');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240810','Mossoró');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240820','Natal');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240830','Nísia Floresta');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240840','Nova Cruz');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240850','Olho-d´água do Borges');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240860','Ouro Branco');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240870','Paraná');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240880','Paraú');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240890','Parazinho');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240325','Parelhas');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240910','Rio do Fogo');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240920','Passa e Fica');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240930','Passagem');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240940','Patu');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240950','Santa Maria');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240960','Pau Dos Ferros');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240970','Pedra Grande');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240980','Pedra Preta');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240990','Pedro Avelino');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('241000','Pedro Velho');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('241010','Pendências');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('241020','Pilões');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('241025','Poço Branco');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('241040','Portalegre');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('241050','Porto do Mangue');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('241060','Presidente Juscelino');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('241070','Pureza');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('241080','Rafael Fernandes');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('241090','Rafael Godeiro');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240895','Riacho da Cruz');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('241100','Riacho de Santana');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('241110','Riachuelo');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('241120','Rodolfo Fernandes');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('240933','Tibau');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('241140','Ruy Barbosa');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('241142','Santa Cruz');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('241150','Santana do Matos');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('241160','Santana do Seridó');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('241170','Santo Antônio');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('241180','São Bento do Norte');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('241190','São Bento do Trairí');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('241200','São Fernando');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('241210','São Francisco do Oeste');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('241220','São Gonçalo do Amarante');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('241230','São João do Sabugi');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('241240','São José de Mipibu');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('241250','São José do Campestre');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('241255','São José do Seridó');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('241260','São Miguel');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('241270','São Miguel do Gostoso');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('241280','São Paulo do Potengi');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('241290','São Pedro');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('241300','São Rafael');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('241310','São Tomé');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('241320','São Vicente');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('241030','Senador Elói de Souza');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('241330','Senador Georgino Avelino');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('241335','Serra de São Bento');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('241340','Serra do Mel');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('241350','Serra Negra do Norte');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('241355','Serrinha');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('241360','Serrinha Dos Pintos');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('241370','Severiano Melo');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('241380','Sítio Novo');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('241390','Taboleiro Grande');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('241400','Taipu');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('241410','Tangará');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('241415','Tenente Ananias');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('241105','Tenente Laurentino Cruz');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('241420','Tibau do Sul');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('241430','Timbaúba Dos Batistas');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('241440','Touros');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('241445','Triunfo Potiguar');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('241450','Umarizal');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('241460','Upanema');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('241470','Várzea');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('241475','Venha-ver');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('241480','Vera Cruz');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('241490','Viçosa');
+INSERT INTO tb_city (tb_city_id, tb_city_name) VALUES ('241500','Vila Flor');
+
+2400109	Acari
+2400208	Açu
+2400307	Afonso Bezerra
+2400406	Água Nova
+2400505	Alexandria
+2400604	Almino Afonso
+2400703	Alto do Rodrigues
+2400802	Angicos
+2400901	Antônio Martins
+2401008	Apodi
+2401107	Areia Branca
+2401206	Arês
+2401305	Augusto Severo
+2401404	Baía Formosa
+2401453	Baraúna
+2401503	Barcelona
+2401602	Bento Fernandes
+2401651	Bodó
+2401701	Bom Jesus
+2401800	Brejinho
+2401859	Caiçara do Norte
+2401909	Caiçara do Rio do Vento
+2402006	Caicó
+2402105	Campo Redondo
+2402204	Canguaretama
+2402303	Caraúbas
+2402402	Carnaúba Dos Dantas
+2402501	Carnaubais
+2402600	Ceará-mirim
+2402709	Cerro Corá
+2402808	Coronel Ezequiel
+2402907	Coronel João Pessoa
+2403004	Cruzeta
+2403103	Currais Novos
+2403202	Doutor Severiano
+2403251	Parnamirim
+2403301	Encanto
+2403400	Equador
+2403509	Espírito Santo
+2403608	Extremoz
+2403707	Felipe Guerra
+2403756	Fernando Pedroza
+2403806	Florânia
+2403905	Francisco Dantas
+2404002	Frutuoso Gomes
+2404101	Galinhos
+2404200	Goianinha
+2404309	Governador Dix-sept Rosado
+2404408	Grossos
+2404507	Guamaré
+2404606	Ielmo Marinho
+2404705	Ipanguaçu
+2404804	Ipueira
+2404853	Itajá
+2404903	Itaú
+2405009	Jaçanã
+2405108	Jandaíra
+2405207	Janduís
+2405306	Januário Cicco
+2405405	Japi
+2405504	Jardim de Angicos
+2405603	Jardim de Piranhas
+2405702	Jardim do Seridó
+2405801	João Câmara
+2405900	João Dias
+2406007	José da Penha
+2406106	Jucurutu
+2406155	Jundiá
+2406205	Lagoa D´anta
+2406304	Lagoa de Pedras
+2406403	Lagoa de Velhos
+2406502	Lagoa Nova
+2406601	Lagoa Salgada
+2406700	Lajes
+2406809	Lajes Pintadas
+2406908	Lucrécia
+2407005	Luís Gomes
+2407104	Macaíba
+2407203	Macau
+2407252	Major Sales
+2407302	Marcelino Vieira
+2407401	Martins
+2407500	Maxaranguape
+2407609	Messias Targino
+2407708	Montanhas
+2407807	Monte Alegre
+2407906	Monte Das Gameleiras
+2408003	Mossoró
+2408102	Natal
+2408201	Nísia Floresta
+2408300	Nova Cruz
+2408409	Olho-d´água do Borges
+2408508	Ouro Branco
+2408607	Paraná
+2408706	Paraú
+2408805	Parazinho
+2408904	Parelhas
+2408953	Rio do Fogo
+2409100	Passa e Fica
+2409209	Passagem
+2409308	Patu
+2409332	Santa Maria
+2409407	Pau Dos Ferros
+2409506	Pedra Grande
+2409605	Pedra Preta
+2409704	Pedro Avelino
+2409803	Pedro Velho
+2409902	Pendências
+2410009	Pilões
+2410108	Poço Branco
+2410207	Portalegre
+2410256	Porto do Mangue
+2410306	Presidente Juscelino
+2410405	Pureza
+2410504	Rafael Fernandes
+2410603	Rafael Godeiro
+2410702	Riacho da Cruz
+2410801	Riacho de Santana
+2410900	Riachuelo
+2411007	Rodolfo Fernandes
+2411056	Tibau
+2411106	Ruy Barbosa
+2411205	Santa Cruz
+2411403	Santana do Matos
+2411429	Santana do Seridó
+2411502	Santo Antônio
+2411601	São Bento do Norte
+2411700	São Bento do Trairí
+2411809	São Fernando
+2411908	São Francisco do Oeste
+2412005	São Gonçalo do Amarante
+2412104	São João do Sabugi
+2412203	São José de Mipibu
+2412302	São José do Campestre
+2412401	São José do Seridó
+2412500	São Miguel
+2412559	São Miguel do Gostoso
+2412609	São Paulo do Potengi
+2412708	São Pedro
+2412807	São Rafael
+2412906	São Tomé
+2413003	São Vicente
+2413102	Senador Elói de Souza
+2413201	Senador Georgino Avelino
+2413300	Serra de São Bento
+2413359	Serra do Mel
+2413409	Serra Negra do Norte
+2413508	Serrinha
+2413557	Serrinha Dos Pintos
+2413607	Severiano Melo
+2413706	Sítio Novo
+2413805	Taboleiro Grande
+2413904	Taipu
+2414001	Tangará
+2414100	Tenente Ananias
+2414159	Tenente Laurentino Cruz
+2414209	Tibau do Sul
+2414308	Timbaúba Dos Batistas
+2414407	Touros
+2414456	Triunfo Potiguar
+2414506	Umarizal
+2414605	Upanema
+2414704	Várzea
+2414753	Venha-ver
+2414803	Vera Cruz
+2414902	Viçosa
+2415008	Vila Flor

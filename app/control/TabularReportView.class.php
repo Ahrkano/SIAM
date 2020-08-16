@@ -507,6 +507,8 @@
                             $table->addCell('Populações alvo', 'center', 'sub', 52);
                             $table->addCell('Prevalência', 'center', 'sub', 10);
                             $formula->section_3_1_A($table, 'value', 'sub', $style, 6);
+                            $table->addRow();
+                            $table->addCell('*Diagnóstico de sífilis deve seguir o preconizado na portaria 3242 de 30/12/2011 ou outro documento que a substitua', 'center', 'leg', $num_col);
 
 
                             $colour = !$colour;
