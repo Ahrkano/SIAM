@@ -1218,7 +1218,7 @@
                $table->addCell('Níveis de atenção : AB, AAE',                                                                     'center', $sub_style, $size*10 +2);
                $table->addRow();
                $table->addCell('Procedimento',                                                                                    'center', $sub_style, $size+2);
-               $table->addCell('Critérios e/ou parâmetros propostos',                                                             'center', $style, $size*7 +2);
+               $table->addCell('Critérios e/ou parâmetros propostos',                                                             'center', $sub_style, $size*7 +2);
                $table->addCell('Prevalência',                                                                                     'center', $sub_style, $size+4);
                $table->addRow();
                $table->addCell('Acolhimento',                                                                                     'left', $row_style, $size+2);
@@ -1288,7 +1288,6 @@
                $table->addCell('Pesquisa de tripanossoma' ,                                                                       'left', $style, $size*7 +2);
                $table->addCell(ceil($this->aux*1) ,                                                                               'center', $style, $size +4);
                $table->addRow();
-               $table->addRow();
                $table->addCell('Exame',                                                                                           'left', $row_style, $size+2);
                $table->addCell('1 Exame para dosagem de lipídios /caso/ano',                                                      'left', $row_style, $size*9);
                $table->addRow();
@@ -1325,10 +1324,190 @@
                $table->addCell('Exame',                                                                                           'left', $row_style, $size+2);
                $table->addCell('AntiHcv' ,                                                                                        'left', $style, $size*7 +2);
                $table->addCell(ceil($this->aux*1) ,                                                                               'center', $style, $size +4);
+               $table->addRow();
+               $table->addCell('Exame',                                                                                           'left', $row_style, $size+2);
+               $table->addCell('Pesquisa de anticorpos IGG contra o virus da hepatite A (HAV-IGG)' ,                              'left', $style, $size*7 +2);
+               $table->addCell(ceil($this->aux*1) ,                                                                               'center', $style, $size +4);
+               $table->addRow();
+               $table->addCell('Exame',                                                                                           'left', $row_style, $size+2);
+               $table->addCell('Pesquisa de anticorpos IGM contra o virus da hepatite A (HAV-IGM)' ,                              'left', $style, $size*7 +2);
+               $table->addCell(ceil($this->aux*1) ,                                                                               'center', $style, $size +4);
+               $table->addRow();
+               $table->addCell('Exame',                                                                                           'left', $row_style, $size+2);
+               $table->addCell('HBsAg' ,                                                                                          'left', $style, $size*7 +2);
+               $table->addCell(ceil($this->aux*1) ,                                                                               'center', $style, $size +4);
+               $table->addRow();
+               $table->addCell('Exame',                                                                                           'left', $row_style, $size+2);
+               $table->addCell('Pesquisa de anticorpos IGG e IGM contra antigeno central do virus da hepatite B anti-HBcT' ,      'left', $style, $size*7 +2);
+               $table->addCell(ceil($this->aux*1) ,                                                                               'center', $style, $size +4);
+               $table->addRow();
+               $table->addCell('Exame',                                                                                           'left', $row_style, $size+2);
+               $table->addCell('AntiHbs' ,                                                                                        'left', $style, $size*7 +2);
+               $table->addCell(ceil($this->aux*1) ,                                                                               'center', $style, $size +4);
+               $table->addRow();
+               $table->addCell('Exame',                                                                                           'left', $row_style, $size+2);
+               $table->addCell('Pesquisa de Anticorspo IGG Antitoxoplasma (Sorologia para toxoplasmose (IgG) ' ,                  'left', $style, $size*7 +2);
+               $table->addCell(ceil($this->aux*1) ,                                                                               'center', $style, $size +4);
 
 
 
                //$table->addCell('Consulta médica - início do tratamento e sequenciamento realizado na AAE. *' , 'center', $sub_style);
+          }
+
+          public function section_3_1_B($table, $row_style, $sub_style, $style, $size)
+          {
+            $this->aux =
+            (
+                 $this->pop_var*0.030 + $this->pop_var*0.033 + $this->pop_var*0.035 + $this->pop_var*0.040 +
+                 $this->pop_var*0.044 + $this->pop_var*0.045 + $this->pop_var*0.045 +
+                 $this->pop_var*0.032 + $this->pop_var*0.035 + $this->pop_var*0.037 + $this->pop_var*0.042 +
+                 $this->pop_var*0.045 + $this->pop_var*0.045 + $this->pop_var*0.044
+            ) * 0.005;
+
+            $table->addRow();
+            $table->addCell('Prevalência de 0,5% da população de 15 a 45 anos com diag. de HIV',                               'left', $row_style, $size*8 +4);
+            $table->addCell(ceil($this->aux),                                                                                  'center', $style, $size +4);
+            $table->addRow();
+            $table->addCell('AÇÕES: Consulta médica - início tratamento e sequenciamento realizado na AAE.',                   'center', $sub_style, $size*10 +2);
+            $table->addRow();
+            $table->addCell('(A rede pode se organizar para o manejo do paciente ser realizado na AB)',                        'center', $sub_style, $size*10 +2);
+            $table->addRow();
+            $table->addCell('Níveis de atenção : AB, AAE',                                                                     'center', $sub_style, $size*10 +2);
+            $table->addRow();
+            $table->addCell('Procedimento',                                                                                    'center', $sub_style, $size+2);
+            $table->addCell('Critérios e/ou parâmetros propostos',                                                             'center', $sub_style, $size*7 +2);
+            $table->addCell('Prevalência',                                                                                     'center', $sub_style, $size+4);
+            $table->addRow();
+            $table->addCell('Consulta médica¹',                                                                                'left', $row_style, $size+2);
+            $table->addCell('01 consulta médica/caso/ano' ,                                                                    'left', $style, $size*7 +2);
+            $table->addCell(ceil($this->aux*1) ,                                                                               'center', $style, $size +4);
+            $table->addRow();
+            $table->addCell('Consulta médica²',                                                                                'left', $row_style, $size+2);
+            $table->addCell('Pacientes estáveis consulta médica/caso de 6/6 meses, se não, diminuir o intervalo das consultas','left', $style, $size*7 +2);
+            $table->addCell(ceil($this->aux*2) ,                                                                               'center', $style, $size +4);
+
+            $table->addRow();
+            $table->addCell('Exame',                                                                                           'left', $row_style, $size+2);
+            $table->addCell('Hemograma completo/caso a cada 3 a 6 meses' ,                                                     'left', $style, $size*7 +2);
+            $table->addCell(ceil($this->aux*4) ,                                                                               'center', $style, $size +4);
+            $table->addRow();
+            $table->addCell('Exame',                                                                                           'left', $row_style, $size+2);
+            $table->addCell('Contagem de Linfócitos T CD4/CD8 /caso de 6/6meses ³' ,                                           'left', $style, $size*7 +2);
+            $table->addCell(ceil($this->aux*2) ,                                                                               'center', $style, $size +4);
+            $table->addRow();
+            $table->addCell('Exame',                                                                                           'left', $row_style, $size+2);
+            $table->addCell('Determinação de carga viral do HIV por RT-PCR/caso/ cada 3-6 meses' ,                             'left', $style, $size*7 +2);
+            $table->addCell(ceil($this->aux*4) ,                                                                               'center', $style, $size +4);
+            $table->addRow();
+            $table->addCell('Exame',                                                                                           'left', $row_style, $size+2);
+            $table->addCell('01 exames/ano para avaliação hepática e renal /caso/ano',                                         'left', $row_style, $size*9);
+            $table->addRow();
+            $table->addCell('Exame',                                                                                           'left', $row_style, $size+2);
+            $table->addCell('Dosagem de Transaminase Glutamico-oxalacetica (TGO) AST' ,                                        'left', $style, $size*7 +2);
+            $table->addCell(ceil($this->aux*1) ,                                                                               'center', $style, $size +4);
+            $table->addRow();
+            $table->addCell('Exame',                                                                                           'left', $row_style, $size+2);
+            $table->addCell('Dosagem de Transaminase Glutamico-piruvica (TGP) ALT' ,                                           'left', $style, $size*7 +2);
+            $table->addCell(ceil($this->aux*1) ,                                                                               'center', $style, $size +4);
+            $table->addRow();
+            $table->addCell('Exame',                                                                                           'left', $row_style, $size+2);
+            $table->addCell('Dosagem de creatinina' ,                                                                          'left', $style, $size*7 +2);
+            $table->addCell(ceil($this->aux*1) ,                                                                               'center', $style, $size +4);
+            $table->addRow();
+            $table->addCell('Exame',                                                                                           'left', $row_style, $size+2);
+            $table->addCell('Uréia' ,                                                                                          'left', $style, $size*7 +2);
+            $table->addCell(ceil($this->aux*1) ,                                                                               'center', $style, $size +4);
+            $table->addRow();
+            $table->addCell('Exame',                                                                                           'left', $row_style, $size+2);
+            $table->addCell('Dosagem de sódio sérico' ,                                                                        'left', $style, $size*7 +2);
+            $table->addCell(ceil($this->aux*1) ,                                                                               'center', $style, $size +4);
+            $table->addRow();
+            $table->addCell('Exame',                                                                                           'left', $row_style, $size+2);
+            $table->addCell('Dosagem de potássio serico' ,                                                                     'left', $style, $size*7 +2);
+            $table->addCell(ceil($this->aux*1) ,                                                                               'center', $style, $size +4);
+            $table->addRow();
+            $table->addCell('Exame',                                                                                           'left', $row_style, $size+2);
+            $table->addCell('Analise de sedimento urinário' ,                                                                  'left', $style, $size*7 +2);
+            $table->addCell(ceil($this->aux*1) ,                                                                               'center', $style, $size +4);
+            $table->addRow();
+            $table->addCell('Exame',                                                                                           'left', $row_style, $size+2);
+            $table->addCell('Clearance de creatinina - 03 exames ou Taxa de Filtração Glomerular/ caso/ano' ,                  'left', $style, $size*7 +2);
+            $table->addCell(ceil($this->aux*3) ,                                                                               'center', $style, $size +4);
+            $table->addRow();
+            $table->addCell('Exame',                                                                                           'left', $row_style, $size+2);
+            $table->addCell('01 exame de Escore de risco cardiovascular de Framinghan/caso/ano' ,                              'left', $style, $size*7 +2);
+            $table->addCell(ceil($this->aux*1) ,                                                                               'center', $style, $size +4);
+            $table->addRow();
+            $table->addCell('Exame',                                                                                           'left', $row_style, $size+2);
+            $table->addCell('Intradermoreação com derivado proteico purificado (PPD) Prova tuberculínica /caso/ano' ,          'left', $style, $size*7 +2);
+            $table->addCell(ceil($this->aux*1) ,                                                                               'center', $style, $size +4);
+            $table->addRow();
+            $table->addCell('Exame',                                                                                           'left', $row_style, $size+2);
+            $table->addCell('Teste de VDRL para detecção de sífilis /caso/ano' ,                                               'left', $style, $size*7 +2);
+            $table->addCell(ceil($this->aux*1) ,                                                                               'center', $style, $size +4);
+            $table->addRow();
+            $table->addCell('Exame',                                                                                           'left', $row_style, $size+2);
+            $table->addCell('ADICIONAR MULTICELL',                                                                             'left', $row_style, $size*7 +2);
+            //$Mtable = $table->getNativeWriter();
+            //$Mtable->MultiCell(70, 5,utf8_decode('Teste de VDRL para detecção de sífilis- Realizar controle com testes sorológicos não treponêmicos/paciente diagnosticado com sífilis após tratamento a cada 3 meses durante o primeiro ano e, se ainda houver reatividade em titulações decrescentes, deve-se manter o acompanhamento a cada 6 meses até estabilização'),1,'L', false);
+            $table->addCell(ceil($this->aux*1) ,                                                                               'center', $style, $size +4);
+            $table->addRow();
+            $table->addCell('Exame',                                                                                           'left', $row_style, $size+2);
+            $table->addCell('01 exame de dosagem de Lipídios/caso/ano',                                                        'left', $row_style, $size*9);
+            $table->addRow();
+            $table->addCell('Exame',                                                                                           'left', $row_style, $size+2);
+            $table->addCell('Dosagem de colesterol HDL' ,                                                                      'left', $style, $size*7 +2);
+            $table->addCell(ceil($this->aux*1) ,                                                                               'center', $style, $size +4);
+            $table->addRow();
+            $table->addCell('Exame',                                                                                           'left', $row_style, $size+2);
+            $table->addCell('Dosagem de colesterol LDL' ,                                                                      'left', $style, $size*7 +2);
+            $table->addCell(ceil($this->aux*1) ,                                                                               'center', $style, $size +4);
+            $table->addRow();
+            $table->addCell('Exame',                                                                                           'left', $row_style, $size+2);
+            $table->addCell('Dosagem de colesterol total' ,                                                                    'left', $style, $size*7 +2);
+            $table->addCell(ceil($this->aux*1) ,                                                                               'center', $style, $size +4);
+            $table->addRow();
+            $table->addCell('Exame',                                                                                           'left', $row_style, $size+2);
+            $table->addCell('Dosagem de triglicerídeos' ,                                                                      'left', $style, $size*7 +2);
+            $table->addCell(ceil($this->aux*1) ,                                                                               'center', $style, $size +4);
+            $table->addRow();
+            $table->addCell('No PCDT está 6/6 meses',                                                                          'center', $row_style, $size*10 +2);
+            $table->addRow();
+            $table->addCell('Exame',                                                                                           'left', $row_style, $size+2);
+            $table->addCell('Dosagem de colesterol HDL' ,                                                                      'left', $style, $size*7 +2);
+            $table->addCell(ceil($this->aux*2) ,                                                                               'center', $style, $size +4);
+            $table->addRow();
+            $table->addCell('Exame',                                                                                           'left', $row_style, $size+2);
+            $table->addCell('Dosagem de colesterol LDL' ,                                                                      'left', $style, $size*7 +2);
+            $table->addCell(ceil($this->aux*2) ,                                                                               'center', $style, $size +4);
+            $table->addRow();
+            $table->addCell('Exame',                                                                                           'left', $row_style, $size+2);
+            $table->addCell('Dosagem de colesterol total' ,                                                                    'left', $style, $size*7 +2);
+            $table->addCell(ceil($this->aux*2) ,                                                                               'center', $style, $size +4);
+            $table->addRow();
+            $table->addCell('Exame',                                                                                           'left', $row_style, $size+2);
+            $table->addCell('Dosagem de triglicerídeos' ,                                                                      'left', $style, $size*7 +2);
+            $table->addCell(ceil($this->aux*2) ,                                                                               'center', $style, $size +4);
+            $table->addRow();
+            $table->addCell('Exame',                                                                                           'left', $row_style, $size+2);
+            $table->addCell('Dosagem de glicose' ,                                                                             'left', $style, $size*7 +2);
+            $table->addCell(ceil($this->aux*1) ,                                                                               'center', $style, $size +4);
+            $table->addRow();
+
+            $table->addCell('Exame',                                                                                           'left', $row_style, $size+2);
+            $table->addCell('02 exames (Fundo de olho) para indivíduos com LT-CD4+ < que 50 células/mm3 /caso/ano' ,           'left', $style, $size*7 +2);
+            $table->addCell(ceil($this->aux*2) ,                                                                               'center', $style, $size +4);
+            $table->addRow();
+
+
+
+
+
+
+
+
+
+
           }
 
     }

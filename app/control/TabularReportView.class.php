@@ -538,6 +538,23 @@
                             $table->addRow();
                             $table->addCell('*Diagnóstico de sífilis deve seguir o preconizado na portaria 3242 de 30/12/2011 ou outro documento que a substitua', 'center', 'leg', $num_col);
 
+                            $table->addRow();
+                            $table->addCell('População de 15 anos a 49 anos com HIV', 'center', 'sub', $num_col);
+                            $table->addRow();
+                            $table->addCell('Populações alvo', 'center', 'sub', 52);
+                            $table->addCell('Prevalência', 'center', 'sub', 10);
+                            $formula->section_3_1_B($table, 'value', 'sub', $style, 6);
+                            $table->addRow();
+                            $table->addCell('¹ Início do tratamento realizado na AB', 'center', 'leg', $num_col);
+                            $table->addRow();
+                            $table->addCell('² Início do tratamento e sequenciamento realizado na AAE', 'center', 'leg', $num_col);
+                            $table->addRow();
+                            $table->addCell('³ Acompanhar mudanças futuras, pois a indicação do CD4 irá ser bem mais restrita.', 'center', 'leg', $num_col);
+
+
+
+
+
 
                             $colour = !$colour;
 
