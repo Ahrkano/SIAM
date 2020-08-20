@@ -551,7 +551,12 @@
                             $table->addRow();
                             $table->addCell('³ Acompanhar mudanças futuras, pois a indicação do CD4 irá ser bem mais restrita.', 'center', 'leg', $num_col);
 
-
+                            $table->addRow();
+                            $table->addCell('Mulheres vivendo com HIV/AIDS', 'center', 'div', $num_col);
+                            $table->addRow();
+                            $table->addCell('Populações alvo', 'center', 'sub', 52);
+                            $table->addCell('Prevalência', 'center', 'sub', 10);
+                            $formula->section_3_1_C($table, 'value', 'sub', $style, 6);
 
 
 

@@ -1370,8 +1370,8 @@
             $table->addRow();
             $table->addCell('AÇÕES: Consulta médica - início tratamento e sequenciamento realizado na AAE.',                   'center', $sub_style, $size*10 +2);
             $table->addRow();
-            $table->addCell('(A rede pode se organizar para o manejo do paciente ser realizado na AB)',                        'center', $sub_style, $size*10 +2);
-            $table->addRow();
+              $table->addCell('(A rede pode se organizar para o manejo do paciente ser realizado na AB)',                        'center', $sub_style, $size*10 +2);
+              $table->addRow();
             $table->addCell('Níveis de atenção : AB, AAE',                                                                     'center', $sub_style, $size*10 +2);
             $table->addRow();
             $table->addCell('Procedimento',                                                                                    'center', $sub_style, $size+2);
@@ -1450,7 +1450,7 @@
             $table->addCell('ADICIONAR MULTICELL',                                                                             'left', $row_style, $size*7 +2);
             //$Mtable = $table->getNativeWriter();
             //$Mtable->MultiCell(70, 5,utf8_decode('Teste de VDRL para detecção de sífilis- Realizar controle com testes sorológicos não treponêmicos/paciente diagnosticado com sífilis após tratamento a cada 3 meses durante o primeiro ano e, se ainda houver reatividade em titulações decrescentes, deve-se manter o acompanhamento a cada 6 meses até estabilização'),1,'L', false);
-            $table->addCell(ceil($this->aux*1) ,                                                                               'center', $style, $size +4);
+            $table->addCell(ceil($this->aux*4) ,                                                                               'center', $style, $size +4);
             $table->addRow();
             $table->addCell('Exame',                                                                                           'left', $row_style, $size+2);
             $table->addCell('01 exame de dosagem de Lipídios/caso/ano',                                                        'left', $row_style, $size*9);
@@ -1493,11 +1493,76 @@
             $table->addCell('Dosagem de glicose' ,                                                                             'left', $style, $size*7 +2);
             $table->addCell(ceil($this->aux*1) ,                                                                               'center', $style, $size +4);
             $table->addRow();
-
             $table->addCell('Exame',                                                                                           'left', $row_style, $size+2);
             $table->addCell('02 exames (Fundo de olho) para indivíduos com LT-CD4+ < que 50 células/mm3 /caso/ano' ,           'left', $style, $size*7 +2);
             $table->addCell(ceil($this->aux*2) ,                                                                               'center', $style, $size +4);
             $table->addRow();
+
+          }
+
+          public function section_3_1_C($table, $row_style, $sub_style, $style, $size)
+          {
+
+            $this->aux = -1000;
+
+            $table->addRow();
+            $table->addCell('Prevalência nacional de HIV na população feminina de 15 a 49 anos: 0,38%',                                         'left', $style, $size*8 +4);
+            $table->addCell(ceil($this->aux),                                                                                                   'center', $style, $size +4);
+            $table->addRow();
+            $table->addCell('AÇÕES: Rastreamento.',                                                                                             'center', $sub_style, $size*10 +2);
+            $table->addRow();
+            $table->addCell('Níveis de atenção : AB, AAE e AH',                                                                                 'center', $sub_style, $size*10 +2);
+            $table->addRow();
+            $table->addCell('Procedimento',                                                                                                     'center', $sub_style, $size+2);
+            $table->addCell('Critérios e/ou parâmetros propostos',                                                                              'center', $sub_style, $size*7 +2);
+            $table->addCell('Prevalência',                                                                                                      'center', $sub_style, $size+4);
+            $table->addRow();
+
+            $table->addCell('Exame',                                                                                                            'left', $row_style, $size+2);
+            $table->addCell('Mamografia bilateral p/ rastreamento: 1 exame caso/ano mulheres acima de 40 anos' ,                                'left', $style, $size*7 +2);
+            $table->addCell(ceil($this->aux) ,                                                                                                  'center', $style, $size +4);
+            $table->addRow();
+            $table->addCell('Exame',                                                                                                            'left', $row_style, $size+2);
+            $table->addCell('Exame Citopatologico cérvico-vaginal/microflora - 02 exame colpocitológico/caso/ano' ,                             'left', $style, $size*7 +2);
+            $table->addCell(ceil($this->aux) ,                                                                                                  'center', $style, $size +4);
+            $table->addRow();
+            $table->addCell('Exame',                                                                                                            'left', $row_style, $size+2);
+            $table->addCell('Na presença de alterações patológicas pré-cancerosas, seguir normas técnicas preconizadas',                        'center', $sub_style, $size*9);
+            $table->addRow();
+            $table->addCell('Exame',                                                                                                            'left', $row_style, $size+2);
+            $table->addCell('01 exame de Toque retal/caso/ano' ,                                                                                'left', $style, $size*7 +2);
+            $table->addCell(ceil($this->aux) ,                                                                                                  'center', $style, $size +4);
+            $table->addRow();
+            $table->addCell('Exame',                                                                                                            'left', $row_style, $size+2);
+            $table->addCell('1 exame citológico anal(exceto cervico-vaginal)/caso/ano p/ mulheres sexualmente ativas' ,                         'left', $style, $size*7 +2);
+            $table->addCell(ceil($this->aux) ,                                                                                                  'center', $style, $size +4);
+            $table->addRow();
+            $table->addCell('Exame',                                                                                                            'left', $row_style, $size+2);
+            $table->addCell('01 exame de anoscopia para presença de alterações patológicas quando for o caso' ,                                 'left', $style, $size*7 +2);
+            $table->addCell(ceil($this->aux) ,                                                                                                  'center', $style, $size +4);
+            $table->addRow();
+            $table->addCell('Exame',                                                                                                            'left', $row_style, $size+2);
+            $table->addCell('Dosagem de Alfa-fetoproteína - 2 exames /caso/ano' ,                                                               'left', $style, $size*7 +2);
+            $table->addCell(ceil($this->aux) ,                                                                                                  'center', $style, $size +4);
+            $table->addRow();
+            $table->addCell('Exame',                                                                                                            'left', $row_style, $size+2);
+            $table->addCell('Dosagem de Transaminase Glutamico-oxalacetica (TGO) AST 2 exames /caso/ano' ,                                      'left', $style, $size*7 +2);
+            $table->addCell(ceil($this->aux) ,                                                                                                  'center', $style, $size +4);
+            $table->addRow();
+            $table->addCell('Exame',                                                                                                            'left', $row_style, $size+2);
+            $table->addCell('Dosagem de Transaminase Glutamico-piruvica (TGP) ALT 2 exames /caso/ano' ,                                         'left', $style, $size*7 +2);
+            $table->addCell(ceil($this->aux) ,                                                                                                  'center', $style, $size +4);
+            $table->addRow();
+            $table->addCell('Exame',                                                                                                            'left', $row_style, $size+2);
+            $table->addCell('Ultrassonografia transvaginal - 02 exames de ultrassom/caso/ano' ,                                                 'left', $style, $size*7 +2);
+            $table->addCell(ceil($this->aux) ,                                                                                                  'center', $style, $size +4);
+            $table->addRow();
+
+
+
+
+
+
 
 
 
