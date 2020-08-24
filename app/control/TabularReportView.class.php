@@ -532,8 +532,8 @@
                             $table->addRow();
                             $table->addCell('População de 15 anos a 49 anos com HIV', 'center', 'sub', $num_col);
                             $table->addRow();
-                            $table->addCell('Populações alvo', 'center', 'sub', 52);
-                            $table->addCell('Prevalência', 'center', 'sub', 10);
+                            $table->addCell('Populações alvo', 'center', 'sub', 54);
+                            $table->addCell('Prevalência', 'center', 'sub', 8);
                             $formula->section_3_1_A($table, 'value', 'sub', $style, 6);
                             $table->addRow();
                             $table->addCell('*Diagnóstico de sífilis deve seguir o preconizado na portaria 3242 de 30/12/2011 ou outro documento que a substitua', 'center', 'leg', $num_col);
@@ -557,6 +557,9 @@
                             $table->addCell('Populações alvo', 'center', 'sub', 52);
                             $table->addCell('Prevalência', 'center', 'sub', 10);
                             $formula->section_3_1_C($table, 'value', 'sub', $style, 6);
+
+                            $table->addRow();
+                            $formula->section_3_1_D($table, 'value', 'sub', $style, 6);
 
 
 
